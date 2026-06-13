@@ -21,13 +21,6 @@ export default function ProjectKanban() {
 
   useEffect(() => { fetch(); }, []);
 
-  const onCreate = async (values: any) => {
-    await client.post('/projects/', values);
-    message.success('创建成功');
-    setOpen(false);
-    form.resetFields();
-    fetch();
-  };
 
   return (
     <div>
@@ -40,9 +33,26 @@ export default function ProjectKanban() {
         { title: '预算', dataIndex: 'budget', render: (v: any) => v ? `¥${Number(v).toLocaleString()}` : '-' },
         { title: '开始', dataIndex: 'start_date' },
         { title: '结束', dataIndex: 'end_date' },
+        { title: '操作', render: (_: any, r: any) => (
+          <Space>
+            <Button size="small" onClick={() => { form.setFieldsValue(r); setOpen(true); }}>编辑</Button>
+            <Select size="small" style={{ width: 80 }} value={r.stage} onChange={async (v) => { await client.put(`/projects/${r.id}/stage`, { stage: v }); message.success('阶段已更新'); fetch(); }}>
+              {Object.entries(STAGES).map(([k, v]) => <Select.Option key={k} value={Number(k)}>{v}</Select.Option>)}
+            </Select>
+          </Space>
+        )},
       ]} pagination={false} />
-      <Modal open={open} onCancel={() => setOpen(false)} title="新增项目" onOk={() => form.submit()}>
-        <Form form={form} layout="vertical" onFinish={onCreate}>
+      <Modal open={open} onCancel={() => { setOpen(false); form.resetFields(); }} title={form.getFieldValue('id') ? '编辑项目' : '新增项目'} onOk={() => form.submit()}>
+        <Form form={form} layout="vertical" onFinish={async (values) => {
+          if (form.getFieldValue('id')) {
+            await client.put(`/projects/${form.getFieldValue('id')}`, values);
+            message.success('更新成功');
+          } else {
+            await client.post('/projects/', values);
+            message.success('创建成功');
+          }
+          setOpen(false); form.resetFields(); fetch();
+        }}>
           <Form.Item name="name" label="名称" rules={[{ required: true }]}><Input /></Form.Item>
           <Form.Item name="stage" label="阶段" initialValue={1}>
             <Select options={Object.entries(STAGES).map(([k,v])=>({label:v,value:Number(k)}))} />

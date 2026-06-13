@@ -22,15 +22,18 @@ export default function BiddingList() {
 
   useEffect(() => { fetch(); }, []);
 
-  const onCreate = async (values: any) => {
+  const onSubmit = async (values: any) => {
     const payload = { ...values };
     if (values.bid_deadline) payload.bid_deadline = values.bid_deadline.toISOString();
     if (values.submit_deadline) payload.submit_deadline = values.submit_deadline.toISOString();
-    await client.post('/bidding/', payload);
-    message.success('创建成功');
-    setOpen(false);
-    form.resetFields();
-    fetch();
+    if (form.getFieldValue('id')) {
+      await client.put(`/bidding/${form.getFieldValue('id')}`, payload);
+      message.success('更新成功');
+    } else {
+      await client.post('/bidding/', payload);
+      message.success('创建成功');
+    }
+    setOpen(false); form.resetFields(); fetch();
   };
 
   return (
@@ -44,9 +47,14 @@ export default function BiddingList() {
         { title: '金额', dataIndex: 'bid_amount', render: (v: any) => v ? `¥${Number(v).toLocaleString()}` : '-' },
         { title: '状态', dataIndex: 'bid_status', render: (v: number) => { const colors: Record<number,string>={1:'blue',2:'cyan',3:'geekblue',4:'purple',5:'green',6:'red',7:'magenta',8:'orange',9:'default'}; return <Tag color={colors[v]}>{BID_STATUS[v]||v}</Tag>; }},
         { title: '截止日期', dataIndex: 'bid_deadline', render: (v: string) => v ? dayjs(v).format('YYYY-MM-DD') : '-' },
+        { title: '操作', render: (_: any, r: any) => (
+          <Space>
+            <Button size="small" onClick={() => { form.setFieldsValue({...r, bid_deadline: r.bid_deadline ? dayjs(r.bid_deadline) : null, submit_deadline: r.submit_deadline ? dayjs(r.submit_deadline) : null}); setOpen(true); }}>编辑</Button>
+          </Space>
+        )},
       ]} pagination={false} />
-      <Modal open={open} onCancel={() => setOpen(false)} title="新增投标" onOk={() => form.submit()}>
-        <Form form={form} layout="vertical" onFinish={onCreate}>
+      <Modal open={open} onCancel={() => { setOpen(false); form.resetFields(); }} title={form.getFieldValue('id') ? '编辑投标' : '新增投标'} onOk={() => form.submit()}>
+        <Form form={form} layout="vertical" onFinish={onSubmit}>
           <Form.Item name="title" label="标题" rules={[{ required: true }]}><Input /></Form.Item>
           <Form.Item name="client_company" label="客户公司"><Input /></Form.Item>
           <Form.Item name="bid_amount" label="金额"><InputNumber style={{ width: '100%' }} min={0} /></Form.Item>

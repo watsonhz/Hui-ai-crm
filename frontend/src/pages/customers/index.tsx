@@ -19,13 +19,6 @@ export default function CustomerList() {
 
   useEffect(() => { fetch(); }, []);
 
-  const onCreate = async (values: any) => {
-    await client.post('/organizations/', values);
-    message.success('创建成功');
-    setOpen(false);
-    form.resetFields();
-    fetch();
-  };
 
   return (
     <div>
@@ -36,9 +29,24 @@ export default function CustomerList() {
         { title: '名称', dataIndex: 'name' },
         { title: '类型', dataIndex: 'org_type', render: (v: string) => <Tag>{v === 'company' ? '公司' : v === 'dept' ? '部门' : '团队'}</Tag> },
         { title: '排序', dataIndex: 'sort_order' },
+        { title: '操作', render: (_: any, r: any) => (
+          <Space>
+            <Button size="small" onClick={() => { form.setFieldsValue(r); setOpen(true); }}>编辑</Button>
+            <Button size="small" danger onClick={async () => { await client.delete(`/organizations/${r.id}`); message.success('已删除'); fetch(); }}>删除</Button>
+          </Space>
+        )},
       ]} pagination={false} />
-      <Modal open={open} onCancel={() => setOpen(false)} title="新增客户" onOk={() => form.submit()}>
-        <Form form={form} layout="vertical" onFinish={onCreate}>
+      <Modal open={open} onCancel={() => { setOpen(false); form.resetFields(); }} title={form.getFieldValue('id') ? '编辑客户' : '新增客户'} onOk={() => form.submit()}>
+        <Form form={form} layout="vertical" onFinish={async (values) => {
+          if (form.getFieldValue('id')) {
+            await client.put(`/organizations/${form.getFieldValue('id')}`, values);
+            message.success('更新成功');
+          } else {
+            await client.post('/organizations/', values);
+            message.success('创建成功');
+          }
+          setOpen(false); form.resetFields(); fetch();
+        }}>
           <Form.Item name="name" label="名称" rules={[{ required: true }]}><Input /></Form.Item>
           <Form.Item name="org_type" label="类型" initialValue="company">
             <Select options={[{ label: '公司', value: 'company' }, { label: '部门', value: 'dept' }, { label: '团队', value: 'team' }]} />
