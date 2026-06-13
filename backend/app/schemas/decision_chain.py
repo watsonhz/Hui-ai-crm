@@ -9,6 +9,8 @@ class DecisionChainCreate(BaseModel):
     department: Optional[str] = Field(None, max_length=100)
     weight: int = Field(default=5, ge=1, le=10)
     support_level: int = Field(default=0, ge=-2, le=5)
+    contact_frequency: int = Field(default=7, ge=1, le=365)
+    org_unit: Optional[str] = Field(None, max_length=100)
     contact_info: Optional[str] = Field(None, max_length=200)
     notes: Optional[str] = None
 
@@ -18,6 +20,8 @@ class DecisionChainUpdate(BaseModel):
     department: Optional[str] = Field(None, max_length=100)
     weight: Optional[int] = Field(None, ge=1, le=10)
     support_level: Optional[int] = Field(None, ge=-2, le=5)
+    contact_frequency: Optional[int] = Field(None, ge=1, le=365)
+    org_unit: Optional[str] = Field(None, max_length=100)
     contact_info: Optional[str] = Field(None, max_length=200)
     notes: Optional[str] = None
 
@@ -29,6 +33,8 @@ class DecisionChainResponse(BaseModel):
     department: Optional[str] = None
     weight: int
     support_level: int
+    contact_frequency: Optional[int] = None
+    org_unit: Optional[str] = None
     contact_info: Optional[str] = None
     notes: Optional[str] = None
     created_at: datetime

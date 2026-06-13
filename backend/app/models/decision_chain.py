@@ -11,6 +11,8 @@ class DecisionChain(Base):
     department = Column(String(100))
     weight = Column(SmallInteger, nullable=False, default=5)
     support_level = Column(SmallInteger, nullable=False, default=0)
+    contact_frequency = Column(SmallInteger, default=7)
+    org_unit = Column(String(100))
     contact_info = Column(String(200))
     notes = Column(Text)
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
