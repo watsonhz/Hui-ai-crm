@@ -35,7 +35,7 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg2://postgres:Admin%4090088%2A@postgres:5432/ai_crm
       REDIS_URL: redis://redis:6379/0
-      SECRET_KEY: ${SECRET_KEY:-change-this-in-production}
+      SECRET_KEY: ${SECRET_KEY:-}
       DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
       DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
     ports:
