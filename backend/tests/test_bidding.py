@@ -1,6 +1,7 @@
 from datetime import datetime, timezone, timedelta
 from app.models.bidding import Bidding
 
+
 class TestBiddingModel:
     def test_create(self, db):
         b = Bidding(title="测试投标", bid_status=1)
@@ -29,6 +30,7 @@ class TestBiddingModel:
         db.commit()
         result = db.query(Bidding).filter(Bidding.deleted_at.is_(None)).first()
         assert result is None
+
 
 class TestBiddingAPI:
     def test_create(self, client):
