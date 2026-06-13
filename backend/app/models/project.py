@@ -12,6 +12,7 @@ VALID_STAGE_TRANSITIONS = {
     6: {7, 12}, 7: {8}, 8: {9}, 9: {10}, 10: {11}, 11: {12}, 12: set(),
 }
 
+
 class Project(Base):
     __tablename__ = "projects"
     id = Column(BigInteger, primary_key=True, autoincrement=True)
@@ -27,10 +28,12 @@ class Project(Base):
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     deleted_at = Column(DateTime(timezone=True))
+
     @validates("stage")
     def validate_stage(self, key, value):
         if value not in STAGE_MAP:
             raise ValueError(f"无效的项目阶段: {value}")
         return value
+
     def can_transition_to(self, target_stage: int) -> bool:
         return target_stage in VALID_STAGE_TRANSITIONS.get(self.stage, set())
