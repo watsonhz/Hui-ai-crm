@@ -29,7 +29,7 @@ def create_knowledge(body: KnowledgeCreate, db: Session = Depends(get_db)):
     db.refresh(k)
     return APIResponse.success(data={"id": k.id, "title": k.title, "category": k.category})
 
-@router.get("/", response_model=APIResponse[list])
+@router.get("/", response_model=APIResponse[dict])
 def list_knowledge(
     category: Optional[str] = None,
     search: Optional[str] = None,
