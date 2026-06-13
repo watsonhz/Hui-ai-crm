@@ -1,4 +1,4 @@
-.PHONY: up down restart db-init db-seed test lint
+.PHONY: up down restart db-init db-seed test lint dev deploy
 
 up:
 	docker compose -f deploy/docker-compose.yml up -d postgres redis
@@ -32,3 +32,13 @@ test:
 
 lint:
 	cd backend && source venv/bin/activate && ruff check app/ tests/ 2>/dev/null || flake8 app/ tests/ --max-line-length=120 2>/dev/null || echo "Install ruff: pip install ruff"
+
+dev:
+	cd backend && source venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload &
+	cd frontend && npm run dev
+
+deploy:
+	docker compose -f deploy/docker-compose.full.yml up -d --build
+
+deploy-down:
+	docker compose -f deploy/docker-compose.full.yml down
