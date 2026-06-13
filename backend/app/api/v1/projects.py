@@ -1,11 +1,16 @@
 from datetime import datetime, timezone
 from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import desc, asc
+
 from app.core.database import get_db
 from app.models.project import Project, STAGE_MAP
-from app.schemas.project import ProjectCreate, ProjectUpdate, ProjectStageUpdate, ProjectResponse, KanbanView
+from app.schemas.project import (
+    ProjectCreate, ProjectUpdate, ProjectStageUpdate,
+    ProjectResponse, KanbanView,
+)
 from app.schemas.response import APIResponse, PaginatedData
 
 router = APIRouter()
@@ -47,7 +52,9 @@ def list_projects(
 
 @router.get("/{project_id}", response_model=APIResponse[ProjectResponse])
 def get_project(project_id: int, db: Session = Depends(get_db)):
-    project = db.query(Project).filter(Project.id == project_id, Project.deleted_at.is_(None)).first()
+    project = db.query(Project).filter(
+        Project.id == project_id, Project.deleted_at.is_(None)
+    ).first()
     if not project:
         raise HTTPException(status_code=404, detail="项目不存在")
     return APIResponse.success(data=ProjectResponse.model_validate(project))
@@ -55,7 +62,9 @@ def get_project(project_id: int, db: Session = Depends(get_db)):
 
 @router.put("/{project_id}", response_model=APIResponse[ProjectResponse])
 def update_project(project_id: int, body: ProjectUpdate, db: Session = Depends(get_db)):
-    project = db.query(Project).filter(Project.id == project_id, Project.deleted_at.is_(None)).first()
+    project = db.query(Project).filter(
+        Project.id == project_id, Project.deleted_at.is_(None)
+    ).first()
     if not project:
         raise HTTPException(status_code=404, detail="项目不存在")
     for k, v in body.model_dump(exclude_unset=True).items():
@@ -68,11 +77,17 @@ def update_project(project_id: int, body: ProjectUpdate, db: Session = Depends(g
 
 @router.put("/{project_id}/stage", response_model=APIResponse[ProjectResponse])
 def update_project_stage(project_id: int, body: ProjectStageUpdate, db: Session = Depends(get_db)):
-    project = db.query(Project).filter(Project.id == project_id, Project.deleted_at.is_(None)).first()
+    project = db.query(Project).filter(
+        Project.id == project_id, Project.deleted_at.is_(None)
+    ).first()
     if not project:
         raise HTTPException(status_code=404, detail="项目不存在")
     if not project.can_transition_to(body.stage):
-        raise HTTPException(status_code=400, detail=f"不允许从阶段 {project.stage}({STAGE_MAP.get(project.stage)}) 转换到 {body.stage}({STAGE_MAP.get(body.stage)})")
+        raise HTTPException(
+            status_code=400,
+            detail=f"不允许从阶段 {project.stage}({STAGE_MAP.get(project.stage)}) "
+                   f"转换到 {body.stage}({STAGE_MAP.get(body.stage)})",
+        )
     project.stage = body.stage
     project.updated_at = datetime.now(timezone.utc)
     db.commit()
@@ -86,5 +101,8 @@ def kanban_board(db: Session = Depends(get_db)):
     stage_groups: dict[int, list[ProjectResponse]] = {s: [] for s in STAGE_MAP}
     for p in projects:
         stage_groups.setdefault(p.stage, []).append(ProjectResponse.model_validate(p))
-    result = [KanbanView(stage=s, stage_name=STAGE_MAP[s], count=len(items), items=items) for s, items in stage_groups.items()]
+    result = [
+        KanbanView(stage=s, stage_name=STAGE_MAP[s], count=len(items), items=items)
+        for s, items in stage_groups.items()
+    ]
     return APIResponse.success(data=result)
