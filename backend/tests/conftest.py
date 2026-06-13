@@ -9,6 +9,15 @@ from app.core.security import create_access_token
 from app.models.user import User
 
 
+@pytest.fixture(autouse=True)
+def _reset_rate_limiters():
+    """Reset shared rate limiters before each test to prevent cross-test interference."""
+    from app.core.rate_limit import login_limiter, brute_force
+    login_limiter._buckets.clear()
+    brute_force._failures.clear()
+    brute_force._locked_until.clear()
+
+
 TEST_DATABASE_URL = "sqlite:///:memory:"
 
 
@@ -35,9 +44,10 @@ def db(engine):
     connection.close()
 
 
-def _seed_user(db, user_id: int, username: str, role: str) -> User:
+def _seed_user(db, user_id: int, username: str, role: str, password: str = "test123") -> User:
     """Create a test user in the DB. Returns the User ORM object."""
-    u = User(id=user_id, username=username, password_hash="hashed", role=role, is_active=True)
+    from passlib.hash import bcrypt
+    u = User(id=user_id, username=username, password_hash=bcrypt.hash(password), role=role, is_active=True)
     db.add(u)
     db.commit()
     db.refresh(u)
