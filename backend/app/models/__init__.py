@@ -9,9 +9,11 @@ from app.models.ai_work_summary import AiWorkSummary
 from app.models.decision_chain import DecisionChain
 from app.models.acceptance import Acceptance
 from app.models.relationship import Relationship
+from app.models.dict_data import DictType, DictData
 
 __all__ = [
     "Bidding", "Project", "Organization", "User",
     "SysConfig", "CrmRelationship", "ActionItem", "AiWorkSummary",
     "DecisionChain", "Acceptance", "Relationship",
+    "DictType", "DictData",
 ]
