@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: aicrm-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Admin@90088*
+      POSTGRES_DB: ai_crm
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../database/schemas:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ai_crm"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: aicrm-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build: ../backend
+    container_name: aicrm-api
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:Admin@90088*@postgres:5432/ai_crm
+      REDIS_URL: redis://redis:6379/0
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    profiles:
+      - full
+
+volumes:
+  pgdata:
+  redis_data:
