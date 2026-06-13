@@ -34,9 +34,23 @@ html, body, #app {
   background: transparent;
 }
 
-// 响应式
+// 响应式适配
 @media (max-width: 1366px) {
-  .app-main {
-    padding: 12px !important;
-  }
+  .app-main { padding: 12px !important; }
+  .el-col[class*="span-"] { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+  .el-table { font-size: 13px; }
+  .el-descriptions { font-size: 12px; }
 }
+
+@media (max-width: 768px) {
+  .app-aside { width: 64px !important; .logo-text, .el-menu-item span { display: none !important; } }
+  .app-main { padding: 8px !important; }
+  .stat-card .stat-value { font-size: 22px !important; }
+  .pipeline { flex-wrap: wrap; gap: 10px; .stage-arrow { display: none; } }
+}
+
+// 表格横向滚动
+.el-table { overflow-x: auto; }
+
+// 骨架屏全局
+.skeleton-wrap { width: 100%; }
