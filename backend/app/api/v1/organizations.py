@@ -15,7 +15,7 @@ router = APIRouter()
 
 
 @router.post("/", response_model=APIResponse[OrganizationResponse])
-def create(body: OrganizationCreate, db: Session = Depends(get_db)):
+def create_org(body: OrganizationCreate, db: Session = Depends(get_db)):
     if body.parent_id is not None:
         parent = db.query(Organization).filter(
             Organization.id == body.parent_id, Organization.deleted_at.is_(None)
@@ -30,7 +30,7 @@ def create(body: OrganizationCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/tree", response_model=APIResponse[list[OrganizationTreeNode]])
-def tree(db: Session = Depends(get_db)):
+def get_tree(db: Session = Depends(get_db)):
     orgs = (
         db.query(Organization)
         .filter(Organization.deleted_at.is_(None))
@@ -55,7 +55,7 @@ def tree(db: Session = Depends(get_db)):
 
 
 @router.put("/{org_id}", response_model=APIResponse[OrganizationResponse])
-def update(org_id: int, body: OrganizationUpdate, db: Session = Depends(get_db)):
+def update_org(org_id: int, body: OrganizationUpdate, db: Session = Depends(get_db)):
     org = db.query(Organization).filter(
         Organization.id == org_id, Organization.deleted_at.is_(None)
     ).first()
@@ -78,7 +78,7 @@ def update(org_id: int, body: OrganizationUpdate, db: Session = Depends(get_db))
 
 
 @router.delete("/{org_id}", response_model=APIResponse[None])
-def delete(org_id: int, db: Session = Depends(get_db)):
+def delete_org(org_id: int, db: Session = Depends(get_db)):
     org = db.query(Organization).filter(
         Organization.id == org_id, Organization.deleted_at.is_(None)
     ).first()

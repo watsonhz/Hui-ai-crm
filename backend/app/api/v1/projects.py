@@ -17,7 +17,7 @@ router = APIRouter()
 
 
 @router.post("/", response_model=APIResponse[ProjectResponse])
-def create(body: ProjectCreate, db: Session = Depends(get_db)):
+def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
     project = Project(**body.model_dump())
     db.add(project)
     db.commit()
@@ -26,7 +26,7 @@ def create(body: ProjectCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=APIResponse[PaginatedData[ProjectResponse]])
-def list(
+def list_projects(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
     sort_order: str = Query(default="desc", pattern="^(asc|desc)$"),
@@ -51,7 +51,7 @@ def list(
 
 
 @router.get("/{project_id}", response_model=APIResponse[ProjectResponse])
-def get(project_id: int, db: Session = Depends(get_db)):
+def get_project(project_id: int, db: Session = Depends(get_db)):
     project = db.query(Project).filter(
         Project.id == project_id, Project.deleted_at.is_(None)
     ).first()
@@ -61,7 +61,7 @@ def get(project_id: int, db: Session = Depends(get_db)):
 
 
 @router.put("/{project_id}", response_model=APIResponse[ProjectResponse])
-def update(project_id: int, body: ProjectUpdate, db: Session = Depends(get_db)):
+def update_project(project_id: int, body: ProjectUpdate, db: Session = Depends(get_db)):
     project = db.query(Project).filter(
         Project.id == project_id, Project.deleted_at.is_(None)
     ).first()
@@ -95,7 +95,7 @@ def update_stage(project_id: int, body: ProjectStageUpdate, db: Session = Depend
 
 
 @router.get("/board/kanban", response_model=APIResponse[list[KanbanView]])
-def kanban(db: Session = Depends(get_db)):
+def kanban_board(db: Session = Depends(get_db)):
     projects = db.query(Project).filter(Project.deleted_at.is_(None)).all()
     stage_groups: dict[int, list[ProjectResponse]] = {s: [] for s in STAGE_MAP}
     for p in projects:

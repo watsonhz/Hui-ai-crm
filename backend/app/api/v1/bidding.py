@@ -14,7 +14,7 @@ router = APIRouter()
 
 
 @router.post("/", response_model=APIResponse[BiddingResponse])
-def create(body: BiddingCreate, db: Session = Depends(get_db)):
+def create_bidding(body: BiddingCreate, db: Session = Depends(get_db)):
     bidding = Bidding(**body.model_dump())
     db.add(bidding)
     db.commit()
@@ -23,7 +23,7 @@ def create(body: BiddingCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=APIResponse[PaginatedData[BiddingResponse]])
-def list(
+def list_biddings(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
     sort_order: str = Query(default="desc", pattern="^(asc|desc)$"),
@@ -48,7 +48,7 @@ def list(
 
 
 @router.get("/{bidding_id}", response_model=APIResponse[BiddingResponse])
-def get(bidding_id: int, db: Session = Depends(get_db)):
+def get_bidding(bidding_id: int, db: Session = Depends(get_db)):
     bidding = db.query(Bidding).filter(
         Bidding.id == bidding_id, Bidding.deleted_at.is_(None)
     ).first()
@@ -58,7 +58,7 @@ def get(bidding_id: int, db: Session = Depends(get_db)):
 
 
 @router.put("/{bidding_id}", response_model=APIResponse[BiddingResponse])
-def update(bidding_id: int, body: BiddingUpdate, db: Session = Depends(get_db)):
+def update_bidding(bidding_id: int, body: BiddingUpdate, db: Session = Depends(get_db)):
     bidding = db.query(Bidding).filter(
         Bidding.id == bidding_id, Bidding.deleted_at.is_(None)
     ).first()
@@ -80,7 +80,7 @@ def update(bidding_id: int, body: BiddingUpdate, db: Session = Depends(get_db)):
 
 
 @router.get("/calendar/upcoming", response_model=APIResponse[list[BiddingResponse]])
-def calendar(days: int = Query(default=30, ge=1, le=365), db: Session = Depends(get_db)):
+def calendar_upcoming(days: int = Query(default=30, ge=1, le=365), db: Session = Depends(get_db)):
     now = datetime.now(timezone.utc)
     limit = now + timedelta(days=days)
     items = (
