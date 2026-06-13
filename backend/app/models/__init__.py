@@ -1,6 +1,7 @@
 from app.models.bidding import Bidding
 from app.models.project import Project
 from app.models.organization import Organization
+from app.models.user import User
 from app.models.sys_config import SysConfig
 from app.models.crm_relationship import CrmRelationship
 from app.models.action_item import ActionItem
@@ -10,7 +11,7 @@ from app.models.acceptance import Acceptance
 from app.models.relationship import Relationship
 
 __all__ = [
-    "Bidding", "Project", "Organization",
+    "Bidding", "Project", "Organization", "User",
     "SysConfig", "CrmRelationship", "ActionItem", "AiWorkSummary",
     "DecisionChain", "Acceptance", "Relationship",
 ]
