@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import List, Optional
 from pydantic import BaseModel, Field
 
 class OrganizationCreate(BaseModel):
@@ -36,4 +36,4 @@ class OrganizationTreeNode(BaseModel):
     org_type: str
     parent_id: Optional[int] = None
     sort_order: int
-    children: list["OrganizationTreeNode"] = []
+    children: List["OrganizationTreeNode"] = []

@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -29,7 +30,7 @@ def create(body: OrganizationCreate, db: Session = Depends(get_db)):
     return APIResponse.success(data=OrganizationResponse.model_validate(org))
 
 
-@router.get("/tree", response_model=APIResponse[list[OrganizationTreeNode]])
+@router.get("/tree", response_model=APIResponse[List[OrganizationTreeNode]])
 def tree(db: Session = Depends(get_db)):
     orgs = (
         db.query(Organization)

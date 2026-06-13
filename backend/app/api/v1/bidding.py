@@ -1,5 +1,5 @@
 from datetime import datetime, timezone, timedelta
-from typing import Optional
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
@@ -79,7 +79,7 @@ def update(bidding_id: int, body: BiddingUpdate, db: Session = Depends(get_db)):
     return APIResponse.success(data=BiddingResponse.model_validate(bidding))
 
 
-@router.get("/calendar/upcoming", response_model=APIResponse[list[BiddingResponse]])
+@router.get("/calendar/upcoming", response_model=APIResponse[List[BiddingResponse]])
 def calendar(days: int = Query(default=30, ge=1, le=365), db: Session = Depends(get_db)):
     now = datetime.now(timezone.utc)
     limit = now + timedelta(days=days)

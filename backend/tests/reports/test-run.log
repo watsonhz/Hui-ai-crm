@@ -42,10 +42,3 @@ DEBUG    faker.factory:factory.py:106 Provider `faker.providers.sbn` does not fe
 DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.ssn`.
 DEBUG    faker.factory:factory.py:95 Provider `faker.providers.ssn` has been localized to `en_US`.
 DEBUG    faker.factory:factory.py:106 Provider `faker.providers.user_agent` does not feature localization. Specified locale `en_US` is not utilized for this provider.
-DEBUG    asyncio:proactor_events.py:623 Using proactor: IocpProactor
-DEBUG    asyncio:proactor_events.py:623 Using proactor: IocpProactor
-DEBUG    asyncio:proactor_events.py:623 Using proactor: IocpProactor
-DEBUG    asyncio:proactor_events.py:623 Using proactor: IocpProactor
-DEBUG    asyncio:proactor_events.py:623 Using proactor: IocpProactor
-DEBUG    asyncio:proactor_events.py:623 Using proactor: IocpProactor
-DEBUG    asyncio:proactor_events.py:623 Using proactor: IocpProactor

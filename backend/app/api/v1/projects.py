@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from typing import Optional
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
@@ -94,7 +94,7 @@ def update_stage(project_id: int, body: ProjectStageUpdate, db: Session = Depend
     return APIResponse.success(data=ProjectResponse.model_validate(project))
 
 
-@router.get("/board/kanban", response_model=APIResponse[list[KanbanView]])
+@router.get("/board/kanban", response_model=APIResponse[List[KanbanView]])
 def kanban(db: Session = Depends(get_db)):
     projects = db.query(Project).filter(Project.deleted_at.is_(None)).all()
     stage_groups: dict[int, list[ProjectResponse]] = {s: [] for s in STAGE_MAP}

@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from typing import Optional
+from typing import List, Optional
 from pydantic import BaseModel, Field
 
 class ProjectCreate(BaseModel):
@@ -52,4 +52,4 @@ class KanbanView(BaseModel):
     stage: int
     stage_name: str
     count: int
-    items: list[ProjectResponse]
+    items: List[ProjectResponse]

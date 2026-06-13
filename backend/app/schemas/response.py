@@ -1,4 +1,4 @@
-from typing import TypeVar, Generic, Optional
+from typing import TypeVar, Generic, Optional, List
 from pydantic import BaseModel
 
 T = TypeVar("T")
@@ -19,7 +19,7 @@ class APIResponse(BaseModel, Generic[T]):
 
 
 class PaginatedData(BaseModel, Generic[T]):
-    items: list[T]
+    items: List[T]
     total: int
     page: int
     page_size: int

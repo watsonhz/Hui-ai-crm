@@ -50,15 +50,15 @@ class TestFrameworkHealth:
     def test_pytest_plugins_available(self):
         """验证关键 pytest 插件可用。"""
         plugins = [
-            "pytest_asyncio",
-            "pytest_cov",
-            "pytest_xdist",
-            "pytest_timeout",
+            ("pytest_asyncio", "pytest_asyncio"),
+            ("pytest_cov", "pytest_cov"),
+            ("xdist", "pytest-xdist"),
+            ("pytest_timeout", "pytest_timeout"),
         ]
         missing = []
-        for plugin in plugins:
+        for import_name, display_name in plugins:
             try:
-                __import__(plugin)
+                __import__(import_name)
             except ImportError:
-                missing.append(plugin)
+                missing.append(display_name)
         assert not missing, f"缺失 pytest 插件: {missing}"

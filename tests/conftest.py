@@ -8,6 +8,12 @@ Pytest 全局配置和共享 fixtures。
 - 标准测试数据工厂
 """
 
+import sys
+from pathlib import Path
+
+# 确保 backend/ 在 Python 路径中，让 `from app.xxx import ...` 能正常解析
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend"))
+
 import pytest
 from httpx import ASGITransport, AsyncClient
 
