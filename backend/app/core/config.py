@@ -15,8 +15,8 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # Database
-    DATABASE_URL: str = "mysql+pymysql://crm_user:crm_pass@localhost:3306/ai_crm"
+    # Database (default: SQLite for dev; override DATABASE_URL for MySQL/PostgreSQL)
+    DATABASE_URL: str = "sqlite:///./ai_crm.db"
 
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"

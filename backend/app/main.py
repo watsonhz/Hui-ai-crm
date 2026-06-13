@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api import bidding, customers, organizations, projects
 from app.core.config import settings
 
 app = FastAPI(
@@ -20,6 +21,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ── 路由注册 ──
+app.include_router(customers.router, prefix="/api/v1")
+app.include_router(bidding.router)
+app.include_router(projects.router)
+app.include_router(organizations.router)
 
 
 @app.get("/api/v1/health")

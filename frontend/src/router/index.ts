@@ -1,9 +1,16 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { setupAuthGuard } from './authGuard'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/dashboard',
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/LoginPage.vue'),
+    meta: { title: '登录', hidden: true },
   },
   {
     path: '/dashboard',
@@ -89,5 +96,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+setupAuthGuard(router)
 
 export default router
