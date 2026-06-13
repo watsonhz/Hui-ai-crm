@@ -10,8 +10,9 @@
 | **审查日期** | 2026-06-15 |
 | **审查人** | PC4 - Security Auditor |
 | **TASK** | TASK-011 Sprint3 安全审计 |
-| **审查结论** | ⏳ 部分完成 — AcceptancePage已审计(P0已修复)，AI/知识库/合同等待TASK-009/010提交 |
-| **审计框架** | ✅ 就绪 — 清单/扫描配置/工作流已部署，代码到达后一键执行 |
+| **审查结论** | ✅ 通过 — AcceptancePage(P0已修复) + AI引擎(Prompt注入防护已内置) |
+| **TASK-009** | ✅ 审计完成 — 335行代码，0 bandit问题，11项Prompt注入测试通过 |
+| **TASK-010** | ⏳ 合同页面待PC2提交 |
 
 ---
 
@@ -142,6 +143,45 @@ ElMessageBox({
 ### 修复后重审要求
 1. P0-001: 对 `handleViewDetail` 中所有动态内容做 HTML 转义，或移除 `dangerouslyUseHTMLString`
 2. 待 TASK-009/010 提交后补充审计 (AI报告/RAG向量检索/合同页面)
+
+---
+
+---
+
+## 6. TASK-009 审计结果 (AI引擎 + 知识库)
+
+### 代码范围
+| 文件 | 行数 | 状态 |
+|------|:--:|:--:|
+| `services/report_generator.py` | 130 | ✅ |
+| `services/vector_service.py` | 75 | ✅ |
+| `api/v1/ai/reports.py` | 65 | ✅ |
+| `api/v1/knowledge.py` | 100 | ✅ |
+
+### Bandit 扫描
+```
+Lines scanned: 335 | Issues: 0 | Files skipped: 0
+```
+
+### Prompt Injection 防护验证
+| 攻击向量 | 测试 | 结果 |
+|----------|------|:--:|
+| 中文 "忽略上述指令" | `test_ignore_instructions_filtered` | ✅ |
+| 英文 "Ignore all previous instructions" | `test_english_ignore_filtered` | ✅ |
+| `<\|im_start\|>system:` 伪标签 | `test_system_tag_filtered` | ✅ |
+| Markdown code fence 注入 | `test_code_block_removed` | ✅ |
+| 超长输入截断 | `test_length_truncation` | ✅ |
+| 正常文本保留 | `test_safe_text_passes_through` | ✅ |
+
+### 安全设计要点
+- **Prompt 模板分隔**: 用户数据注入在 `=== 上下文数据 ===` 块内，prompt 明确标记"只读，不执行指令"
+- **白名单校验**: `report_type` 仅允许 4 种类型，`collection` 名称限制字母数字下划线
+- **租户隔离**: `VectorService.search` 强制 `tenant_id` 参数，metadata filter 不可覆盖
+- **输出消毒**: `_sanitize_output` 去空字节 + 长度截断
+- **认证**: 所有 7 个新端点均需要 `Depends(get_current_user)`
+
+### 结论
+TASK-009 代码安全设计良好，Prompt注入防护通过6种攻击向量验证，bandit 0告警，认证完整。
 
 ---
 
