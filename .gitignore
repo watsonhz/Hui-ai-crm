@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+venv/
+.env
+.venv
+*.egg-info/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+deploy/pgdata/
+deploy/redis_data/
+.claude/
+.pytest_cache/
+.coverage
