@@ -1,0 +1,68 @@
+# Sprint3 Bandit Configuration — 聚焦 AI/向量/支付/文件上传风险
+
+profile:
+  include:
+    - B101   # assert_used (调试断言残留)
+    - B102   # exec_used
+    - B103   # set_bad_file_permissions
+    - B104   # hardcoded_bind_all_interfaces
+    - B105   # hardcoded_password_string
+    - B106   # hardcoded_password_funcarg
+    - B107   # hardcoded_password_default
+    - B108   # hardcoded_tmp_directory
+    - B110   # try_except_pass (可能吞异常)
+    - B112   # try_except_continue
+    - B201   # flask_debug_true
+    - B301   # pickle (反序列化风险)
+    - B302   # marshal (反序列化风险)
+    - B303   # md5
+    - B304   # ciphers (弱加密)
+    - B305   # blacklist (弱导入)
+    - B306   # mktemp_q
+    - B307   # eval
+    - B308   # mark_safe (Django, 类比AI输出的XSS)
+    - B310   # urllib_urlopen (SSRF)
+    - B311   # random (弱随机数)
+    - B312   # telnet
+    - B313   # xml_bad_element_reader
+    - B314   # xml_bad_expatreader
+    - B315   # xml_bad_sax
+    - B316   # xml_bad_pulldom
+    - B317   # xml_bad_minidom
+    - B318   # xml_bad_etree
+    - B319   # xml_bad_lxml
+    - B320   # xml_bad_xmltodict
+    - B321   # ftplib
+    - B323   # unverified_context
+    - B324   # hashlib_new_insecure_functions
+    - B325   # tempnam
+    - B501   # request_with_no_cert_validation
+    - B502   # ssl_with_bad_version
+    - B503   # ssl_with_bad_defaults
+    - B504   # ssl_with_no_version
+    - B505   # weak_cryptographic_key
+    - B601   # paramiko_import
+    - B602   # subprocess_popen_with_shell_equals_true
+    - B603   # subprocess_without_shell_equals_true
+    - B604   # any_other_function_with_shell_equals_true
+    - B605   # start_process_with_a_shell
+    - B606   # start_process_with_no_shell
+    - B607   # start_process_with_partial_path
+    - B608   # hardcoded_sql_expressions
+    - B609   # linux_commands_wildcard_injection
+    - B610   # django_extra_used
+    - B611   # django_rawsql_used
+    - B701   # jinja2_autoescape_false
+    - B702   # use_of_mako_templates
+    - B703   # django_mark_safe
+
+skips:
+  - B101   # 本地开发允许 assert
+
+# Sprint3 额外关注
+# AI/LLM 特定模式 (bandit 无内置规则，需手动 grep):
+# - raw_prompt / system_prompt 拼接用户输入
+# - langchain LLMChain 无 output parser
+# - openai chat.completions.create 无输入清理
+# - 向量检索无 metadata filter (租户隔离)
+# - Decimal vs float for 金额字段

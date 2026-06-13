@@ -42,10 +42,22 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '关系维护', icon: 'Connection' },
   },
   {
+    path: '/contracts',
+    name: 'Contracts',
+    component: () => import('@/views/contracts/ContractPage.vue'),
+    meta: { title: '合同管理', icon: 'Tickets' },
+  },
+  {
     path: '/acceptance',
     name: 'Acceptance',
     component: () => import('@/views/acceptance/AcceptancePage.vue'),
     meta: { title: '验收管理', icon: 'Checked' },
+  },
+  {
+    path: '/ltc',
+    name: 'LTC',
+    component: () => import('@/views/ltc/LtcPage.vue'),
+    meta: { title: 'LTC全链路', icon: 'TrendCharts' },
   },
   {
     path: '/ai-reports',
