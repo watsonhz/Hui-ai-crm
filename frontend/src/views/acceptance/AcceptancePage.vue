@@ -392,14 +392,18 @@ function handleResubmit(row: AcceptanceItem) {
     })
 }
 
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
 function handleViewDetail(row: AcceptanceItem) {
   ElMessageBox.alert(
     `<div>
-      <p><strong>项目名称：</strong>${row.projectName}</p>
-      <p><strong>客户：</strong>${row.customer}</p>
-      <p><strong>验收日期：</strong>${row.acceptanceDate}</p>
-      <p><strong>通过日期：</strong>${row.passedDate}</p>
-      <p><strong>验收标准：</strong>${row.criteria.join('、')}</p>
+      <p><strong>项目名称：</strong>${escapeHtml(row.projectName)}</p>
+      <p><strong>客户：</strong>${escapeHtml(row.customer)}</p>
+      <p><strong>验收日期：</strong>${escapeHtml(row.acceptanceDate)}</p>
+      <p><strong>通过日期：</strong>${escapeHtml(row.passedDate || '')}</p>
+      <p><strong>验收标准：</strong>${escapeHtml(row.criteria.join('、'))}</p>
     </div>`,
     '验收详情',
     {
@@ -431,12 +435,12 @@ function handleViewDetail(row: AcceptanceItem) {
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 
-    ::v-deep(.el-tabs__header) {
+    :deep(.el-tabs__header) {
       background: #fafafa;
       margin-bottom: 0;
     }
 
-    ::v-deep(.el-tabs__content) {
+    :deep(.el-tabs__content) {
       padding: 16px;
     }
   }

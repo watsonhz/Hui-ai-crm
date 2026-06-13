@@ -8,7 +8,7 @@ ORG_TYPES = {"company", "dept", "team"}
 
 class Organization(Base):
     __tablename__ = "organizations"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(200), nullable=False)
     parent_id = Column(BigInteger, ForeignKey("organizations.id"))
     org_type = Column(String(20), nullable=False, default="dept")

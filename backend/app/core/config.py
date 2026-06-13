@@ -1,22 +1,56 @@
-import os
+"""Application configuration via Pydantic Settings.
+
+Reads from .env file automatically. Override with environment variables.
+"""
+
 import secrets
-from urllib.parse import quote_plus
+from typing import List
 
-# 安全密钥
-SECRET_KEY = os.environ.get("SECRET_KEY") or secrets.token_urlsafe(64)
-ALGORITHM = os.environ.get("ALGORITHM", "HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", "480"))
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# 数据库连接 — 优先用 DATABASE_URL，否则从独立变量拼接 (自动对 user/password 做 URL 编码)
-def _build_database_url() -> str:
-    url = os.environ.get("DATABASE_URL")
-    if url:
-        return url
-    host = os.environ.get("DB_HOST", "localhost")
-    port = os.environ.get("DB_PORT", "5432")
-    user = os.environ.get("DB_USER", "postgres")
-    password = os.environ.get("DB_PASS", "Admin@90088*")
-    db = os.environ.get("DB_NAME", "ai_crm")
-    return f"postgresql+psycopg2://{quote_plus(user)}:{quote_plus(password)}@{host}:{port}/{db}"
 
-DATABASE_URL = _build_database_url()
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
+    # Database
+    DATABASE_URL: str = ""  # 强制从环境变量读取，无默认值即启动报错
+
+    # Database pool
+    DB_POOL_SIZE: int = 10
+    DB_MAX_OVERFLOW: int = 20
+
+    # Redis
+    REDIS_URL: str = "redis://localhost:6379/0"
+
+    # CORS
+    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://192.168.0.169:3000", "http://192.168.0.168:3000"]
+
+    # JWT
+    SECRET_KEY: str = ""  # 强制从环境变量读取
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRE_HOURS: int = 8
+
+    # App
+    APP_ENV: str = "development"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # 开发环境自动生成 SECRET_KEY
+        if not self.SECRET_KEY:
+            if self.APP_ENV == "development":
+                self.SECRET_KEY = secrets.token_urlsafe(64)
+            else:
+                raise ValueError("生产环境必须设置 SECRET_KEY 环境变量")
+        # 开发环境 DATABASE_URL 允许为空（使用 SQLite 内存库）
+        if not self.DATABASE_URL:
+            if self.APP_ENV == "development":
+                self.DATABASE_URL = "sqlite:///./dev.db"
+            else:
+                raise ValueError("生产环境必须设置 DATABASE_URL 环境变量")
+
+
+settings = Settings()
