@@ -257,7 +257,7 @@ def signal_s7_keyperson_silence(db: Session, contacts: list[dict]) -> SignalResu
                 advice=L2_TEMPLATES["S7"],
                 action=L3_TEMPLATES["S7"],
             )
-    return SignalResult("S7", False).to_dict()
+    return SignalResult("S7", False)
 
 
 def signal_s8_support_mismatch(project_stage: int, support_level: int, expected_support: dict) -> SignalResult:

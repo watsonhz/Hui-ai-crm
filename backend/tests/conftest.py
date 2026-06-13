@@ -2,6 +2,7 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.core.database import Base
+import app.models  # noqa: F401  ensure all tables registered
 
 TEST_DATABASE_URL = "postgresql+psycopg2://postgres:Admin%4090088%2A@localhost:5432/ai_crm_test"
 

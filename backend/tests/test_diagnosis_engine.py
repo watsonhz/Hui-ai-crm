@@ -54,10 +54,13 @@ class TestSignalS4:
         assert result.triggered is False
 
     def test_has_overdue(self, db):
-        db.add(ActionItem(title="逾期P0", priority=0, is_done=False,
-                          due_date=datetime.now(timezone.utc) - timedelta(days=5), project_id=1))
+        db.add(Project(id=10, name="S4测试项目"))
+        db.flush()
+        for i in range(2):
+            db.add(ActionItem(title=f"逾期P0-{i}", priority=0, is_done=False,
+                              due_date=datetime.now(timezone.utc) - timedelta(days=5), project_id=10))
         db.commit()
-        result = signal_s4_p0_overdue(db, 1)
+        result = signal_s4_p0_overdue(db, 10)
         assert result.triggered is True
 
 
@@ -85,8 +88,8 @@ class TestSignalS6:
 
 
 class TestSignalS7:
-    def test_no_contacts(self):
-        r = signal_s7_keyperson_silence(None, [])
+    def test_no_contacts(self, db):
+        r = signal_s7_keyperson_silence(db, [])
         assert r.triggered is False
 
 
