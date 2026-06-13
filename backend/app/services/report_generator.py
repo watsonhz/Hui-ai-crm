@@ -8,7 +8,7 @@ from app.models.crm_relationship import CrmRelationship
 from app.models.action_item import ActionItem
 from app.models.project import Project
 
-PROMPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "docs", "prompts")
+PROMPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "docs", "prompts")
 
 def _load_prompt(name: str) -> str:
     path = os.path.join(PROMPTS_DIR, name)

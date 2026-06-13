@@ -1,6 +1,9 @@
+import pytest
 from datetime import datetime, timezone, timedelta
 from app.models.crm_relationship import CrmRelationship
 from app.models.action_item import ActionItem
+from app.models.organization import Organization
+from app.models.project import Project
 from app.services.diagnosis_engine import (
     signal_s1_visit_overdue, signal_s2_stage_stall, signal_s3_visit_gap_increase,
     signal_s4_p0_overdue, signal_s5_warmth_drop, signal_s6_decision_gap,
@@ -8,6 +11,17 @@ from app.services.diagnosis_engine import (
     signal_s11_acceptance_overdue, signal_s12_payment_delay,
     run_full_diagnosis, SignalResult,
 )
+
+
+@pytest.fixture(autouse=True)
+def _setup(db):
+    org = db.query(Organization).filter(Organization.id == 1).first()
+    if not org:
+        db.add(Organization(id=1, name="测试客户", org_type="company"))
+    proj = db.query(Project).filter(Project.id == 1).first()
+    if not proj:
+        db.add(Project(id=1, name="测试项目", stage=1))
+    db.commit()
 
 
 class TestSignalS1:
@@ -49,60 +63,60 @@ class TestSignalS4:
 
 class TestSignalS5:
     def test_no_contacts(self):
-        result = signal_s5_warmth_drop(None, [])
-        assert result.triggered is False
+        r = signal_s5_warmth_drop(None, [])
+        assert r.triggered is False
 
     def test_warmth_drop_detected(self):
         contacts = [{"name": "张总", "weight": 6, "consecutive_cool": 3}]
-        result = signal_s5_warmth_drop(None, contacts)
-        assert result.triggered is True
-        assert result.severity >= 1
+        r = signal_s5_warmth_drop(None, contacts)
+        assert r.triggered is True
+        assert r.severity >= 1
 
 
 class TestSignalS6:
     def test_gap_detected(self):
-        result = signal_s6_decision_gap(1, ["销售"], {"1": ["技术", "财务", "高管"]})
-        assert result.triggered is True
-        assert "技术" in result.diagnosis
+        r = signal_s6_decision_gap(1, ["销售"], {"1": ["技术", "财务", "高管"]})
+        assert r.triggered is True
+        assert "技术" in r.diagnosis
 
     def test_no_gap(self):
-        result = signal_s6_decision_gap(1, ["技术", "财务", "高管"], {"1": ["技术", "财务", "高管"]})
-        assert result.triggered is False
+        r = signal_s6_decision_gap(1, ["技术", "财务", "高管"], {"1": ["技术", "财务", "高管"]})
+        assert r.triggered is False
 
 
 class TestSignalS7:
     def test_no_contacts(self):
-        result = signal_s7_keyperson_silence(None, [])
-        assert result.triggered is False
+        r = signal_s7_keyperson_silence(None, [])
+        assert r.triggered is False
 
 
 class TestSignalS9:
     def test_insufficient_visits(self, db):
-        result = signal_s9_low_outcome(db, 99999)
-        assert result.triggered is False
+        r = signal_s9_low_outcome(db, 99999)
+        assert r.triggered is False
 
 
 class TestSignalS10:
     def test_no_competitor(self):
-        result = signal_s10_competitor([])
-        assert result.triggered is False
+        r = signal_s10_competitor([])
+        assert r.triggered is False
 
     def test_competitor_detected(self):
-        result = signal_s10_competitor([{"type": "价格战", "detail": "竞品降价20%"}])
-        assert result.triggered is True
-        assert result.severity == 2
+        r = signal_s10_competitor([{"type": "价格战", "detail": "竞品降价20%"}])
+        assert r.triggered is True
+        assert r.severity == 2
 
 
 class TestSignalS11:
     def test_no_project(self, db):
-        result = signal_s11_acceptance_overdue(db, 99999)
-        assert result.triggered is False
+        r = signal_s11_acceptance_overdue(db, 99999)
+        assert r.triggered is False
 
 
 class TestSignalS12:
     def test_no_project(self, db):
-        result = signal_s12_payment_delay(db, 99999)
-        assert result.triggered is False
+        r = signal_s12_payment_delay(db, 99999)
+        assert r.triggered is False
 
 
 class TestSignalResult:
