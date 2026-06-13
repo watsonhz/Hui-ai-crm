@@ -6,6 +6,7 @@ node_modules/
 *.jar
 .env
 .env.local
+.env.mock
 *.log
 .DS_Store
 .vscode/
