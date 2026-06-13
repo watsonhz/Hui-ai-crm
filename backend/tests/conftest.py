@@ -5,15 +5,19 @@ from sqlalchemy.orm import sessionmaker
 from app.core.database import Base
 import app.models  # noqa: F401  ensure all tables registered
 
-# 测试环境强制固定 SECRET_KEY
+# 测试环境配置
 os.environ.setdefault("SECRET_KEY", "test-secret-key-for-ci")
-
-TEST_DATABASE_URL = "postgresql+psycopg2://postgres:Admin%4090088%2A@localhost:5432/ai_crm_test"
+os.environ.setdefault("DB_HOST", "localhost")
+os.environ.setdefault("DB_PORT", "5432")
+os.environ.setdefault("DB_USER", "postgres")
+os.environ.setdefault("DB_PASS", "Admin@90088*")
+os.environ.setdefault("DB_NAME", "ai_crm_test")
 
 
 @pytest.fixture(scope="session")
 def engine():
-    eng = create_engine(TEST_DATABASE_URL)
+    from app.core.config import DATABASE_URL
+    eng = create_engine(DATABASE_URL)
     Base.metadata.create_all(bind=eng)
     yield eng
     Base.metadata.drop_all(bind=eng)

@@ -33,10 +33,15 @@ services:
       dockerfile: backend/Dockerfile
     container_name: aicrm-api
     environment:
-      DATABASE_URL: postgresql+psycopg2://postgres:Admin%4090088%2A@postgres:5432/ai_crm
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: Admin@90088*
+      DB_NAME: ai_crm
       REDIS_URL: redis://redis:6379/0
       SECRET_KEY: ${SECRET_KEY:-}
       DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
       DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
     ports:
       - "8000:8000"
