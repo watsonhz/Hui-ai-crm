@@ -5,6 +5,7 @@ import {
   DashboardOutlined, TeamOutlined, ProjectOutlined, FileSearchOutlined,
   LogoutOutlined, UserOutlined, MenuFoldOutlined, MenuUnfoldOutlined,
   ApartmentOutlined, BookOutlined, SettingOutlined,
+  FundOutlined, PhoneOutlined, CheckSquareOutlined,
 } from '@ant-design/icons';
 import { useAuthStore } from '../stores/authStore';
 
@@ -22,6 +23,9 @@ export default function MainLayout() {
     { key: '/customers', icon: <TeamOutlined />, label: '客户管理' },
     { key: '/projects', icon: <ProjectOutlined />, label: '项目管理' },
     { key: '/bidding', icon: <FileSearchOutlined />, label: '招投标管理' },
+    { key: '/opportunities', icon: <FundOutlined />, label: '商机看板' },
+    { key: '/activities', icon: <PhoneOutlined />, label: '跟进记录' },
+    { key: '/todos', icon: <CheckSquareOutlined />, label: '我的待办' },
     { key: '/organizations', icon: <ApartmentOutlined />, label: '组织架构' },
     { key: '/knowledge', icon: <BookOutlined />, label: '知识库' },
     { key: '/system', icon: <SettingOutlined />, label: '系统管理' },

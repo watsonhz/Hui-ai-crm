@@ -9,6 +9,9 @@ import BiddingList from '../pages/bidding';
 import OrgTreePage from '../pages/organizations';
 import KnowledgePage from '../pages/knowledge';
 import SystemPage from '../pages/system';
+import OpportunityKanban from '../pages/opportunities';
+import ActivityList from '../pages/activities';
+import TodoPage from '../pages/todos';
 
 const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
@@ -23,6 +26,9 @@ const router = createBrowserRouter([
           { path: '/customers', element: <CustomerList /> },
           { path: '/projects', element: <ProjectKanban /> },
           { path: '/bidding', element: <BiddingList /> },
+          { path: '/opportunities', element: <OpportunityKanban /> },
+          { path: '/activities', element: <ActivityList /> },
+          { path: '/todos', element: <TodoPage /> },
           { path: '/organizations', element: <OrgTreePage /> },
           { path: '/knowledge', element: <KnowledgePage /> },
           { path: '/system', element: <SystemPage /> },
