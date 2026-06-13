@@ -4,6 +4,7 @@ import { Layout, Menu, Button, theme, Dropdown } from 'antd';
 import {
   DashboardOutlined, TeamOutlined, ProjectOutlined, FileSearchOutlined,
   LogoutOutlined, UserOutlined, MenuFoldOutlined, MenuUnfoldOutlined,
+  ApartmentOutlined, BookOutlined, SettingOutlined,
 } from '@ant-design/icons';
 import { useAuthStore } from '../stores/authStore';
 
@@ -21,6 +22,9 @@ export default function MainLayout() {
     { key: '/customers', icon: <TeamOutlined />, label: '客户管理' },
     { key: '/projects', icon: <ProjectOutlined />, label: '项目管理' },
     { key: '/bidding', icon: <FileSearchOutlined />, label: '招投标管理' },
+    { key: '/organizations', icon: <ApartmentOutlined />, label: '组织架构' },
+    { key: '/knowledge', icon: <BookOutlined />, label: '知识库' },
+    { key: '/system', icon: <SettingOutlined />, label: '系统管理' },
   ];
 
   return (
