@@ -5,9 +5,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.core.database import init_db
+from app.core.logging_config import setup_logging
 from app.core.exceptions import validation_exception_handler, http_exception_handler, global_exception_handler
 from app.middleware.request_id import RequestIDMiddleware
+from app.middleware.logging import AccessLogMiddleware
 from app.api.v1 import router as v1_router
+
+setup_logging()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -24,6 +28,7 @@ app = FastAPI(
 )
 
 app.add_middleware(RequestIDMiddleware)
+app.add_middleware(AccessLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=os.environ.get("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173,http://192.168.0.169:3000,http://192.168.0.168:3000").split(","),
