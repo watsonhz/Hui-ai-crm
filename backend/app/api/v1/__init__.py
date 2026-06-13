@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from app.api.v1 import (
     bidding, projects, organizations, ai_diagnosis, decision_chain,
-    acceptance, relationships, auth, system, ai_service, knowledge,
+    acceptance, relationships, auth, system, ai_service, knowledge, dashboard,
 )
 
 router = APIRouter()
@@ -16,3 +16,4 @@ router.include_router(relationships.router, prefix="/relationships", tags=["关�
 router.include_router(auth.router, prefix="/auth", tags=["认证授权"])
 router.include_router(system.router, prefix="/system", tags=["系统管理"])
 router.include_router(knowledge.router, prefix="/knowledge", tags=["RAG知识库"])
+router.include_router(dashboard.router, prefix="/dashboard", tags=["数据看板"])
