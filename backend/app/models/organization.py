@@ -5,6 +5,7 @@ from app.core.database import Base
 
 ORG_TYPES = {"company", "dept", "team"}
 
+
 class Organization(Base):
     __tablename__ = "organizations"
     id = Column(BigInteger, primary_key=True, autoincrement=True)
@@ -18,6 +19,7 @@ class Organization(Base):
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     deleted_at = Column(DateTime(timezone=True))
     parent = relationship("Organization", remote_side="Organization.id", backref="children")
+
     @validates("org_type")
     def validate_org_type(self, key, value):
         if value not in ORG_TYPES:
