@@ -1,0 +1,27 @@
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+
+const TOKEN_KEY = 'crm_token'
+const USER_KEY = 'crm_user'
+
+export const useAuthStore = defineStore('auth', () => {
+  const token = ref<string | null>(localStorage.getItem(TOKEN_KEY))
+  const user = ref<any>(JSON.parse(localStorage.getItem(USER_KEY) || 'null'))
+  const isLoggedIn = computed(() => !!token.value)
+
+  function setAuth(t: string, u: any) {
+    token.value = t
+    user.value = u
+    localStorage.setItem(TOKEN_KEY, t)
+    localStorage.setItem(USER_KEY, JSON.stringify(u))
+  }
+
+  function logout() {
+    token.value = null
+    user.value = null
+    localStorage.removeItem(TOKEN_KEY)
+    localStorage.removeItem(USER_KEY)
+  }
+
+  return { token, user, isLoggedIn, setAuth, logout }
+})

@@ -4,7 +4,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import type { UploadFile, FormInstance, FormRules } from 'element-plus'
 
 // ---- 标签页 ----
-type SettingsTab = 'profile' | 'team' | 'notification' | 'system'
+type SettingsTab = 'profile' | 'team' | 'notification' | 'system' | 'users' | 'roles' | 'audit'
 const activeTab = ref<SettingsTab>('profile')
 
 // ==================== 个人信息 ====================
@@ -204,6 +204,59 @@ function handleResetSystem(formEl: FormInstance | undefined) {
     ElMessage.success('已恢复默认配置')
   }).catch(() => {})
 }
+
+// ==================== 用户管理 ====================
+interface User { id: number; name: string; email: string; role: string; department: string; status: string; lastLogin: string }
+const userList = ref<User[]>([
+  { id: 1, name: '管理员', email: 'admin@aicrm.com', role: 'admin', department: '管理部', status: 'active', lastLogin: '2026-06-13 20:30' },
+  { id: 2, name: '李经理', email: 'lijingli@aicrm.com', role: 'manager', department: '销售一部', status: 'active', lastLogin: '2026-06-13 18:15' },
+  { id: 3, name: '王工', email: 'wanggong@aicrm.com', role: 'member', department: '技术部', status: 'active', lastLogin: '2026-06-13 16:45' },
+  { id: 4, name: '张销售', email: 'zhangxs@aicrm.com', role: 'member', department: '销售二部', status: 'inactive', lastLogin: '2026-05-20 09:00' },
+])
+const userDialogVisible = ref(false)
+const editingUser = ref<User | null>(null)
+const userForm = reactive({ name: '', email: '', role: 'member', department: '', status: 'active' })
+
+function openUserDialog(u?: User) {
+  editingUser.value = u || null
+  Object.assign(userForm, u || { name: '', email: '', role: 'member', department: '', status: 'active' })
+  userDialogVisible.value = true
+}
+function saveUser() {
+  if (editingUser.value) {
+    Object.assign(editingUser.value, userForm)
+    ElMessage.success('用户已更新')
+  } else {
+    userList.value.push({ id: Date.now(), ...userForm, lastLogin: '-' })
+    ElMessage.success('用户已创建')
+  }
+  userDialogVisible.value = false
+}
+
+// ==================== 角色权限矩阵 ====================
+interface Permission { module: string; admin: boolean; manager: boolean; member: boolean }
+const permissions = ref<Permission[]>([
+  { module: '客户管理', admin: true, manager: true, member: true },
+  { module: '招投标管理', admin: true, manager: true, member: false },
+  { module: '项目管理', admin: true, manager: true, member: false },
+  { module: '合同管理', admin: true, manager: true, member: false },
+  { module: '关系维护', admin: true, manager: true, member: true },
+  { module: '验收管理', admin: true, manager: false, member: false },
+  { module: '系统设置', admin: true, manager: false, member: false },
+  { module: 'AI 报告导出', admin: true, manager: true, member: false },
+])
+
+// ==================== 操作日志 ====================
+interface AuditLog { id: number; user: string; action: string; target: string; time: string; ip: string }
+const auditLogs = ref<AuditLog[]>([
+  { id: 1, user: '管理员', action: '登录系统', target: '-', time: '2026-06-13 20:30', ip: '192.168.0.169' },
+  { id: 2, user: '李经理', action: '创建客户', target: '中科曙光', time: '2026-06-13 18:20', ip: '192.168.0.169' },
+  { id: 3, user: '王工', action: '更新项目阶段', target: 'IT运维平台→商务谈判', time: '2026-06-13 17:00', ip: '192.168.0.170' },
+  { id: 4, user: '管理员', action: '导出报表', target: '6月销售月报', time: '2026-06-13 15:30', ip: '192.168.0.169' },
+  { id: 5, user: '张销售', action: '添加拜访记录', target: '浙江大数据局', time: '2026-06-13 14:10', ip: '192.168.0.171' },
+  { id: 6, user: '李经理', action: '更新投标状态', target: '智慧园区→投标中', time: '2026-06-13 11:45', ip: '192.168.0.169' },
+  { id: 7, user: '系统', action: '自动备份', target: '数据库全量备份', time: '2026-06-13 03:00', ip: '127.0.0.1' },
+])
 </script>
 
 <template>
@@ -537,6 +590,77 @@ function handleResetSystem(formEl: FormInstance | undefined) {
             <el-button @click="handleResetSystem(systemFormRef)">恢复默认</el-button>
             <el-button type="primary" @click="handleSaveSystem(systemFormRef)">保存配置</el-button>
           </div>
+        </el-card>
+      </el-tab-pane>
+
+      <!-- ============ 用户管理 ============ -->
+      <el-tab-pane label="用户管理" name="users">
+        <el-card shadow="hover">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <span>共 {{ userList.length }} 个用户</span>
+            <el-button type="primary" size="small" @click="openUserDialog()">+ 新增用户</el-button>
+          </div>
+          <el-table :data="userList" stripe>
+            <el-table-column prop="name" label="姓名" width="100" />
+            <el-table-column prop="email" label="邮箱" min-width="200" />
+            <el-table-column prop="role" label="角色" width="100">
+              <template #default="{ row }">
+                <el-tag :type="row.role === 'admin' ? 'danger' : row.role === 'manager' ? 'warning' : 'info'" size="small">{{ row.role === 'admin' ? '管理员' : row.role === 'manager' ? '经理' : '成员' }}</el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column prop="department" label="部门" width="110" />
+            <el-table-column prop="status" label="状态" width="90">
+              <template #default="{ row }"><el-tag :type="row.status === 'active' ? 'success' : 'info'" size="small">{{ row.status === 'active' ? '活跃' : '停用' }}</el-tag></template>
+            </el-table-column>
+            <el-table-column prop="lastLogin" label="最后登录" width="160" />
+            <el-table-column label="操作" width="100">
+              <template #default="{ row }"><el-button size="small" link type="primary" @click="openUserDialog(row)">编辑</el-button></template>
+            </el-table-column>
+          </el-table>
+        </el-card>
+        <el-dialog v-model="userDialogVisible" :title="editingUser ? '编辑用户' : '新增用户'" width="450px">
+          <el-form :model="userForm" label-width="80px">
+            <el-form-item label="姓名"><el-input v-model="userForm.name" /></el-form-item>
+            <el-form-item label="邮箱"><el-input v-model="userForm.email" /></el-form-item>
+            <el-form-item label="角色"><el-select v-model="userForm.role"><el-option label="管理员" value="admin" /><el-option label="经理" value="manager" /><el-option label="成员" value="member" /></el-select></el-form-item>
+            <el-form-item label="部门"><el-input v-model="userForm.department" /></el-form-item>
+          </el-form>
+          <template #footer><el-button @click="userDialogVisible = false">取消</el-button><el-button type="primary" @click="saveUser">保存</el-button></template>
+        </el-dialog>
+      </el-tab-pane>
+
+      <!-- ============ 角色权限矩阵 ============ -->
+      <el-tab-pane label="角色权限" name="roles">
+        <el-card shadow="hover">
+          <el-table :data="permissions" stripe>
+            <el-table-column prop="module" label="功能模块" width="160" />
+            <el-table-column label="管理员" width="100" align="center">
+              <template #default="{ row }"><el-icon v-if="row.admin" color="#67C23A" :size="20"><Check /></el-icon><el-icon v-else color="#F56C6C" :size="20"><Close /></el-icon></template>
+            </el-table-column>
+            <el-table-column label="经理" width="100" align="center">
+              <template #default="{ row }"><el-icon v-if="row.manager" color="#67C23A" :size="20"><Check /></el-icon><el-icon v-else color="#F56C6C" :size="20"><Close /></el-icon></template>
+            </el-table-column>
+            <el-table-column label="成员" width="100" align="center">
+              <template #default="{ row }"><el-icon v-if="row.member" color="#67C23A" :size="20"><Check /></el-icon><el-icon v-else color="#F56C6C" :size="20"><Close /></el-icon></template>
+            </el-table-column>
+          </el-table>
+        </el-card>
+      </el-tab-pane>
+
+      <!-- ============ 操作日志 ============ -->
+      <el-tab-pane label="操作日志" name="audit">
+        <el-card shadow="hover">
+          <el-timeline>
+            <el-timeline-item
+              v-for="log in auditLogs" :key="log.id"
+              :timestamp="log.time" placement="top"
+              :type="log.user === '系统' ? 'info' : 'primary'"
+            >
+              <strong>{{ log.user }}</strong> {{ log.action }}
+              <span v-if="log.target !== '-'" style="color:#409EFF">「{{ log.target }}」</span>
+              <div style="font-size:12px;color:#909399;margin-top:4px">IP: {{ log.ip }}</div>
+            </el-timeline-item>
+          </el-timeline>
         </el-card>
       </el-tab-pane>
     </el-tabs>
