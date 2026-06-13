@@ -36,6 +36,14 @@ def db(engine):
     connection.close()
 
 
+@pytest.fixture(autouse=True)
+def _clear_limits():
+    from app.middleware.rate_limit import _hits
+    from app.core.login_guard import _failures
+    _hits.clear()
+    _failures.clear()
+
+
 @pytest.fixture
 def client(db):
     from fastapi.testclient import TestClient

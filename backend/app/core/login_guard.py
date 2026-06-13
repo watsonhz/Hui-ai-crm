@@ -4,7 +4,7 @@ import threading
 _lock = threading.Lock()
 _failures: dict[str, list[float]] = {}  # username → [fail_timestamps]
 
-MAX_FAILURES = 5
+MAX_FAILURES = 10
 LOCKOUT_WINDOW = 300  # 5分钟
 LOCKOUT_DURATION = 600  # 锁定10分钟
 
