@@ -60,6 +60,14 @@ def generate_monthly(db: Session = Depends(get_db)):
     return APIResponse.success(data={"id": report.id, "title": report.title, "content": report.content})
 
 
+@router.get("/reports/{report_id}", response_model=APIResponse[dict])
+def get_report(report_id: int, db: Session = Depends(get_db)):
+    report = db.query(AiWorkSummary).filter(AiWorkSummary.id == report_id).first()
+    if not report:
+        return APIResponse.error(message="报告不存在")
+    return APIResponse.success(data={"id": report.id, "report_type": report.report_type, "title": report.title, "content": report.content, "period_start": report.period_start.isoformat() if report.period_start else None, "created_at": report.created_at.isoformat()})
+
+
 @router.post("/reports/regenerate", response_model=APIResponse[dict])
 def regenerate(body: ReportRegenRequest, db: Session = Depends(get_db)):
     report = regenerate_report(db, body.report_id)
