@@ -17,7 +17,7 @@ router = APIRouter()
 
 
 @router.post("/", response_model=APIResponse[ProjectResponse])
-def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
+def create(body: ProjectCreate, db: Session = Depends(get_db)):
     project = Project(**body.model_dump())
     db.add(project)
     db.commit()
@@ -26,7 +26,7 @@ def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=APIResponse[PaginatedData[ProjectResponse]])
-def list_projects(
+def list(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
     sort_order: str = Query(default="desc", pattern="^(asc|desc)$"),
@@ -51,7 +51,7 @@ def list_projects(
 
 
 @router.get("/{project_id}", response_model=APIResponse[ProjectResponse])
-def get_project(project_id: int, db: Session = Depends(get_db)):
+def get(project_id: int, db: Session = Depends(get_db)):
     project = db.query(Project).filter(
         Project.id == project_id, Project.deleted_at.is_(None)
     ).first()
@@ -61,7 +61,7 @@ def get_project(project_id: int, db: Session = Depends(get_db)):
 
 
 @router.put("/{project_id}", response_model=APIResponse[ProjectResponse])
-def update_project(project_id: int, body: ProjectUpdate, db: Session = Depends(get_db)):
+def update(project_id: int, body: ProjectUpdate, db: Session = Depends(get_db)):
     project = db.query(Project).filter(
         Project.id == project_id, Project.deleted_at.is_(None)
     ).first()
@@ -76,7 +76,7 @@ def update_project(project_id: int, body: ProjectUpdate, db: Session = Depends(g
 
 
 @router.put("/{project_id}/stage", response_model=APIResponse[ProjectResponse])
-def update_project_stage(project_id: int, body: ProjectStageUpdate, db: Session = Depends(get_db)):
+def update_stage(project_id: int, body: ProjectStageUpdate, db: Session = Depends(get_db)):
     project = db.query(Project).filter(
         Project.id == project_id, Project.deleted_at.is_(None)
     ).first()
@@ -85,8 +85,7 @@ def update_project_stage(project_id: int, body: ProjectStageUpdate, db: Session 
     if not project.can_transition_to(body.stage):
         raise HTTPException(
             status_code=400,
-            detail=f"不允许从阶段 {project.stage}({STAGE_MAP.get(project.stage)}) "
-                   f"转换到 {body.stage}({STAGE_MAP.get(body.stage)})",
+            detail=f"不允许从 {project.stage}({STAGE_MAP[project.stage]}) 转换到 {body.stage}({STAGE_MAP[body.stage]})",
         )
     project.stage = body.stage
     project.updated_at = datetime.now(timezone.utc)
@@ -96,7 +95,7 @@ def update_project_stage(project_id: int, body: ProjectStageUpdate, db: Session 
 
 
 @router.get("/board/kanban", response_model=APIResponse[list[KanbanView]])
-def kanban_board(db: Session = Depends(get_db)):
+def kanban(db: Session = Depends(get_db)):
     projects = db.query(Project).filter(Project.deleted_at.is_(None)).all()
     stage_groups: dict[int, list[ProjectResponse]] = {s: [] for s in STAGE_MAP}
     for p in projects:
