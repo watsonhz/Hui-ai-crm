@@ -11,10 +11,11 @@ from app.models.acceptance import Acceptance
 from app.models.relationship import Relationship
 from app.models.dict_data import DictType, DictData
 from app.models.knowledge import Knowledge
+from app.models.service_ticket import ServiceTicket
 
 __all__ = [
     "Bidding", "Project", "Organization", "User",
     "SysConfig", "CrmRelationship", "ActionItem", "AiWorkSummary",
     "DecisionChain", "Acceptance", "Relationship",
-    "DictType", "DictData", "Knowledge",
+    "DictType", "DictData", "Knowledge", "ServiceTicket",
 ]
