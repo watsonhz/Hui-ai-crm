@@ -1,0 +1,1946 @@
+Run started:2026-06-13 13:31:48.847883
+
+Test results:
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:19
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+18	    resp = client.post("/api/v1/bidding", json=payload)
+19	    assert resp.status_code == 201, resp.text
+20	    return resp.json()["data"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:28
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+27	        data = _create(client, project_name="智慧园区投标")
+28	        assert data["project_name"] == "智慧园区投标"
+29	        assert data["status"] == "线索"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:29
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+28	        assert data["project_name"] == "智慧园区投标"
+29	        assert data["status"] == "线索"
+30	        assert data["probability"] == 0
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:30
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+29	        assert data["status"] == "线索"
+30	        assert data["probability"] == 0
+31	        assert data["id"] is not None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:31
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+30	        assert data["probability"] == 0
+31	        assert data["id"] is not None
+32	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:39
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+38	        })
+39	        assert resp.status_code == 422
+40	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:46
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+45	        })
+46	        assert resp.status_code == 422
+47	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:52
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+51	        resp = client.get("/api/v1/bidding?page=1&page_size=10")
+52	        assert resp.status_code == 200
+53	        d = resp.json()["data"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:54
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+53	        d = resp.json()["data"]
+54	        assert d["total"] == 2
+55	        assert len(d["items"]) == 2
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:55
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+54	        assert d["total"] == 2
+55	        assert len(d["items"]) == 2
+56	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:60
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+59	        resp = client.get("/api/v1/bidding?status=线索")
+60	        assert resp.json()["data"]["total"] >= 1
+61	        resp = client.get("/api/v1/bidding?status=中标")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:62
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+61	        resp = client.get("/api/v1/bidding?status=中标")
+62	        assert resp.json()["data"]["total"] == 0
+63	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:67
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+66	        resp = client.get("/api/v1/bidding?customer_name=华为")
+67	        assert resp.json()["data"]["total"] >= 1
+68	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:72
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+71	        resp = client.get(f"/api/v1/bidding/{data['id']}")
+72	        assert resp.status_code == 200
+73	        assert resp.json()["data"]["project_name"] == "详情"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:73
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+72	        assert resp.status_code == 200
+73	        assert resp.json()["data"]["project_name"] == "详情"
+74	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:77
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+76	        resp = client.get("/api/v1/bidding/99999")
+77	        assert resp.status_code == 404
+78	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:84
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+83	        })
+84	        assert resp.status_code == 200
+85	        assert resp.json()["data"]["project_name"] == "改名"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:85
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+84	        assert resp.status_code == 200
+85	        assert resp.json()["data"]["project_name"] == "改名"
+86	        assert resp.json()["data"]["probability"] == 80
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:86
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+85	        assert resp.json()["data"]["project_name"] == "改名"
+86	        assert resp.json()["data"]["probability"] == 80
+87	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:91
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+90	        del_resp = client.delete(f"/api/v1/bidding/{data['id']}")
+91	        assert del_resp.status_code == 200
+92	        get_resp = client.get(f"/api/v1/bidding/{data['id']}")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:93
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+92	        get_resp = client.get(f"/api/v1/bidding/{data['id']}")
+93	        assert get_resp.status_code == 404
+94	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:110
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+109	            )
+110	            assert resp.status_code == 200, f"{status}: {resp.text}"
+111	            assert resp.json()["data"]["status"] == status
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:111
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+110	            assert resp.status_code == 200, f"{status}: {resp.text}"
+111	            assert resp.json()["data"]["status"] == status
+112	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:124
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+123	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"new_status": "丢标"})
+124	        assert resp.status_code == 200
+125	        assert resp.json()["data"]["status"] == "丢标"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:125
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+124	        assert resp.status_code == 200
+125	        assert resp.json()["data"]["status"] == "丢标"
+126	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:136
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+135	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"new_status": "丢标"})
+136	        assert resp.status_code == 200
+137	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:143
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+142	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"new_status": "投标中"})
+143	        assert resp.status_code == 400
+144	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:153
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+152	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"new_status": "项目交付"})
+153	        assert resp.status_code == 400
+154	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:163
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+162	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"new_status": "中标"})
+163	        assert resp.status_code == 400
+164	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:173
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+172	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"new_status": "商机确认"})
+173	        assert resp.status_code == 400
+174	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:184
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+183	        resp = client.get("/api/v1/bidding/calendar?days=30")
+184	        assert resp.status_code == 200
+185	        items = resp.json()["data"]["items"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:186
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+185	        items = resp.json()["data"]["items"]
+186	        assert len(items) >= 1
+187	        assert items[0]["days_left"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:187
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+186	        assert len(items) >= 1
+187	        assert items[0]["days_left"] == 1
+188	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_bidding.py:197
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+196	        names = [it["project_name"] for it in items]
+197	        assert "已过期" not in names
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:15
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+14	    resp = client.post("/api/v1/organizations", json=payload)
+15	    assert resp.status_code == 201, resp.text
+16	    return resp.json()["data"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:24
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+23	        data = _create_org(client, name="华东大区", level=1)
+24	        assert data["name"] == "华东大区"
+25	        assert data["level"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:25
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+24	        assert data["name"] == "华东大区"
+25	        assert data["level"] == 1
+26	        assert data["parent_id"] is None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:26
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+25	        assert data["level"] == 1
+26	        assert data["parent_id"] is None
+27	        assert data["is_active"] is True
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:27
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+26	        assert data["parent_id"] is None
+27	        assert data["is_active"] is True
+28	        assert data["id"] is not None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:28
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+27	        assert data["is_active"] is True
+28	        assert data["id"] is not None
+29	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:33
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+32	        child = _create_org(client, name="浙江省", level=2, parent_id=parent["id"])
+33	        assert child["parent_id"] == parent["id"]
+34	        assert child["level"] == 2
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:34
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+33	        assert child["parent_id"] == parent["id"]
+34	        assert child["level"] == 2
+35	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:40
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+39	        city = _create_org(client, name="杭州市", level=3, parent_id=province["id"])
+40	        assert city["parent_id"] == province["id"]
+41	        assert city["level"] == 3
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:41
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+40	        assert city["parent_id"] == province["id"]
+41	        assert city["level"] == 3
+42	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:49
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+48	        })
+49	        assert resp.status_code == 400
+50	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:55
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+54	        })
+55	        assert resp.status_code == 400
+56	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:60
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+59	        resp = client.get(f"/api/v1/organizations/{data['id']}")
+60	        assert resp.status_code == 200
+61	        assert resp.json()["data"]["name"] == "华北"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:61
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+60	        assert resp.status_code == 200
+61	        assert resp.json()["data"]["name"] == "华北"
+62	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:65
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+64	        resp = client.get("/api/v1/organizations/99999")
+65	        assert resp.status_code == 404
+66	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:72
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+71	        })
+72	        assert resp.status_code == 200
+73	        assert resp.json()["data"]["name"] == "新名称"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:73
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+72	        assert resp.status_code == 200
+73	        assert resp.json()["data"]["name"] == "新名称"
+74	        assert resp.json()["data"]["sort_order"] == 10
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:74
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+73	        assert resp.json()["data"]["name"] == "新名称"
+74	        assert resp.json()["data"]["sort_order"] == 10
+75	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:79
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+78	        resp = client.delete(f"/api/v1/organizations/{data['id']}")
+79	        assert resp.status_code == 200
+80	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:87
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+86	        resp = client.delete(f"/api/v1/organizations/{parent['id']}")
+87	        assert resp.status_code == 400
+88	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:95
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+94	        resp = client.get("/api/v1/organizations/tree")
+95	        assert resp.status_code == 200
+96	        assert resp.json()["data"]["tree"] == []
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:96
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+95	        assert resp.status_code == 200
+96	        assert resp.json()["data"]["tree"] == []
+97	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:102
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+101	        tree = resp.json()["data"]["tree"]
+102	        assert len(tree) == 1
+103	        assert tree[0]["name"] == "华东大区"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:103
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+102	        assert len(tree) == 1
+103	        assert tree[0]["name"] == "华东大区"
+104	        assert tree[0]["children"] == []
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:104
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+103	        assert tree[0]["name"] == "华东大区"
+104	        assert tree[0]["children"] == []
+105	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:114
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+113	
+114	        assert len(tree) == 1
+115	        assert tree[0]["name"] == "华东大区"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:115
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+114	        assert len(tree) == 1
+115	        assert tree[0]["name"] == "华东大区"
+116	        assert len(tree[0]["children"]) == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:116
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+115	        assert tree[0]["name"] == "华东大区"
+116	        assert len(tree[0]["children"]) == 1
+117	        assert tree[0]["children"][0]["name"] == "浙江省"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:117
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+116	        assert len(tree[0]["children"]) == 1
+117	        assert tree[0]["children"][0]["name"] == "浙江省"
+118	        assert len(tree[0]["children"][0]["children"]) == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:118
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+117	        assert tree[0]["children"][0]["name"] == "浙江省"
+118	        assert len(tree[0]["children"][0]["children"]) == 1
+119	        assert tree[0]["children"][0]["children"][0]["name"] == "杭州市"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:119
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+118	        assert len(tree[0]["children"][0]["children"]) == 1
+119	        assert tree[0]["children"][0]["children"][0]["name"] == "杭州市"
+120	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:128
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+127	        tree = resp.json()["data"]["tree"]
+128	        assert len(tree) == 3
+129	        names = {n["name"] for n in tree}
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:130
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+129	        names = {n["name"] for n in tree}
+130	        assert names == {"华东", "华北", "华南"}
+131	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:138
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+137	        tree = resp.json()["data"]["tree"]
+138	        assert tree[0]["name"] == "A大区"
+139	        assert tree[1]["name"] == "B大区"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:139
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+138	        assert tree[0]["name"] == "A大区"
+139	        assert tree[1]["name"] == "B大区"
+140	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:147
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+146	        data = resp.json()["data"]
+147	        assert len(data["children"]) == 1
+148	        assert data["children"][0]["name"] == "浙江省"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_organizations.py:148
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+147	        assert len(data["children"]) == 1
+148	        assert data["children"][0]["name"] == "浙江省"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:21
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+20	    resp = client.post("/api/v1/projects", json=payload)
+21	    assert resp.status_code == 201, resp.text
+22	    return resp.json()["data"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:30
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+29	        data = _create_project(client, project_name="智慧城市项目")
+30	        assert data["project_name"] == "智慧城市项目"
+31	        assert data["stage"] == "初步接洽"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:31
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+30	        assert data["project_name"] == "智慧城市项目"
+31	        assert data["stage"] == "初步接洽"
+32	        assert data["progress"] == 0
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:32
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+31	        assert data["stage"] == "初步接洽"
+32	        assert data["progress"] == 0
+33	        assert data["pm_name"] == "张三"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:33
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+32	        assert data["progress"] == 0
+33	        assert data["pm_name"] == "张三"
+34	        assert data["id"] is not None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:34
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+33	        assert data["pm_name"] == "张三"
+34	        assert data["id"] is not None
+35	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:42
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+41	        })
+42	        assert resp.status_code == 422
+43	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:50
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+49	        })
+50	        assert resp.status_code == 422
+51	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:56
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+55	        resp = client.get("/api/v1/projects?page=1&page_size=10")
+56	        assert resp.status_code == 200
+57	        d = resp.json()["data"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:58
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+57	        d = resp.json()["data"]
+58	        assert d["total"] == 2
+59	        assert len(d["items"]) == 2
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:59
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+58	        assert d["total"] == 2
+59	        assert len(d["items"]) == 2
+60	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:64
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+63	        resp = client.get("/api/v1/projects?stage=初步接洽")
+64	        assert resp.json()["data"]["total"] >= 1
+65	        resp = client.get("/api/v1/projects?stage=维保服务")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:66
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+65	        resp = client.get("/api/v1/projects?stage=维保服务")
+66	        assert resp.json()["data"]["total"] == 0
+67	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:71
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+70	        resp = client.get("/api/v1/projects?pm_name=李四")
+71	        assert resp.json()["data"]["total"] >= 1
+72	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:76
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+75	        resp = client.get(f"/api/v1/projects/{data['id']}")
+76	        assert resp.status_code == 200
+77	        assert resp.json()["data"]["project_name"] == "详情项目"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:77
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+76	        assert resp.status_code == 200
+77	        assert resp.json()["data"]["project_name"] == "详情项目"
+78	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:81
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+80	        resp = client.get("/api/v1/projects/99999")
+81	        assert resp.status_code == 404
+82	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:88
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+87	        })
+88	        assert resp.status_code == 200
+89	        assert resp.json()["data"]["project_name"] == "改名项目"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:89
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+88	        assert resp.status_code == 200
+89	        assert resp.json()["data"]["project_name"] == "改名项目"
+90	        assert resp.json()["data"]["progress"] == 50
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:90
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+89	        assert resp.json()["data"]["project_name"] == "改名项目"
+90	        assert resp.json()["data"]["progress"] == 50
+91	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:95
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+94	        del_resp = client.delete(f"/api/v1/projects/{data['id']}")
+95	        assert del_resp.status_code == 200
+96	        get_resp = client.get(f"/api/v1/projects/{data['id']}")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:97
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+96	        get_resp = client.get(f"/api/v1/projects/{data['id']}")
+97	        assert get_resp.status_code == 404
+98	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:118
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+117	            )
+118	            assert resp.status_code == 200, f"推进到 {stage}: {resp.text}"
+119	            assert resp.json()["data"]["stage"] == stage
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:119
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+118	            assert resp.status_code == 200, f"推进到 {stage}: {resp.text}"
+119	            assert resp.json()["data"]["stage"] == stage
+120	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:131
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+130	        resp = client.put(f"/api/v1/projects/{pid}/stage", json={"new_stage": "需求分析"})
+131	        assert resp.status_code == 400
+132	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:138
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+137	        resp = client.put(f"/api/v1/projects/{pid}/stage", json={"new_stage": "初步接洽"})
+138	        assert resp.status_code == 400
+139	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:145
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+144	        resp = client.put(f"/api/v1/projects/{pid}/stage", json={"new_stage": "报价"})
+145	        assert resp.status_code == 200
+146	        assert resp.json()["data"]["stage"] == "报价"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:146
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+145	        assert resp.status_code == 200
+146	        assert resp.json()["data"]["stage"] == "报价"
+147	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:150
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+149	        resp = client.put("/api/v1/projects/99999/stage", json={"new_stage": "需求分析"})
+150	        assert resp.status_code == 404
+151	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:158
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+157	        resp = client.get("/api/v1/projects/kanban")
+158	        assert resp.status_code == 200
+159	        columns = resp.json()["data"]["columns"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:160
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+159	        columns = resp.json()["data"]["columns"]
+160	        assert len(columns) == 12
+161	        assert all(c["count"] == 0 for c in columns)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:161
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+160	        assert len(columns) == 12
+161	        assert all(c["count"] == 0 for c in columns)
+162	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:168
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+167	        resp = client.get("/api/v1/projects/kanban")
+168	        assert resp.status_code == 200
+169	        columns = resp.json()["data"]["columns"]
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:171
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+170	        first_col = columns[0]
+171	        assert first_col["stage"] == "初步接洽"
+172	        assert first_col["count"] == 2
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:172
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+171	        assert first_col["stage"] == "初步接洽"
+172	        assert first_col["count"] == 2
+173	        assert len(first_col["items"]) == 2
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:173
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+172	        assert first_col["count"] == 2
+173	        assert len(first_col["items"]) == 2
+174	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:187
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+186	        # 第一列: 初步接洽
+187	        assert columns[0]["stage"] == "初步接洽"
+188	        assert columns[0]["count"] == 2  # data + 保持初接
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:188
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+187	        assert columns[0]["stage"] == "初步接洽"
+188	        assert columns[0]["count"] == 2  # data + 保持初接
+189	
+190	        # 第二列: 需求分析
+191	        assert columns[1]["stage"] == "需求分析"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:191
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+190	        # 第二列: 需求分析
+191	        assert columns[1]["stage"] == "需求分析"
+192	        assert columns[1]["count"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\app\tests\test_projects.py:192
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+191	        assert columns[1]["stage"] == "需求分析"
+192	        assert columns[1]["count"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:21
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+20	        response = client.post("/api/v1/customers/", json=payload)
+21	        assert response.status_code == 201
+22	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:23
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+22	        body = response.json()
+23	        assert body["code"] == 200
+24	        assert body["message"] == "客户创建成功"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:24
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+23	        assert body["code"] == 200
+24	        assert body["message"] == "客户创建成功"
+25	        assert body["data"]["id"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:25
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+24	        assert body["message"] == "客户创建成功"
+25	        assert body["data"]["id"] == 1
+26	        assert body["data"]["name"] == "测试客户"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:26
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+25	        assert body["data"]["id"] == 1
+26	        assert body["data"]["name"] == "测试客户"
+27	        assert body["data"]["level"] == "A"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:27
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+26	        assert body["data"]["name"] == "测试客户"
+27	        assert body["data"]["level"] == "A"
+28	        assert body["data"]["status"] == "active"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:28
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+27	        assert body["data"]["level"] == "A"
+28	        assert body["data"]["status"] == "active"
+29	        assert body["data"]["created_at"] is not None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:29
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+28	        assert body["data"]["status"] == "active"
+29	        assert body["data"]["created_at"] is not None
+30	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:35
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+34	        response = client.post("/api/v1/customers/", json=payload)
+35	        assert response.status_code == 201
+36	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:37
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+36	        body = response.json()
+37	        assert body["data"]["name"] == "最低字段客户"
+38	        assert body["data"]["level"] == "C"  # default
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:38
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+37	        assert body["data"]["name"] == "最低字段客户"
+38	        assert body["data"]["level"] == "C"  # default
+39	        assert body["data"]["status"] == "active"  # default
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:39
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+38	        assert body["data"]["level"] == "C"  # default
+39	        assert body["data"]["status"] == "active"  # default
+40	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:45
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+44	        response = client.post("/api/v1/customers/", json=payload)
+45	        assert response.status_code == 422
+46	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:51
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+50	        response = client.post("/api/v1/customers/", json=payload)
+51	        assert response.status_code == 422
+52	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:57
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+56	        response = client.post("/api/v1/customers/", json=payload)
+57	        assert response.status_code == 422
+58	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:63
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+62	        response = client.post("/api/v1/customers/", json=payload)
+63	        assert response.status_code == 422
+64	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:69
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+68	        response = client.post("/api/v1/customers/", json=payload)
+69	        assert response.status_code == 422
+70	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:88
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+87	        response = client.get("/api/v1/customers/")
+88	        assert response.status_code == 200
+89	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:90
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+89	        body = response.json()
+90	        assert body["code"] == 200
+91	        assert body["data"]["total"] == 10
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:91
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+90	        assert body["code"] == 200
+91	        assert body["data"]["total"] == 10
+92	        assert body["data"]["page"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:92
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+91	        assert body["data"]["total"] == 10
+92	        assert body["data"]["page"] == 1
+93	        assert body["data"]["page_size"] == 20
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:93
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+92	        assert body["data"]["page"] == 1
+93	        assert body["data"]["page_size"] == 20
+94	        assert len(body["data"]["items"]) == 10
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:94
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+93	        assert body["data"]["page_size"] == 20
+94	        assert len(body["data"]["items"]) == 10
+95	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:100
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+99	        body = response.json()
+100	        assert body["data"]["total"] == 10
+101	        assert len(body["data"]["items"]) == 3
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:101
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+100	        assert body["data"]["total"] == 10
+101	        assert len(body["data"]["items"]) == 3
+102	        assert body["data"]["page"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:102
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+101	        assert len(body["data"]["items"]) == 3
+102	        assert body["data"]["page"] == 1
+103	        assert body["data"]["page_size"] == 3
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:103
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+102	        assert body["data"]["page"] == 1
+103	        assert body["data"]["page_size"] == 3
+104	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:109
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+108	        body = response.json()
+109	        assert len(body["data"]["items"]) == 3
+110	        # items should be different from page 1
+111	        response_p1 = client.get("/api/v1/customers/?page=1&page_size=3")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:114
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+113	        p2_names = {c["name"] for c in body["data"]["items"]}
+114	        assert p1_names.isdisjoint(p2_names)
+115	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:120
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+119	        body = response.json()
+120	        assert body["data"]["total"] == 1
+121	        assert body["data"]["items"][0]["name"] == "客户01"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:121
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+120	        assert body["data"]["total"] == 1
+121	        assert body["data"]["items"][0]["name"] == "客户01"
+122	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:127
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+126	        body = response.json()
+127	        assert all(c["level"] == "A" for c in body["data"]["items"])
+128	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:134
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+133	        names = [c["name"] for c in body["data"]["items"]]
+134	        assert names == sorted(names)
+135	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:140
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+139	        body = response.json()
+140	        assert body["data"]["total"] == 0
+141	        assert body["data"]["items"] == []
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:141
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+140	        assert body["data"]["total"] == 0
+141	        assert body["data"]["items"] == []
+142	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:158
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+157	        response = client.get("/api/v1/customers/1")
+158	        assert response.status_code == 200
+159	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:160
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+159	        body = response.json()
+160	        assert body["data"]["id"] == 1
+161	        assert body["data"]["name"] == "唯一客户"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:161
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+160	        assert body["data"]["id"] == 1
+161	        assert body["data"]["name"] == "唯一客户"
+162	        assert body["data"]["email"] == "unique@example.com"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:162
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+161	        assert body["data"]["name"] == "唯一客户"
+162	        assert body["data"]["email"] == "unique@example.com"
+163	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:167
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+166	        response = client.get("/api/v1/customers/999")
+167	        assert response.status_code == 200  # our error handler returns 200 with code 404
+168	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:169
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+168	        body = response.json()
+169	        assert body["code"] == 404
+170	        assert body["data"] is None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:170
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+169	        assert body["code"] == 404
+170	        assert body["data"] is None
+171	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:188
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+187	        response = client.put("/api/v1/customers/1", json=payload)
+188	        assert response.status_code == 200
+189	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:190
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+189	        body = response.json()
+190	        assert body["data"]["name"] == "已更新客户"
+191	        assert body["data"]["level"] == "A"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:191
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+190	        assert body["data"]["name"] == "已更新客户"
+191	        assert body["data"]["level"] == "A"
+192	        assert body["message"] == "客户更新成功"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:192
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+191	        assert body["data"]["level"] == "A"
+192	        assert body["message"] == "客户更新成功"
+193	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:198
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+197	        body = response.json()
+198	        assert body["data"]["level"] == "B"
+199	        assert body["data"]["name"] == "原始客户"  # unchanged
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:199
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+198	        assert body["data"]["level"] == "B"
+199	        assert body["data"]["name"] == "原始客户"  # unchanged
+200	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:205
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+204	        body = response.json()
+205	        assert body["code"] == 404
+206	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:210
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+209	        response = client.put("/api/v1/customers/1", json={})
+210	        assert response.status_code == 200
+211	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:212
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+211	        body = response.json()
+212	        assert body["data"]["name"] == "原始客户"
+213	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:229
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+228	        response = client.delete("/api/v1/customers/1")
+229	        assert response.status_code == 200
+230	        body = response.json()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:231
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+230	        body = response.json()
+231	        assert body["code"] == 200
+232	        assert body["message"] == "客户删除成功"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:232
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+231	        assert body["code"] == 200
+232	        assert body["message"] == "客户删除成功"
+233	
+234	        # Confirm it is no longer listed
+235	        list_resp = client.get("/api/v1/customers/")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:236
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+235	        list_resp = client.get("/api/v1/customers/")
+236	        assert list_resp.json()["data"]["total"] == 0
+237	
+238	        # Confirm it returns 404 when fetched directly
+239	        get_resp = client.get("/api/v1/customers/1")
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:240
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+239	        get_resp = client.get("/api/v1/customers/1")
+240	        assert get_resp.json()["code"] == 404
+241	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:247
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+246	        body = response.json()
+247	        assert body["code"] == 404
+248	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/backend\tests\test_customers.py:253
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+252	        body = response.json()
+253	        assert body["code"] == 404
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:9
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+8	        db.commit()
+9	        assert b.id is not None
+10	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:15
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+14	            b.bid_status = 99
+15	            assert False
+16	        except ValueError:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:23
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+22	        db.commit()
+23	        assert b.can_transition_to(2) is True
+24	        assert b.can_transition_to(5) is False
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:24
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+23	        assert b.can_transition_to(2) is True
+24	        assert b.can_transition_to(5) is False
+25	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:31
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+30	        result = db.query(Bidding).filter(Bidding.deleted_at.is_(None)).first()
+31	        assert result is None
+32	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:36
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+35	        resp = client.post("/api/v1/bidding/", json={"title": "测试投标", "bid_status": 1, "client_company": "测试公司"})
+36	        assert resp.status_code == 200
+37	        assert resp.json()["data"]["title"] == "测试投标"
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:37
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+36	        assert resp.status_code == 200
+37	        assert resp.json()["data"]["title"] == "测试投标"
+38	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:41
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+40	        resp = client.post("/api/v1/bidding/", json={"title": "test", "bid_status": 99})
+41	        assert resp.status_code == 422
+42	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:45
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+44	        resp = client.get("/api/v1/bidding/")
+45	        assert resp.json()["data"]["items"] == []
+46	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:52
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+51	        data = resp.json()
+52	        assert data["data"]["total"] == 5
+53	        assert len(data["data"]["items"]) == 3
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:53
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+52	        assert data["data"]["total"] == 5
+53	        assert len(data["data"]["items"]) == 3
+54	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:59
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+58	        resp = client.get("/api/v1/bidding/?bid_status=5")
+59	        assert resp.json()["data"]["total"] == 1
+60	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:65
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+64	        resp = client.get("/api/v1/bidding/?search=华为")
+65	        assert resp.json()["data"]["total"] == 1
+66	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:71
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+70	        resp = client.get(f"/api/v1/bidding/{bid_id}")
+71	        assert resp.json()["data"]["title"] == "详情测试"
+72	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:75
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+74	        resp = client.get("/api/v1/bidding/99999")
+75	        assert resp.status_code == 404
+76	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:81
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+80	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"title": "更新后"})
+81	        assert resp.json()["data"]["title"] == "更新后"
+82	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:87
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+86	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"bid_status": 2})
+87	        assert resp.json()["data"]["bid_status"] == 2
+88	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:93
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+92	        resp = client.put(f"/api/v1/bidding/{bid_id}", json={"bid_status": 5})
+93	        assert resp.status_code == 400
+94	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_bidding.py:99
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+98	        resp = client.get("/api/v1/bidding/calendar/upcoming?days=30")
+99	        assert len(resp.json()["data"]) >= 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:9
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+8	        db.commit()
+9	        assert org.id is not None
+10	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:18
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+17	        db.commit()
+18	        assert child.parent_id == parent.id
+19	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:24
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+23	            org.org_type = "invalid"
+24	            assert False
+25	        except ValueError:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:33
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+32	        result = db.query(Organization).filter(Organization.deleted_at.is_(None)).first()
+33	        assert result is None
+34	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:38
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+37	        resp = client.post("/api/v1/organizations/", json={"name": "总公司", "org_type": "company"})
+38	        assert resp.json()["data"]["org_type"] == "company"
+39	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:44
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+43	        resp = client.post("/api/v1/organizations/", json={"name": "研发部", "org_type": "dept", "parent_id": pid})
+44	        assert resp.json()["data"]["parent_id"] == pid
+45	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:48
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+47	        resp = client.post("/api/v1/organizations/", json={"name": "test", "org_type": "invalid"})
+48	        assert resp.status_code == 422
+49	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:52
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+51	        resp = client.post("/api/v1/organizations/", json={"name": "孤立部门", "parent_id": 99999})
+52	        assert resp.status_code == 400
+53	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:60
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+59	        data = client.get("/api/v1/organizations/tree").json()["data"]
+60	        assert len(data) == 1
+61	        assert len(data[0]["children"]) == 2
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:61
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+60	        assert len(data) == 1
+61	        assert len(data[0]["children"]) == 2
+62	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:67
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+66	        resp = client.put(f"/api/v1/organizations/{oid}", json={"name": "新名称"})
+67	        assert resp.json()["data"]["name"] == "新名称"
+68	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:73
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+72	        resp = client.delete(f"/api/v1/organizations/{oid}")
+73	        assert resp.json()["message"] == "删除成功"
+74	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_organizations.py:80
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+79	        resp = client.delete(f"/api/v1/organizations/{pid}")
+80	        assert resp.status_code == 400
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:8
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+7	        db.commit()
+8	        assert p.id is not None
+9	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:14
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+13	            p.stage = 99
+14	            assert False
+15	        except ValueError:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:22
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+21	        db.commit()
+22	        assert p.can_transition_to(2) is True
+23	        assert p.can_transition_to(7) is False
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:23
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+22	        assert p.can_transition_to(2) is True
+23	        assert p.can_transition_to(7) is False
+24	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:28
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+27	        resp = client.post("/api/v1/projects/", json={"name": "新项目", "stage": 1})
+28	        assert resp.json()["data"]["name"] == "新项目"
+29	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:33
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+32	        client.post("/api/v1/projects/", json={"name": "项目B"})
+33	        assert client.get("/api/v1/projects/").json()["data"]["total"] == 2
+34	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:38
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+37	        pid = r.json()["data"]["id"]
+38	        assert client.get(f"/api/v1/projects/{pid}").json()["data"]["name"] == "详情"
+39	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:44
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+43	        resp = client.put(f"/api/v1/projects/{pid}", json={"name": "新名称"})
+44	        assert resp.json()["data"]["name"] == "新名称"
+45	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:50
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+49	        resp = client.put(f"/api/v1/projects/{pid}/stage", json={"stage": 2})
+50	        assert resp.json()["data"]["stage"] == 2
+51	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:56
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+55	        resp = client.put(f"/api/v1/projects/{pid}/stage", json={"stage": 7})
+56	        assert resp.status_code == 400
+57	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:62
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+61	        data = client.get("/api/v1/projects/board/kanban").json()["data"]
+62	        assert len(data) == 12
+63	        assert [d for d in data if d["stage"] == 1][0]["count"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:63
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+62	        assert len(data) == 12
+63	        assert [d for d in data if d["stage"] == 1][0]["count"] == 1
+64	        assert [d for d in data if d["stage"] == 7][0]["count"] == 1
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: backend/tests\test_projects.py:64
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+63	        assert [d for d in data if d["stage"] == 1][0]["count"] == 1
+64	        assert [d for d in data if d["stage"] == 7][0]["count"] == 1
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 2953
+	Total lines skipped (#nosec): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0.0
+		Low: 214.0
+		Medium: 0.0
+		High: 0.0
+	Total issues (by confidence):
+		Undefined: 0.0
+		Low: 0.0
+		Medium: 0.0
+		High: 214.0
+Files skipped (0):

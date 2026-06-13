@@ -1,7 +1,7 @@
 {
   "model": "deepseek-v4-pro",
   "autoCompactEnabled": true,
-  "autoCompactWindow": 156000,
+  "autoCompactWindow": 400000,
   "permissions": {
     "allow": [
       "Bash(git:*)",

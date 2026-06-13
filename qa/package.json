@@ -1,0 +1,14 @@
+{
+  "name": "ai-crm-qa",
+  "private": true,
+  "scripts": {
+    "qa:api": "newman run newman/crm-api-collection.json --env-var base_url=http://localhost:8000 -r htmlextra --reporter-htmlextra-export report-html/api-report.html",
+    "qa:e2e": "npx playwright test",
+    "qa:perf": "k6 run k6/customer-api-load.js",
+    "qa:full": "npm run qa:api && npm run qa:e2e && npm run qa:perf"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "newman": "^6.2.0"
+  }
+}

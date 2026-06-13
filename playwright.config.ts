@@ -26,8 +26,11 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'chrome',
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',  // 使用系统已安装的 Chrome，无需下载 Chromium
+      },
     },
   ],
   timeout: 30000,

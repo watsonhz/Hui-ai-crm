@@ -1,0 +1,4591 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+    Bandit Report
+</title>
+
+<style>
+
+html * {
+    font-family: "Arial", sans-serif;
+}
+
+pre {
+    font-family: "Monaco", monospace;
+}
+
+.bordered-box {
+    border: 1px solid black;
+    padding-top:.5em;
+    padding-bottom:.5em;
+    padding-left:1em;
+}
+
+.metrics-box {
+    font-size: 1.1em;
+    line-height: 130%;
+}
+
+.metrics-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .25em;
+}
+
+.issue-description {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.candidate-issues {
+    margin-left: 2em;
+    border-left: solid 1px; LightGray;
+    padding-left: 5%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+.issue-block {
+    border: 1px solid LightGray;
+    padding-left: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+}
+
+.issue-sev-high {
+    background-color: Pink;
+}
+
+.issue-sev-medium {
+    background-color: NavajoWhite;
+}
+
+.issue-sev-low {
+    background-color: LightCyan;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="metrics">
+    <div class="metrics-box bordered-box">
+        <div class="metrics-title">
+            Metrics:<br>
+        </div>
+        Total lines of code: <span id="loc">2953</span><br>
+        Total lines skipped (#nosec): <span id="nosec">0</span>
+    </div>
+</div>
+
+
+
+
+<br>
+<div id="results">
+    
+<div id="issue-0">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+18	    resp = client.post(&quot;/api/v1/bidding&quot;, json=payload)
+19	    assert resp.status_code == 201, resp.text
+20	    return resp.json()[&quot;data&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-1">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+27	        data = _create(client, project_name=&quot;智慧园区投标&quot;)
+28	        assert data[&quot;project_name&quot;] == &quot;智慧园区投标&quot;
+29	        assert data[&quot;status&quot;] == &quot;线索&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-2">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+28	        assert data[&quot;project_name&quot;] == &quot;智慧园区投标&quot;
+29	        assert data[&quot;status&quot;] == &quot;线索&quot;
+30	        assert data[&quot;probability&quot;] == 0
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-3">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+29	        assert data[&quot;status&quot;] == &quot;线索&quot;
+30	        assert data[&quot;probability&quot;] == 0
+31	        assert data[&quot;id&quot;] is not None
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-4">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+30	        assert data[&quot;probability&quot;] == 0
+31	        assert data[&quot;id&quot;] is not None
+32	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-5">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+38	        })
+39	        assert resp.status_code == 422
+40	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-6">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+45	        })
+46	        assert resp.status_code == 422
+47	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-7">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+51	        resp = client.get(&quot;/api/v1/bidding?page=1&amp;page_size=10&quot;)
+52	        assert resp.status_code == 200
+53	        d = resp.json()[&quot;data&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-8">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+53	        d = resp.json()[&quot;data&quot;]
+54	        assert d[&quot;total&quot;] == 2
+55	        assert len(d[&quot;items&quot;]) == 2
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-9">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+54	        assert d[&quot;total&quot;] == 2
+55	        assert len(d[&quot;items&quot;]) == 2
+56	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-10">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+59	        resp = client.get(&quot;/api/v1/bidding?status=线索&quot;)
+60	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] &gt;= 1
+61	        resp = client.get(&quot;/api/v1/bidding?status=中标&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-11">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+61	        resp = client.get(&quot;/api/v1/bidding?status=中标&quot;)
+62	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] == 0
+63	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-12">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+66	        resp = client.get(&quot;/api/v1/bidding?customer_name=华为&quot;)
+67	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] &gt;= 1
+68	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-13">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+71	        resp = client.get(f&quot;/api/v1/bidding/{data[&#x27;id&#x27;]}&quot;)
+72	        assert resp.status_code == 200
+73	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;详情&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-14">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+72	        assert resp.status_code == 200
+73	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;详情&quot;
+74	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-15">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+76	        resp = client.get(&quot;/api/v1/bidding/99999&quot;)
+77	        assert resp.status_code == 404
+78	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-16">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+83	        })
+84	        assert resp.status_code == 200
+85	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;改名&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-17">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+84	        assert resp.status_code == 200
+85	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;改名&quot;
+86	        assert resp.json()[&quot;data&quot;][&quot;probability&quot;] == 80
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-18">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+85	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;改名&quot;
+86	        assert resp.json()[&quot;data&quot;][&quot;probability&quot;] == 80
+87	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-19">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+90	        del_resp = client.delete(f&quot;/api/v1/bidding/{data[&#x27;id&#x27;]}&quot;)
+91	        assert del_resp.status_code == 200
+92	        get_resp = client.get(f&quot;/api/v1/bidding/{data[&#x27;id&#x27;]}&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-20">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+92	        get_resp = client.get(f&quot;/api/v1/bidding/{data[&#x27;id&#x27;]}&quot;)
+93	        assert get_resp.status_code == 404
+94	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-21">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+109	            )
+110	            assert resp.status_code == 200, f&quot;{status}: {resp.text}&quot;
+111	            assert resp.json()[&quot;data&quot;][&quot;status&quot;] == status
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-22">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+110	            assert resp.status_code == 200, f&quot;{status}: {resp.text}&quot;
+111	            assert resp.json()[&quot;data&quot;][&quot;status&quot;] == status
+112	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-23">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+123	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;new_status&quot;: &quot;丢标&quot;})
+124	        assert resp.status_code == 200
+125	        assert resp.json()[&quot;data&quot;][&quot;status&quot;] == &quot;丢标&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-24">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+124	        assert resp.status_code == 200
+125	        assert resp.json()[&quot;data&quot;][&quot;status&quot;] == &quot;丢标&quot;
+126	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-25">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+135	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;new_status&quot;: &quot;丢标&quot;})
+136	        assert resp.status_code == 200
+137	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-26">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+142	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;new_status&quot;: &quot;投标中&quot;})
+143	        assert resp.status_code == 400
+144	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-27">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+152	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;new_status&quot;: &quot;项目交付&quot;})
+153	        assert resp.status_code == 400
+154	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-28">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+162	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;new_status&quot;: &quot;中标&quot;})
+163	        assert resp.status_code == 400
+164	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-29">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+172	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;new_status&quot;: &quot;商机确认&quot;})
+173	        assert resp.status_code == 400
+174	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-30">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+183	        resp = client.get(&quot;/api/v1/bidding/calendar?days=30&quot;)
+184	        assert resp.status_code == 200
+185	        items = resp.json()[&quot;data&quot;][&quot;items&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-31">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+185	        items = resp.json()[&quot;data&quot;][&quot;items&quot;]
+186	        assert len(items) &gt;= 1
+187	        assert items[0][&quot;days_left&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-32">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+186	        assert len(items) &gt;= 1
+187	        assert items[0][&quot;days_left&quot;] == 1
+188	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-33">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_bidding.py" target="_blank">backend/backend\app\tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+196	        names = [it[&quot;project_name&quot;] for it in items]
+197	        assert &quot;已过期&quot; not in names
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-34">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+14	    resp = client.post(&quot;/api/v1/organizations&quot;, json=payload)
+15	    assert resp.status_code == 201, resp.text
+16	    return resp.json()[&quot;data&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-35">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+23	        data = _create_org(client, name=&quot;华东大区&quot;, level=1)
+24	        assert data[&quot;name&quot;] == &quot;华东大区&quot;
+25	        assert data[&quot;level&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-36">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+24	        assert data[&quot;name&quot;] == &quot;华东大区&quot;
+25	        assert data[&quot;level&quot;] == 1
+26	        assert data[&quot;parent_id&quot;] is None
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-37">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+25	        assert data[&quot;level&quot;] == 1
+26	        assert data[&quot;parent_id&quot;] is None
+27	        assert data[&quot;is_active&quot;] is True
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-38">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+26	        assert data[&quot;parent_id&quot;] is None
+27	        assert data[&quot;is_active&quot;] is True
+28	        assert data[&quot;id&quot;] is not None
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-39">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+27	        assert data[&quot;is_active&quot;] is True
+28	        assert data[&quot;id&quot;] is not None
+29	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-40">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+32	        child = _create_org(client, name=&quot;浙江省&quot;, level=2, parent_id=parent[&quot;id&quot;])
+33	        assert child[&quot;parent_id&quot;] == parent[&quot;id&quot;]
+34	        assert child[&quot;level&quot;] == 2
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-41">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+33	        assert child[&quot;parent_id&quot;] == parent[&quot;id&quot;]
+34	        assert child[&quot;level&quot;] == 2
+35	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-42">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+39	        city = _create_org(client, name=&quot;杭州市&quot;, level=3, parent_id=province[&quot;id&quot;])
+40	        assert city[&quot;parent_id&quot;] == province[&quot;id&quot;]
+41	        assert city[&quot;level&quot;] == 3
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-43">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+40	        assert city[&quot;parent_id&quot;] == province[&quot;id&quot;]
+41	        assert city[&quot;level&quot;] == 3
+42	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-44">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+48	        })
+49	        assert resp.status_code == 400
+50	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-45">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+54	        })
+55	        assert resp.status_code == 400
+56	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-46">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+59	        resp = client.get(f&quot;/api/v1/organizations/{data[&#x27;id&#x27;]}&quot;)
+60	        assert resp.status_code == 200
+61	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;华北&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-47">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+60	        assert resp.status_code == 200
+61	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;华北&quot;
+62	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-48">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+64	        resp = client.get(&quot;/api/v1/organizations/99999&quot;)
+65	        assert resp.status_code == 404
+66	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-49">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+71	        })
+72	        assert resp.status_code == 200
+73	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;新名称&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-50">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+72	        assert resp.status_code == 200
+73	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;新名称&quot;
+74	        assert resp.json()[&quot;data&quot;][&quot;sort_order&quot;] == 10
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-51">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+73	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;新名称&quot;
+74	        assert resp.json()[&quot;data&quot;][&quot;sort_order&quot;] == 10
+75	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-52">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+78	        resp = client.delete(f&quot;/api/v1/organizations/{data[&#x27;id&#x27;]}&quot;)
+79	        assert resp.status_code == 200
+80	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-53">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+86	        resp = client.delete(f&quot;/api/v1/organizations/{parent[&#x27;id&#x27;]}&quot;)
+87	        assert resp.status_code == 400
+88	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-54">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+94	        resp = client.get(&quot;/api/v1/organizations/tree&quot;)
+95	        assert resp.status_code == 200
+96	        assert resp.json()[&quot;data&quot;][&quot;tree&quot;] == []
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-55">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+95	        assert resp.status_code == 200
+96	        assert resp.json()[&quot;data&quot;][&quot;tree&quot;] == []
+97	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-56">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+101	        tree = resp.json()[&quot;data&quot;][&quot;tree&quot;]
+102	        assert len(tree) == 1
+103	        assert tree[0][&quot;name&quot;] == &quot;华东大区&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-57">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+102	        assert len(tree) == 1
+103	        assert tree[0][&quot;name&quot;] == &quot;华东大区&quot;
+104	        assert tree[0][&quot;children&quot;] == []
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-58">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+103	        assert tree[0][&quot;name&quot;] == &quot;华东大区&quot;
+104	        assert tree[0][&quot;children&quot;] == []
+105	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-59">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+113	
+114	        assert len(tree) == 1
+115	        assert tree[0][&quot;name&quot;] == &quot;华东大区&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-60">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+114	        assert len(tree) == 1
+115	        assert tree[0][&quot;name&quot;] == &quot;华东大区&quot;
+116	        assert len(tree[0][&quot;children&quot;]) == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-61">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+115	        assert tree[0][&quot;name&quot;] == &quot;华东大区&quot;
+116	        assert len(tree[0][&quot;children&quot;]) == 1
+117	        assert tree[0][&quot;children&quot;][0][&quot;name&quot;] == &quot;浙江省&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-62">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+116	        assert len(tree[0][&quot;children&quot;]) == 1
+117	        assert tree[0][&quot;children&quot;][0][&quot;name&quot;] == &quot;浙江省&quot;
+118	        assert len(tree[0][&quot;children&quot;][0][&quot;children&quot;]) == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-63">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+117	        assert tree[0][&quot;children&quot;][0][&quot;name&quot;] == &quot;浙江省&quot;
+118	        assert len(tree[0][&quot;children&quot;][0][&quot;children&quot;]) == 1
+119	        assert tree[0][&quot;children&quot;][0][&quot;children&quot;][0][&quot;name&quot;] == &quot;杭州市&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-64">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+118	        assert len(tree[0][&quot;children&quot;][0][&quot;children&quot;]) == 1
+119	        assert tree[0][&quot;children&quot;][0][&quot;children&quot;][0][&quot;name&quot;] == &quot;杭州市&quot;
+120	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-65">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+127	        tree = resp.json()[&quot;data&quot;][&quot;tree&quot;]
+128	        assert len(tree) == 3
+129	        names = {n[&quot;name&quot;] for n in tree}
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-66">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+129	        names = {n[&quot;name&quot;] for n in tree}
+130	        assert names == {&quot;华东&quot;, &quot;华北&quot;, &quot;华南&quot;}
+131	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-67">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+137	        tree = resp.json()[&quot;data&quot;][&quot;tree&quot;]
+138	        assert tree[0][&quot;name&quot;] == &quot;A大区&quot;
+139	        assert tree[1][&quot;name&quot;] == &quot;B大区&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-68">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+138	        assert tree[0][&quot;name&quot;] == &quot;A大区&quot;
+139	        assert tree[1][&quot;name&quot;] == &quot;B大区&quot;
+140	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-69">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+146	        data = resp.json()[&quot;data&quot;]
+147	        assert len(data[&quot;children&quot;]) == 1
+148	        assert data[&quot;children&quot;][0][&quot;name&quot;] == &quot;浙江省&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-70">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_organizations.py" target="_blank">backend/backend\app\tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+147	        assert len(data[&quot;children&quot;]) == 1
+148	        assert data[&quot;children&quot;][0][&quot;name&quot;] == &quot;浙江省&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-71">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+20	    resp = client.post(&quot;/api/v1/projects&quot;, json=payload)
+21	    assert resp.status_code == 201, resp.text
+22	    return resp.json()[&quot;data&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-72">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+29	        data = _create_project(client, project_name=&quot;智慧城市项目&quot;)
+30	        assert data[&quot;project_name&quot;] == &quot;智慧城市项目&quot;
+31	        assert data[&quot;stage&quot;] == &quot;初步接洽&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-73">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+30	        assert data[&quot;project_name&quot;] == &quot;智慧城市项目&quot;
+31	        assert data[&quot;stage&quot;] == &quot;初步接洽&quot;
+32	        assert data[&quot;progress&quot;] == 0
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-74">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+31	        assert data[&quot;stage&quot;] == &quot;初步接洽&quot;
+32	        assert data[&quot;progress&quot;] == 0
+33	        assert data[&quot;pm_name&quot;] == &quot;张三&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-75">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+32	        assert data[&quot;progress&quot;] == 0
+33	        assert data[&quot;pm_name&quot;] == &quot;张三&quot;
+34	        assert data[&quot;id&quot;] is not None
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-76">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+33	        assert data[&quot;pm_name&quot;] == &quot;张三&quot;
+34	        assert data[&quot;id&quot;] is not None
+35	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-77">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+41	        })
+42	        assert resp.status_code == 422
+43	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-78">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+49	        })
+50	        assert resp.status_code == 422
+51	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-79">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+55	        resp = client.get(&quot;/api/v1/projects?page=1&amp;page_size=10&quot;)
+56	        assert resp.status_code == 200
+57	        d = resp.json()[&quot;data&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-80">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+57	        d = resp.json()[&quot;data&quot;]
+58	        assert d[&quot;total&quot;] == 2
+59	        assert len(d[&quot;items&quot;]) == 2
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-81">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+58	        assert d[&quot;total&quot;] == 2
+59	        assert len(d[&quot;items&quot;]) == 2
+60	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-82">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+63	        resp = client.get(&quot;/api/v1/projects?stage=初步接洽&quot;)
+64	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] &gt;= 1
+65	        resp = client.get(&quot;/api/v1/projects?stage=维保服务&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-83">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+65	        resp = client.get(&quot;/api/v1/projects?stage=维保服务&quot;)
+66	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] == 0
+67	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-84">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+70	        resp = client.get(&quot;/api/v1/projects?pm_name=李四&quot;)
+71	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] &gt;= 1
+72	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-85">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+75	        resp = client.get(f&quot;/api/v1/projects/{data[&#x27;id&#x27;]}&quot;)
+76	        assert resp.status_code == 200
+77	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;详情项目&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-86">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+76	        assert resp.status_code == 200
+77	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;详情项目&quot;
+78	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-87">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+80	        resp = client.get(&quot;/api/v1/projects/99999&quot;)
+81	        assert resp.status_code == 404
+82	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-88">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+87	        })
+88	        assert resp.status_code == 200
+89	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;改名项目&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-89">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+88	        assert resp.status_code == 200
+89	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;改名项目&quot;
+90	        assert resp.json()[&quot;data&quot;][&quot;progress&quot;] == 50
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-90">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+89	        assert resp.json()[&quot;data&quot;][&quot;project_name&quot;] == &quot;改名项目&quot;
+90	        assert resp.json()[&quot;data&quot;][&quot;progress&quot;] == 50
+91	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-91">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+94	        del_resp = client.delete(f&quot;/api/v1/projects/{data[&#x27;id&#x27;]}&quot;)
+95	        assert del_resp.status_code == 200
+96	        get_resp = client.get(f&quot;/api/v1/projects/{data[&#x27;id&#x27;]}&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-92">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+96	        get_resp = client.get(f&quot;/api/v1/projects/{data[&#x27;id&#x27;]}&quot;)
+97	        assert get_resp.status_code == 404
+98	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-93">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+117	            )
+118	            assert resp.status_code == 200, f&quot;推进到 {stage}: {resp.text}&quot;
+119	            assert resp.json()[&quot;data&quot;][&quot;stage&quot;] == stage
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-94">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+118	            assert resp.status_code == 200, f&quot;推进到 {stage}: {resp.text}&quot;
+119	            assert resp.json()[&quot;data&quot;][&quot;stage&quot;] == stage
+120	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-95">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+130	        resp = client.put(f&quot;/api/v1/projects/{pid}/stage&quot;, json={&quot;new_stage&quot;: &quot;需求分析&quot;})
+131	        assert resp.status_code == 400
+132	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-96">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+137	        resp = client.put(f&quot;/api/v1/projects/{pid}/stage&quot;, json={&quot;new_stage&quot;: &quot;初步接洽&quot;})
+138	        assert resp.status_code == 400
+139	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-97">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+144	        resp = client.put(f&quot;/api/v1/projects/{pid}/stage&quot;, json={&quot;new_stage&quot;: &quot;报价&quot;})
+145	        assert resp.status_code == 200
+146	        assert resp.json()[&quot;data&quot;][&quot;stage&quot;] == &quot;报价&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-98">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+145	        assert resp.status_code == 200
+146	        assert resp.json()[&quot;data&quot;][&quot;stage&quot;] == &quot;报价&quot;
+147	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-99">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+149	        resp = client.put(&quot;/api/v1/projects/99999/stage&quot;, json={&quot;new_stage&quot;: &quot;需求分析&quot;})
+150	        assert resp.status_code == 404
+151	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-100">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+157	        resp = client.get(&quot;/api/v1/projects/kanban&quot;)
+158	        assert resp.status_code == 200
+159	        columns = resp.json()[&quot;data&quot;][&quot;columns&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-101">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+159	        columns = resp.json()[&quot;data&quot;][&quot;columns&quot;]
+160	        assert len(columns) == 12
+161	        assert all(c[&quot;count&quot;] == 0 for c in columns)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-102">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+160	        assert len(columns) == 12
+161	        assert all(c[&quot;count&quot;] == 0 for c in columns)
+162	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-103">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+167	        resp = client.get(&quot;/api/v1/projects/kanban&quot;)
+168	        assert resp.status_code == 200
+169	        columns = resp.json()[&quot;data&quot;][&quot;columns&quot;]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-104">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+170	        first_col = columns[0]
+171	        assert first_col[&quot;stage&quot;] == &quot;初步接洽&quot;
+172	        assert first_col[&quot;count&quot;] == 2
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-105">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+171	        assert first_col[&quot;stage&quot;] == &quot;初步接洽&quot;
+172	        assert first_col[&quot;count&quot;] == 2
+173	        assert len(first_col[&quot;items&quot;]) == 2
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-106">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+172	        assert first_col[&quot;count&quot;] == 2
+173	        assert len(first_col[&quot;items&quot;]) == 2
+174	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-107">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+186	        # 第一列: 初步接洽
+187	        assert columns[0][&quot;stage&quot;] == &quot;初步接洽&quot;
+188	        assert columns[0][&quot;count&quot;] == 2  # data + 保持初接
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-108">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+187	        assert columns[0][&quot;stage&quot;] == &quot;初步接洽&quot;
+188	        assert columns[0][&quot;count&quot;] == 2  # data + 保持初接
+189	
+190	        # 第二列: 需求分析
+191	        assert columns[1][&quot;stage&quot;] == &quot;需求分析&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-109">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+190	        # 第二列: 需求分析
+191	        assert columns[1][&quot;stage&quot;] == &quot;需求分析&quot;
+192	        assert columns[1][&quot;count&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-110">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\app\tests\test_projects.py" target="_blank">backend/backend\app\tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+191	        assert columns[1][&quot;stage&quot;] == &quot;需求分析&quot;
+192	        assert columns[1][&quot;count&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-111">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+20	        response = client.post(&quot;/api/v1/customers/&quot;, json=payload)
+21	        assert response.status_code == 201
+22	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-112">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+22	        body = response.json()
+23	        assert body[&quot;code&quot;] == 200
+24	        assert body[&quot;message&quot;] == &quot;客户创建成功&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-113">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+23	        assert body[&quot;code&quot;] == 200
+24	        assert body[&quot;message&quot;] == &quot;客户创建成功&quot;
+25	        assert body[&quot;data&quot;][&quot;id&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-114">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+24	        assert body[&quot;message&quot;] == &quot;客户创建成功&quot;
+25	        assert body[&quot;data&quot;][&quot;id&quot;] == 1
+26	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;测试客户&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-115">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+25	        assert body[&quot;data&quot;][&quot;id&quot;] == 1
+26	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;测试客户&quot;
+27	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;A&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-116">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+26	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;测试客户&quot;
+27	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;A&quot;
+28	        assert body[&quot;data&quot;][&quot;status&quot;] == &quot;active&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-117">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+27	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;A&quot;
+28	        assert body[&quot;data&quot;][&quot;status&quot;] == &quot;active&quot;
+29	        assert body[&quot;data&quot;][&quot;created_at&quot;] is not None
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-118">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+28	        assert body[&quot;data&quot;][&quot;status&quot;] == &quot;active&quot;
+29	        assert body[&quot;data&quot;][&quot;created_at&quot;] is not None
+30	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-119">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+34	        response = client.post(&quot;/api/v1/customers/&quot;, json=payload)
+35	        assert response.status_code == 201
+36	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-120">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+36	        body = response.json()
+37	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;最低字段客户&quot;
+38	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;C&quot;  # default
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-121">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+37	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;最低字段客户&quot;
+38	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;C&quot;  # default
+39	        assert body[&quot;data&quot;][&quot;status&quot;] == &quot;active&quot;  # default
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-122">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+38	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;C&quot;  # default
+39	        assert body[&quot;data&quot;][&quot;status&quot;] == &quot;active&quot;  # default
+40	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-123">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+44	        response = client.post(&quot;/api/v1/customers/&quot;, json=payload)
+45	        assert response.status_code == 422
+46	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-124">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+50	        response = client.post(&quot;/api/v1/customers/&quot;, json=payload)
+51	        assert response.status_code == 422
+52	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-125">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+56	        response = client.post(&quot;/api/v1/customers/&quot;, json=payload)
+57	        assert response.status_code == 422
+58	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-126">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+62	        response = client.post(&quot;/api/v1/customers/&quot;, json=payload)
+63	        assert response.status_code == 422
+64	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-127">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+68	        response = client.post(&quot;/api/v1/customers/&quot;, json=payload)
+69	        assert response.status_code == 422
+70	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-128">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+87	        response = client.get(&quot;/api/v1/customers/&quot;)
+88	        assert response.status_code == 200
+89	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-129">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+89	        body = response.json()
+90	        assert body[&quot;code&quot;] == 200
+91	        assert body[&quot;data&quot;][&quot;total&quot;] == 10
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-130">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+90	        assert body[&quot;code&quot;] == 200
+91	        assert body[&quot;data&quot;][&quot;total&quot;] == 10
+92	        assert body[&quot;data&quot;][&quot;page&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-131">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+91	        assert body[&quot;data&quot;][&quot;total&quot;] == 10
+92	        assert body[&quot;data&quot;][&quot;page&quot;] == 1
+93	        assert body[&quot;data&quot;][&quot;page_size&quot;] == 20
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-132">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+92	        assert body[&quot;data&quot;][&quot;page&quot;] == 1
+93	        assert body[&quot;data&quot;][&quot;page_size&quot;] == 20
+94	        assert len(body[&quot;data&quot;][&quot;items&quot;]) == 10
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-133">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+93	        assert body[&quot;data&quot;][&quot;page_size&quot;] == 20
+94	        assert len(body[&quot;data&quot;][&quot;items&quot;]) == 10
+95	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-134">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+99	        body = response.json()
+100	        assert body[&quot;data&quot;][&quot;total&quot;] == 10
+101	        assert len(body[&quot;data&quot;][&quot;items&quot;]) == 3
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-135">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+100	        assert body[&quot;data&quot;][&quot;total&quot;] == 10
+101	        assert len(body[&quot;data&quot;][&quot;items&quot;]) == 3
+102	        assert body[&quot;data&quot;][&quot;page&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-136">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+101	        assert len(body[&quot;data&quot;][&quot;items&quot;]) == 3
+102	        assert body[&quot;data&quot;][&quot;page&quot;] == 1
+103	        assert body[&quot;data&quot;][&quot;page_size&quot;] == 3
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-137">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+102	        assert body[&quot;data&quot;][&quot;page&quot;] == 1
+103	        assert body[&quot;data&quot;][&quot;page_size&quot;] == 3
+104	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-138">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+108	        body = response.json()
+109	        assert len(body[&quot;data&quot;][&quot;items&quot;]) == 3
+110	        # items should be different from page 1
+111	        response_p1 = client.get(&quot;/api/v1/customers/?page=1&amp;page_size=3&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-139">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+113	        p2_names = {c[&quot;name&quot;] for c in body[&quot;data&quot;][&quot;items&quot;]}
+114	        assert p1_names.isdisjoint(p2_names)
+115	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-140">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+119	        body = response.json()
+120	        assert body[&quot;data&quot;][&quot;total&quot;] == 1
+121	        assert body[&quot;data&quot;][&quot;items&quot;][0][&quot;name&quot;] == &quot;客户01&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-141">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+120	        assert body[&quot;data&quot;][&quot;total&quot;] == 1
+121	        assert body[&quot;data&quot;][&quot;items&quot;][0][&quot;name&quot;] == &quot;客户01&quot;
+122	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-142">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+126	        body = response.json()
+127	        assert all(c[&quot;level&quot;] == &quot;A&quot; for c in body[&quot;data&quot;][&quot;items&quot;])
+128	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-143">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+133	        names = [c[&quot;name&quot;] for c in body[&quot;data&quot;][&quot;items&quot;]]
+134	        assert names == sorted(names)
+135	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-144">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+139	        body = response.json()
+140	        assert body[&quot;data&quot;][&quot;total&quot;] == 0
+141	        assert body[&quot;data&quot;][&quot;items&quot;] == []
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-145">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+140	        assert body[&quot;data&quot;][&quot;total&quot;] == 0
+141	        assert body[&quot;data&quot;][&quot;items&quot;] == []
+142	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-146">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+157	        response = client.get(&quot;/api/v1/customers/1&quot;)
+158	        assert response.status_code == 200
+159	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-147">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+159	        body = response.json()
+160	        assert body[&quot;data&quot;][&quot;id&quot;] == 1
+161	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;唯一客户&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-148">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+160	        assert body[&quot;data&quot;][&quot;id&quot;] == 1
+161	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;唯一客户&quot;
+162	        assert body[&quot;data&quot;][&quot;email&quot;] == &quot;unique@example.com&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-149">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+161	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;唯一客户&quot;
+162	        assert body[&quot;data&quot;][&quot;email&quot;] == &quot;unique@example.com&quot;
+163	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-150">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+166	        response = client.get(&quot;/api/v1/customers/999&quot;)
+167	        assert response.status_code == 200  # our error handler returns 200 with code 404
+168	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-151">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+168	        body = response.json()
+169	        assert body[&quot;code&quot;] == 404
+170	        assert body[&quot;data&quot;] is None
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-152">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+169	        assert body[&quot;code&quot;] == 404
+170	        assert body[&quot;data&quot;] is None
+171	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-153">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+187	        response = client.put(&quot;/api/v1/customers/1&quot;, json=payload)
+188	        assert response.status_code == 200
+189	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-154">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+189	        body = response.json()
+190	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;已更新客户&quot;
+191	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;A&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-155">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+190	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;已更新客户&quot;
+191	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;A&quot;
+192	        assert body[&quot;message&quot;] == &quot;客户更新成功&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-156">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+191	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;A&quot;
+192	        assert body[&quot;message&quot;] == &quot;客户更新成功&quot;
+193	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-157">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+197	        body = response.json()
+198	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;B&quot;
+199	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;原始客户&quot;  # unchanged
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-158">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+198	        assert body[&quot;data&quot;][&quot;level&quot;] == &quot;B&quot;
+199	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;原始客户&quot;  # unchanged
+200	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-159">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+204	        body = response.json()
+205	        assert body[&quot;code&quot;] == 404
+206	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-160">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+209	        response = client.put(&quot;/api/v1/customers/1&quot;, json={})
+210	        assert response.status_code == 200
+211	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-161">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+211	        body = response.json()
+212	        assert body[&quot;data&quot;][&quot;name&quot;] == &quot;原始客户&quot;
+213	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-162">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+228	        response = client.delete(&quot;/api/v1/customers/1&quot;)
+229	        assert response.status_code == 200
+230	        body = response.json()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-163">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+230	        body = response.json()
+231	        assert body[&quot;code&quot;] == 200
+232	        assert body[&quot;message&quot;] == &quot;客户删除成功&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-164">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+231	        assert body[&quot;code&quot;] == 200
+232	        assert body[&quot;message&quot;] == &quot;客户删除成功&quot;
+233	
+234	        # Confirm it is no longer listed
+235	        list_resp = client.get(&quot;/api/v1/customers/&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-165">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+235	        list_resp = client.get(&quot;/api/v1/customers/&quot;)
+236	        assert list_resp.json()[&quot;data&quot;][&quot;total&quot;] == 0
+237	
+238	        # Confirm it returns 404 when fetched directly
+239	        get_resp = client.get(&quot;/api/v1/customers/1&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-166">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+239	        get_resp = client.get(&quot;/api/v1/customers/1&quot;)
+240	        assert get_resp.json()[&quot;code&quot;] == 404
+241	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-167">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+246	        body = response.json()
+247	        assert body[&quot;code&quot;] == 404
+248	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-168">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/backend\tests\test_customers.py" target="_blank">backend/backend\tests\test_customers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+252	        body = response.json()
+253	        assert body[&quot;code&quot;] == 404
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-169">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+8	        db.commit()
+9	        assert b.id is not None
+10	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-170">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+14	            b.bid_status = 99
+15	            assert False
+16	        except ValueError:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-171">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+22	        db.commit()
+23	        assert b.can_transition_to(2) is True
+24	        assert b.can_transition_to(5) is False
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-172">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+23	        assert b.can_transition_to(2) is True
+24	        assert b.can_transition_to(5) is False
+25	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-173">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+30	        result = db.query(Bidding).filter(Bidding.deleted_at.is_(None)).first()
+31	        assert result is None
+32	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-174">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+35	        resp = client.post(&quot;/api/v1/bidding/&quot;, json={&quot;title&quot;: &quot;测试投标&quot;, &quot;bid_status&quot;: 1, &quot;client_company&quot;: &quot;测试公司&quot;})
+36	        assert resp.status_code == 200
+37	        assert resp.json()[&quot;data&quot;][&quot;title&quot;] == &quot;测试投标&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-175">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+36	        assert resp.status_code == 200
+37	        assert resp.json()[&quot;data&quot;][&quot;title&quot;] == &quot;测试投标&quot;
+38	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-176">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+40	        resp = client.post(&quot;/api/v1/bidding/&quot;, json={&quot;title&quot;: &quot;test&quot;, &quot;bid_status&quot;: 99})
+41	        assert resp.status_code == 422
+42	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-177">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+44	        resp = client.get(&quot;/api/v1/bidding/&quot;)
+45	        assert resp.json()[&quot;data&quot;][&quot;items&quot;] == []
+46	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-178">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+51	        data = resp.json()
+52	        assert data[&quot;data&quot;][&quot;total&quot;] == 5
+53	        assert len(data[&quot;data&quot;][&quot;items&quot;]) == 3
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-179">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+52	        assert data[&quot;data&quot;][&quot;total&quot;] == 5
+53	        assert len(data[&quot;data&quot;][&quot;items&quot;]) == 3
+54	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-180">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+58	        resp = client.get(&quot;/api/v1/bidding/?bid_status=5&quot;)
+59	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] == 1
+60	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-181">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+64	        resp = client.get(&quot;/api/v1/bidding/?search=华为&quot;)
+65	        assert resp.json()[&quot;data&quot;][&quot;total&quot;] == 1
+66	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-182">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+70	        resp = client.get(f&quot;/api/v1/bidding/{bid_id}&quot;)
+71	        assert resp.json()[&quot;data&quot;][&quot;title&quot;] == &quot;详情测试&quot;
+72	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-183">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+74	        resp = client.get(&quot;/api/v1/bidding/99999&quot;)
+75	        assert resp.status_code == 404
+76	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-184">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+80	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;title&quot;: &quot;更新后&quot;})
+81	        assert resp.json()[&quot;data&quot;][&quot;title&quot;] == &quot;更新后&quot;
+82	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-185">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+86	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;bid_status&quot;: 2})
+87	        assert resp.json()[&quot;data&quot;][&quot;bid_status&quot;] == 2
+88	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-186">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+92	        resp = client.put(f&quot;/api/v1/bidding/{bid_id}&quot;, json={&quot;bid_status&quot;: 5})
+93	        assert resp.status_code == 400
+94	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-187">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_bidding.py" target="_blank">backend/tests\test_bidding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+98	        resp = client.get(&quot;/api/v1/bidding/calendar/upcoming?days=30&quot;)
+99	        assert len(resp.json()[&quot;data&quot;]) &gt;= 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-188">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+8	        db.commit()
+9	        assert org.id is not None
+10	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-189">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+17	        db.commit()
+18	        assert child.parent_id == parent.id
+19	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-190">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+23	            org.org_type = &quot;invalid&quot;
+24	            assert False
+25	        except ValueError:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-191">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+32	        result = db.query(Organization).filter(Organization.deleted_at.is_(None)).first()
+33	        assert result is None
+34	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-192">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+37	        resp = client.post(&quot;/api/v1/organizations/&quot;, json={&quot;name&quot;: &quot;总公司&quot;, &quot;org_type&quot;: &quot;company&quot;})
+38	        assert resp.json()[&quot;data&quot;][&quot;org_type&quot;] == &quot;company&quot;
+39	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-193">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+43	        resp = client.post(&quot;/api/v1/organizations/&quot;, json={&quot;name&quot;: &quot;研发部&quot;, &quot;org_type&quot;: &quot;dept&quot;, &quot;parent_id&quot;: pid})
+44	        assert resp.json()[&quot;data&quot;][&quot;parent_id&quot;] == pid
+45	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-194">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+47	        resp = client.post(&quot;/api/v1/organizations/&quot;, json={&quot;name&quot;: &quot;test&quot;, &quot;org_type&quot;: &quot;invalid&quot;})
+48	        assert resp.status_code == 422
+49	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-195">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+51	        resp = client.post(&quot;/api/v1/organizations/&quot;, json={&quot;name&quot;: &quot;孤立部门&quot;, &quot;parent_id&quot;: 99999})
+52	        assert resp.status_code == 400
+53	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-196">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+59	        data = client.get(&quot;/api/v1/organizations/tree&quot;).json()[&quot;data&quot;]
+60	        assert len(data) == 1
+61	        assert len(data[0][&quot;children&quot;]) == 2
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-197">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+60	        assert len(data) == 1
+61	        assert len(data[0][&quot;children&quot;]) == 2
+62	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-198">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+66	        resp = client.put(f&quot;/api/v1/organizations/{oid}&quot;, json={&quot;name&quot;: &quot;新名称&quot;})
+67	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;新名称&quot;
+68	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-199">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+72	        resp = client.delete(f&quot;/api/v1/organizations/{oid}&quot;)
+73	        assert resp.json()[&quot;message&quot;] == &quot;删除成功&quot;
+74	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-200">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_organizations.py" target="_blank">backend/tests\test_organizations.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+79	        resp = client.delete(f&quot;/api/v1/organizations/{pid}&quot;)
+80	        assert resp.status_code == 400
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-201">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+7	        db.commit()
+8	        assert p.id is not None
+9	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-202">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+13	            p.stage = 99
+14	            assert False
+15	        except ValueError:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-203">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+21	        db.commit()
+22	        assert p.can_transition_to(2) is True
+23	        assert p.can_transition_to(7) is False
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-204">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+22	        assert p.can_transition_to(2) is True
+23	        assert p.can_transition_to(7) is False
+24	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-205">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+27	        resp = client.post(&quot;/api/v1/projects/&quot;, json={&quot;name&quot;: &quot;新项目&quot;, &quot;stage&quot;: 1})
+28	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;新项目&quot;
+29	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-206">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+32	        client.post(&quot;/api/v1/projects/&quot;, json={&quot;name&quot;: &quot;项目B&quot;})
+33	        assert client.get(&quot;/api/v1/projects/&quot;).json()[&quot;data&quot;][&quot;total&quot;] == 2
+34	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-207">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+37	        pid = r.json()[&quot;data&quot;][&quot;id&quot;]
+38	        assert client.get(f&quot;/api/v1/projects/{pid}&quot;).json()[&quot;data&quot;][&quot;name&quot;] == &quot;详情&quot;
+39	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-208">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+43	        resp = client.put(f&quot;/api/v1/projects/{pid}&quot;, json={&quot;name&quot;: &quot;新名称&quot;})
+44	        assert resp.json()[&quot;data&quot;][&quot;name&quot;] == &quot;新名称&quot;
+45	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-209">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+49	        resp = client.put(f&quot;/api/v1/projects/{pid}/stage&quot;, json={&quot;stage&quot;: 2})
+50	        assert resp.json()[&quot;data&quot;][&quot;stage&quot;] == 2
+51	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-210">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+55	        resp = client.put(f&quot;/api/v1/projects/{pid}/stage&quot;, json={&quot;stage&quot;: 7})
+56	        assert resp.status_code == 400
+57	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-211">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+61	        data = client.get(&quot;/api/v1/projects/board/kanban&quot;).json()[&quot;data&quot;]
+62	        assert len(data) == 12
+63	        assert [d for d in data if d[&quot;stage&quot;] == 1][0][&quot;count&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-212">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+62	        assert len(data) == 12
+63	        assert [d for d in data if d[&quot;stage&quot;] == 1][0][&quot;count&quot;] == 1
+64	        assert [d for d in data if d[&quot;stage&quot;] == 7][0][&quot;count&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-213">
+<div class="issue-block issue-sev-low">
+    <b>assert_used: </b> Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.<br>
+    <b>Test ID:</b> B101<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="backend/tests\test_projects.py" target="_blank">backend/tests\test_projects.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html</a><br>
+
+<div class="code">
+<pre>
+63	        assert [d for d in data if d[&quot;stage&quot;] == 1][0][&quot;count&quot;] == 1
+64	        assert [d for d in data if d[&quot;stage&quot;] == 7][0][&quot;count&quot;] == 1
+</pre>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

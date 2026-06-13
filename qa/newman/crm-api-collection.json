@@ -1,0 +1,34 @@
+{
+  "info": { "name": "AI-CRM API 测试集", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "variable": [{ "key": "base_url", "value": "http://localhost:8000" }],
+  "item": [
+    {
+      "name": "客户管理",
+      "item": [
+        { "name": "创建客户", "event": [{ "listen": "test", "script": { "exec": ["pm.test('201 Created', () => pm.response.to.have.status(201));", "pm.test('返回code=200', () => { const json = pm.response.json(); pm.expect(json.code).to.eql(200); });"] } }], "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\":\"测试客户\",\"phone\":\"13800138000\",\"company\":\"测试公司\",\"level\":\"B\"}" }, "url": { "raw": "{{base_url}}/api/v1/customers/", "host": ["{{base_url}}"], "path": ["api", "v1", "customers", ""] } } },
+        { "name": "客户列表", "event": [{ "listen": "test", "script": { "exec": ["pm.test('200 OK', () => pm.response.to.have.status(200));", "pm.test('包含分页字段', () => { const json = pm.response.json(); pm.expect(json.data).to.have.property('items'); pm.expect(json.data).to.have.property('total'); });"] } }], "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/v1/customers/?page=1&page_size=20", "host": ["{{base_url}}"], "path": ["api", "v1", "customers", ""], "query": [{ "key": "page", "value": "1" }, { "key": "page_size", "value": "20" }] } } },
+        { "name": "客户详情", "event": [{ "listen": "test", "script": { "exec": ["pm.test('200 OK or 404', () => pm.expect(pm.response.code).to.be.oneOf([200, 404]));"] } }], "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/v1/customers/1", "host": ["{{base_url}}"], "path": ["api", "v1", "customers", "1"] } } }
+      ]
+    },
+    {
+      "name": "招投标管理",
+      "item": [
+        { "name": "投标列表", "event": [{ "listen": "test", "script": { "exec": ["pm.test('200 OK', () => pm.response.to.have.status(200));"] } }], "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/v1/bidding/?page=1&page_size=20", "host": ["{{base_url}}"], "path": ["api", "v1", "bidding", ""] } } },
+        { "name": "投标日历", "event": [{ "listen": "test", "script": { "exec": ["pm.test('200 OK', () => pm.response.to.have.status(200));"] } }], "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/v1/bidding/calendar", "host": ["{{base_url}}"], "path": ["api", "v1", "bidding", "calendar"] } } }
+      ]
+    },
+    {
+      "name": "项目管理",
+      "item": [
+        { "name": "项目列表", "event": [{ "listen": "test", "script": { "exec": ["pm.test('200 OK', () => pm.response.to.have.status(200));"] } }], "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/v1/projects/?page=1&page_size=20", "host": ["{{base_url}}"], "path": ["api", "v1", "projects", ""] } } },
+        { "name": "项目看板", "event": [{ "listen": "test", "script": { "exec": ["pm.test('200 OK', () => pm.response.to.have.status(200));"] } }], "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/v1/projects/kanban", "host": ["{{base_url}}"], "path": ["api", "v1", "projects", "kanban"] } } }
+      ]
+    },
+    {
+      "name": "组织层级",
+      "item": [
+        { "name": "组织树", "event": [{ "listen": "test", "script": { "exec": ["pm.test('200 OK', () => pm.response.to.have.status(200));"] } }], "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/v1/organizations/tree", "host": ["{{base_url}}"], "path": ["api", "v1", "organizations", "tree"] } } }
+      ]
+    }
+  ]
+}

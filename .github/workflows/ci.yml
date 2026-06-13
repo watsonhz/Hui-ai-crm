@@ -1,0 +1,111 @@
+# AI-CRM CI/CD Pipeline (Gitea / GitHub Actions)
+# Triggered on push to feat/*, fix/* branches + PR to develop/main
+
+name: AI-CRM CI
+
+on:
+  push:
+    branches: [feat/**, fix/**, test/**, refactor/**, chore/**]
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  # ============================================================
+  # Backend: Lint + Test + Coverage
+  # ============================================================
+  backend-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: ai_crm_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports: [5432:5432]
+      redis:
+        image: redis:7
+        ports: [6379:6379]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements.txt
+          pip install -r backend/requirements-test.txt
+
+      - name: Run pytest with coverage
+        run: |
+          pytest tests/api/test_bidding.py tests/api/test_projects.py \
+            tests/api/test_organizations.py tests/api/test_decision_chain.py \
+            tests/api/test_diagnosis.py tests/api/test_diagnosis_engine.py \
+            tests/api/test_ai_reports.py tests/api/test_knowledge.py \
+            tests/api/test_ai_service.py tests/api/test_workflow.py \
+            tests/api/test_ai_sales.py tests/api/test_ai_marketing.py \
+            tests/api/test_system_rbac.py tests/unit/ tests/security/ \
+            --cov=backend/app --cov-report=xml:tests/reports/coverage.xml \
+            --cov-report=html:tests/reports/coverage -v --tb=short
+
+      - name: Security scan (Bandit)
+        run: bandit -r backend/ -f txt -o security/scan-results/bandit-ci.txt
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: tests/reports/coverage/
+
+  # ============================================================
+  # Frontend: Lint + E2E
+  # ============================================================
+  frontend-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: |
+          cd frontend && npm install
+          npm install -g @playwright/test
+          npx playwright install chromium
+
+      - name: Run E2E tests
+        run: npx playwright test --project=chromium --reporter=html
+
+      - name: Upload E2E report
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-report
+          path: tests/reports/playwright-report/
+
+  # ============================================================
+  # Performance baseline (on PR to develop only)
+  # ============================================================
+  perf-baseline:
+    if: github.event_name == 'pull_request' && github.base_ref == 'develop'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r backend/requirements.txt -r backend/requirements-test.txt
+      - run: |
+          locust -f tests/performance/locustfile.py --host=http://localhost:8000 \
+            --headless -u 50 -r 5 -t 60s \
+            --html=tests/reports/performance-baseline.html || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: perf-report
+          path: tests/reports/performance-baseline.html
