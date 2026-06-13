@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, String, Numeric, SmallInteger, Text, DateTime
+from sqlalchemy import Column, BigInteger, String, Numeric, SmallInteger, Text, DateTime, Integer
 from sqlalchemy.orm import validates
 from app.core.database import Base
 
@@ -15,7 +15,7 @@ VALID_BID_TRANSITIONS = {
 
 class Bidding(Base):
     __tablename__ = "bidding"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(200), nullable=False)
     project_name = Column(String(200))
     bid_amount = Column(Numeric(15, 2))
