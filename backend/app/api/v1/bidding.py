@@ -1,8 +1,10 @@
 from datetime import datetime, timezone, timedelta
 from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import desc, asc
+
 from app.core.database import get_db
 from app.models.bidding import Bidding, BID_STATUS_MAP
 from app.schemas.bidding import BiddingCreate, BiddingUpdate, BiddingResponse
@@ -47,7 +49,9 @@ def list_bidding(
 
 @router.get("/{bidding_id}", response_model=APIResponse[BiddingResponse])
 def get_bidding(bidding_id: int, db: Session = Depends(get_db)):
-    bidding = db.query(Bidding).filter(Bidding.id == bidding_id, Bidding.deleted_at.is_(None)).first()
+    bidding = db.query(Bidding).filter(
+        Bidding.id == bidding_id, Bidding.deleted_at.is_(None)
+    ).first()
     if not bidding:
         raise HTTPException(status_code=404, detail="投标记录不存在")
     return APIResponse.success(data=BiddingResponse.model_validate(bidding))
@@ -55,12 +59,18 @@ def get_bidding(bidding_id: int, db: Session = Depends(get_db)):
 
 @router.put("/{bidding_id}", response_model=APIResponse[BiddingResponse])
 def update_bidding(bidding_id: int, body: BiddingUpdate, db: Session = Depends(get_db)):
-    bidding = db.query(Bidding).filter(Bidding.id == bidding_id, Bidding.deleted_at.is_(None)).first()
+    bidding = db.query(Bidding).filter(
+        Bidding.id == bidding_id, Bidding.deleted_at.is_(None)
+    ).first()
     if not bidding:
         raise HTTPException(status_code=404, detail="投标记录不存在")
     if body.bid_status is not None and body.bid_status != bidding.bid_status:
         if not bidding.can_transition_to(body.bid_status):
-            raise HTTPException(status_code=400, detail=f"不允许从状态 {bidding.bid_status}({BID_STATUS_MAP.get(bidding.bid_status)}) 转换到 {body.bid_status}({BID_STATUS_MAP.get(body.bid_status)})")
+            raise HTTPException(
+                status_code=400,
+                detail=f"不允许从状态 {bidding.bid_status}({BID_STATUS_MAP.get(bidding.bid_status)}) "
+                       f"转换到 {body.bid_status}({BID_STATUS_MAP.get(body.bid_status)})",
+            )
     for k, v in body.model_dump(exclude_unset=True).items():
         setattr(bidding, k, v)
     bidding.updated_at = datetime.now(timezone.utc)
@@ -75,7 +85,14 @@ def calendar_upcoming(days: int = Query(default=30, ge=1, le=365), db: Session =
     limit = now + timedelta(days=days)
     items = (
         db.query(Bidding)
-        .filter(Bidding.deleted_at.is_(None), Bidding.bid_deadline.isnot(None), Bidding.bid_deadline >= now, Bidding.bid_deadline <= limit)
-        .order_by(asc(Bidding.bid_deadline)).limit(100).all()
+        .filter(
+            Bidding.deleted_at.is_(None),
+            Bidding.bid_deadline.isnot(None),
+            Bidding.bid_deadline >= now,
+            Bidding.bid_deadline <= limit,
+        )
+        .order_by(asc(Bidding.bid_deadline))
+        .limit(100)
+        .all()
     )
     return APIResponse.success(data=[BiddingResponse.model_validate(i) for i in items])
