@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from app.models.organization import Organization
 
+
 class TestOrganizationModel:
     def test_create(self, db):
         org = Organization(name="技术部", org_type="dept")
@@ -31,6 +32,7 @@ class TestOrganizationModel:
         db.commit()
         result = db.query(Organization).filter(Organization.deleted_at.is_(None)).first()
         assert result is None
+
 
 class TestOrganizationsAPI:
     def test_create_company(self, client):
