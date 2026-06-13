@@ -1,5 +1,6 @@
 from app.models.project import Project
 
+
 class TestProjectModel:
     def test_create(self, db):
         p = Project(name="测试项目", stage=1)
@@ -21,6 +22,7 @@ class TestProjectModel:
         db.commit()
         assert p.can_transition_to(2) is True
         assert p.can_transition_to(7) is False
+
 
 class TestProjectsAPI:
     def test_create(self, client):
