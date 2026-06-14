@@ -16,6 +16,11 @@ export default function MainLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout } = useAuthStore();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
   const { token: { colorBgContainer, borderRadiusLG } } = theme.useToken();
 
   const menuItems = [
@@ -42,7 +47,7 @@ export default function MainLayout() {
       <Layout>
         <Header style={{ padding: '0 24px', background: colorBgContainer, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Button type="text" icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} onClick={() => setCollapsed(!collapsed)} />
-          <Dropdown menu={{ items: [{ key: 'logout', icon: <LogoutOutlined />, label: '退出登录', onClick: logout }] }}>
+          <Dropdown menu={{ items: [{ key: 'logout', icon: <LogoutOutlined />, label: '退出登录' }], onClick: ({ key }) => { if (key === 'logout') handleLogout(); }}}>
             <Button type="text" icon={<UserOutlined />}>{user?.full_name || user?.username || '未登录'}</Button>
           </Dropdown>
         </Header>

@@ -26,7 +26,6 @@ export const useAuthStore = create<AuthState>((set) => ({
   logout: () => {
     localStorage.removeItem('token');
     set({ token: null, user: null });
-    window.location.href = '/login';
   },
   fetchMe: async () => {
     try {
