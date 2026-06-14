@@ -1,9 +1,14 @@
+import os
 import paramiko, sys
 sys.stdout.reconfigure(encoding='utf-8')
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-client.connect('106.55.106.85', username='root', password='Admin@90088*', timeout=15)
+host = os.environ.get('DEPLOY_HOST', 'localhost')
+user = os.environ.get('DEPLOY_USER', 'root')
+pwd = os.environ.get('DEPLOY_PASSWORD', '')
+if not pwd: raise RuntimeError('Set DEPLOY_PASSWORD env var')
+client.connect(host, username=user, password=pwd, timeout=15)
 sftp = client.open_sftp()
 
 # === 1. Global Apple-style CSS ===

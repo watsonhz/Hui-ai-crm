@@ -97,3 +97,5 @@ class BruteForceProtector:
 
 
 brute_force = BruteForceProtector()
+
+# TODO(Sprint7): Redis backend - replace dict with Redis sorted sets for production

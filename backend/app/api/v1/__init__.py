@@ -1,13 +1,18 @@
 from fastapi import APIRouter
-from app.api.v1 import bidding, projects, organizations, auth, customers, knowledge, workflows
-from app.api.v1.ai import router as ai_router
-
 router = APIRouter()
-router.include_router(auth.router, prefix="/auth", tags=["认证"])
-router.include_router(bidding.router, prefix="/bidding", tags=["招投标管理"])
-router.include_router(customers.router, prefix="/customers", tags=["客户管理"])
-router.include_router(projects.router, prefix="/projects", tags=["项目管理"])
-router.include_router(organizations.router, prefix="/organizations", tags=["组织层级"])
-router.include_router(knowledge.router, prefix="/knowledge", tags=["知识库"])
-router.include_router(workflows.router, prefix="/workflows", tags=["BPM工作流"])
-router.include_router(ai_router, prefix="", tags=["AI"])
+
+from app.api.v1.bidding import router as br; router.include_router(br, prefix="/bidding", tags=["Bidding"])
+from app.api.v1.projects import router as pr; router.include_router(pr, prefix="/projects", tags=["Projects"])
+from app.api.v1.organizations import router as or_; router.include_router(or_, prefix="/organizations", tags=["Organizations"])
+from app.api.v1.customers import router as cr; router.include_router(cr, prefix="/customers", tags=["Customers"])
+from app.api.v1.auth import router as ar; router.include_router(ar, prefix="/auth", tags=["Auth"])
+from app.api.v1.ai_diagnosis import router as dr; router.include_router(dr, prefix="/ai/diagnosis", tags=["AI Diagnosis"])
+from app.api.v1.ai_sales import router as asr; router.include_router(asr, prefix="/ai/sales", tags=["AI Sales"])
+from app.api.v1.ai_marketing import router as amr; router.include_router(amr, prefix="/ai/marketing", tags=["AI Marketing"])
+from app.api.v1.ai_service import router as avr; router.include_router(avr, prefix="/ai/service", tags=["AI Service"])
+from app.api.v1.decision_chain import router as dcr; router.include_router(dcr, prefix="/decision-chain", tags=["Decision Chain"])
+from app.api.v1.knowledge import router as kr; router.include_router(kr, prefix="/knowledge", tags=["Knowledge"])
+from app.api.v1.service_tickets import router as str_; router.include_router(str_, prefix="/service/tickets", tags=["Tickets"])
+from app.api.v1.system import router as sr; router.include_router(sr, prefix="/system", tags=["System"])
+from app.api.v1.system_admin import router as sar; router.include_router(sar, prefix="/system/admin", tags=["Admin"])
+from app.api.v1.workflow import router as wr; router.include_router(wr, prefix="/workflow", tags=["Workflow"])

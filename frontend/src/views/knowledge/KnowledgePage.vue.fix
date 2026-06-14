@@ -1,0 +1,117 @@
+--- a/knowledge.vue
++++ b/knowledge.vue
+@@ -248,8 +248,12 @@ function formatViews(views: number): string {
+ 
+ // ---- 简单 Markdown 样式渲染 ----
+ function renderMarkdownPreview(content: string): string {
+-  return content
++  // XSS prevention: escape HTML before markdown rendering
++  const escaped = content
++    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
++    .replace(/"/g, '&quot;').replace(/'/g, '&#39;')
++  return escaped
+ ENDOFFILE
+echo "XSS fix prepared"
+
+# Actually, let me use Python for safe string replacement  
+/c/Users/watson/AppData/Local/Programs/Python/Python312/python.exe -c "
+with open('d:/DevProjects/ai-crm/frontend/src/views/knowledge/KnowledgePage.vue', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# Simple fix: add HTML escaping before markdown regex
+old = '''function renderMarkdownPreview(content: string): string {
+  return content
+    .replace(/^### (.+)$/gm, '<h4>\$1</h4>')'''
+
+new = '''function renderMarkdownPreview(content: string): string {
+  const safe = content.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  return safe
+    .replace(/^### (.+)$/gm, '<h4>\$1</h4>')'''
+
+if old in content:
+    content = content.replace(old, new)
+    with open('d:/DevProjects/ai-crm/frontend/src/views/knowledge/KnowledgePage.vue', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print('KnowledgePage XSS fixed')
+else:
+    print('Pattern not matched - trying alternative')
+    # Find the function and add escape
+    import re
+    marker = 'function renderMarkdownPreview(content: string): string {'
+    idx = content.find(marker)
+    if idx > 0:
+        # Insert safe line after opening brace
+        newline_idx = content.find('\n', content.find('{', idx)) + 1
+        content = content[:newline_idx] + '  const safe = content.replace(/&/g,\"&amp;\").replace(/</g,\"&lt;\").replace(/>/g,\"&gt;\");\n  return safe\n' + content[newline_idx:]
+        # Fix the original 'return content' line
+        content = content.replace('  return safe\n    .replace', '    .replace')
+        with open('d:/DevProjects/ai-crm/frontend/src/views/knowledge/KnowledgePage.vue', 'w', encoding='utf-8') as f:
+            f.write(content)
+        print('KnowledgePage XSS fixed (alt method)')
+" 2>&1
+
+# 2. Register all API routers
+mkdir -p backend/app/api/v1/__pycache__ 2>/dev/null
+cat > backend/app/api/v1/__init__.py << 'EOF'
+from fastapi import APIRouter
+
+router = APIRouter()
+
+# Core business
+from app.api.v1.bidding import router as bidding_router
+from app.api.v1.projects import router as projects_router
+from app.api.v1.organizations import router as orgs_router
+from app.api.v1.customers import router as customers_router
+from app.api.v1.auth import router as auth_router
+
+# AI modules
+from app.api.v1.ai_diagnosis import router as diagnosis_router
+from app.api.v1.ai_sales import router as ai_sales_router
+from app.api.v1.ai_marketing import router as ai_marketing_router
+from app.api.v1.ai_service import router as ai_service_router
+
+# Advanced
+from app.api.v1.decision_chain import router as decision_chain_router
+from app.api.v1.knowledge import router as knowledge_router
+from app.api.v1.service_tickets import router as tickets_router
+from app.api.v1.system import router as system_router
+from app.api.v1.system_admin import router as sysadmin_router
+from app.api.v1.workflow import router as workflow_router
+
+router.include_router(bidding_router, prefix="/bidding", tags=["Bidding"])
+router.include_router(projects_router, prefix="/projects", tags=["Projects"])
+router.include_router(orgs_router, prefix="/organizations", tags=["Organizations"])
+router.include_router(customers_router, prefix="/customers", tags=["Customers"])
+router.include_router(auth_router, prefix="/auth", tags=["Auth"])
+router.include_router(diagnosis_router, prefix="/ai/diagnosis", tags=["AI Diagnosis"])
+router.include_router(ai_sales_router, prefix="/ai/sales", tags=["AI Sales"])
+router.include_router(ai_marketing_router, prefix="/ai/marketing", tags=["AI Marketing"])
+router.include_router(ai_service_router, prefix="/ai/service", tags=["AI Service"])
+router.include_router(decision_chain_router, prefix="/decision-chain", tags=["Decision Chain"])
+router.include_router(knowledge_router, prefix="/knowledge", tags=["Knowledge"])
+router.include_router(tickets_router, prefix="/service/tickets", tags=["Tickets"])
+router.include_router(system_router, prefix="/system", tags=["System"])
+router.include_router(sysadmin_router, prefix="/system/admin", tags=["System Admin"])
+router.include_router(workflow_router, prefix="/workflow", tags=["Workflow"])
+EOF
+echo "API routers registered"
+
+# 3. Rate limiter Redis note
+cat >> backend/app/core/rate_limit.py << 'EOF'
+
+# TODO(Sprint7): Redis-backed storage implementation
+# When APP_ENV=production, use Redis instead of in-memory dicts:
+#   redis_client = redis.from_url(settings.REDIS_URL)
+# Replace _requests dict with Redis sorted sets for sliding window
+EOF
+echo "Rate limiter note added"
+
+# 4. Fix apple-style.py credentials
+sed -i "s/password='Admin@90088\*'/password=os.environ.get('DEPLOY_PASSWORD', '')/" scripts/apple-style.py 2>/dev/null
+sed -i "s/username='root'/username=os.environ.get('DEPLOY_USER', 'root')/" scripts/apple-style.py 2>/dev/null
+sed -i "s/'106.55.106.85'/os.environ.get('DEPLOY_HOST', '')/" scripts/apple-style.py 2>/dev/null
+sed -i '1s/^/import os\n/' scripts/apple-style.py 2>/dev/null
+echo "Credentials fixed"
+
+# 5. Commit all
+git add -A && git commit -m "feat: Sprint7 — XSS fix + 15 API routers + Redis note + credentials security" 2>&1 | tail -3

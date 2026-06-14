@@ -249,7 +249,8 @@ function formatViews(views: number): string {
 
 // ---- 简单 Markdown 样式渲染 ----
 function renderMarkdownPreview(content: string): string {
-  return content
+  const safe = content.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  return safe
     .replace(/^### (.+)$/gm, '<h4>$1</h4>')
     .replace(/^## (.+)$/gm, '<h3>$1</h3>')
     .replace(/^# (.+)$/gm, '<h2>$1</h2>')
