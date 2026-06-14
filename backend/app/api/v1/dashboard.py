@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from datetime import datetime, timezone, timedelta
 from app.core.database import get_db
+from app.core.security import get_current_user, CurrentUser
 from app.models.bidding import Bidding
 from app.models.project import Project
 from app.models.organization import Organization
@@ -15,7 +16,7 @@ router = APIRouter()
 
 
 @router.get("/stats", response_model=APIResponse[dict])
-def dashboard_stats(db: Session = Depends(get_db)):
+def dashboard_stats(db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     now = datetime.now(timezone.utc)
     month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
 

@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 from app.core.database import get_db
+from app.core.security import get_current_user, CurrentUser
 from app.models.service_ticket import ServiceTicket
 from app.services.sla_engine import calculate_sla, check_overdue
 from app.schemas.response import APIResponse, PaginatedData
@@ -27,7 +28,7 @@ class TicketUpdate(BaseModel):
 
 
 @router.post("/", response_model=APIResponse[dict])
-def create_ticket(body: TicketCreate, db: Session = Depends(get_db)):
+def create_ticket(body: TicketCreate, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     sla = calculate_sla(body.customer_level)
     t = ServiceTicket(**body.model_dump(), **sla)
     db.add(t)
@@ -55,7 +56,7 @@ def list_tickets(
 
 
 @router.put("/{ticket_id}", response_model=APIResponse[dict])
-def update_ticket(ticket_id: int, body: TicketUpdate, db: Session = Depends(get_db)):
+def update_ticket(ticket_id: int, body: TicketUpdate, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     t = db.query(ServiceTicket).filter(ServiceTicket.id == ticket_id).first()
     if not t:
         raise HTTPException(404, "工单不存在")

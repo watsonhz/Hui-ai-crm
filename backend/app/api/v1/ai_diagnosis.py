@@ -3,6 +3,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 from app.core.database import get_db
+from app.core.security import get_current_user, CurrentUser
 from app.schemas.response import APIResponse
 from app.services.diagnosis_engine import run_full_diagnosis
 from app.services.report_generator import daily_report, weekly_report, monthly_report, regenerate_report
@@ -27,7 +28,7 @@ class ReportRegenRequest(BaseModel):
 
 
 @router.post("/diagnosis", response_model=APIResponse[list[dict]])
-def run_diagnosis(body: DiagnosisRequest, db: Session = Depends(get_db)):
+def run_diagnosis(body: DiagnosisRequest, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     results = run_full_diagnosis(
         db=db,
         customer_id=body.customer_id,
@@ -43,25 +44,25 @@ def run_diagnosis(body: DiagnosisRequest, db: Session = Depends(get_db)):
 
 
 @router.post("/reports/daily", response_model=APIResponse[dict])
-def generate_daily(db: Session = Depends(get_db)):
+def generate_daily(db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     report = daily_report(db)
     return APIResponse.success(data={"id": report.id, "title": report.title, "content": report.content})
 
 
 @router.post("/reports/weekly", response_model=APIResponse[dict])
-def generate_weekly(db: Session = Depends(get_db)):
+def generate_weekly(db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     report = weekly_report(db)
     return APIResponse.success(data={"id": report.id, "title": report.title, "content": report.content})
 
 
 @router.post("/reports/monthly", response_model=APIResponse[dict])
-def generate_monthly(db: Session = Depends(get_db)):
+def generate_monthly(db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     report = monthly_report(db)
     return APIResponse.success(data={"id": report.id, "title": report.title, "content": report.content})
 
 
 @router.get("/reports/{report_id}", response_model=APIResponse[dict])
-def get_report(report_id: int, db: Session = Depends(get_db)):
+def get_report(report_id: int, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     report = db.query(AiWorkSummary).filter(AiWorkSummary.id == report_id).first()
     if not report:
         return APIResponse.error(message="报告不存在")
@@ -69,7 +70,7 @@ def get_report(report_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/reports/regenerate", response_model=APIResponse[dict])
-def regenerate(body: ReportRegenRequest, db: Session = Depends(get_db)):
+def regenerate(body: ReportRegenRequest, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     report = regenerate_report(db, body.report_id)
     if not report:
         return APIResponse.error(message="报告不存在")

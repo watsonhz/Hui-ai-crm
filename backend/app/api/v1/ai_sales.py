@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 from typing import Optional
 from app.schemas.response import APIResponse
+from app.core.security import get_current_user, CurrentUser
 
 router = APIRouter()
 
@@ -27,7 +28,7 @@ class ForecastRequest(BaseModel):
 
 
 @router.post("/lead-scoring", response_model=APIResponse[dict])
-def lead_scoring(body: LeadScoreRequest):
+def lead_scoring(body: LeadScoreRequest, user: CurrentUser = Depends(get_current_user)):
     score = 50
     if body.existing_relationship:
         score += 20
@@ -41,7 +42,7 @@ def lead_scoring(body: LeadScoreRequest):
 
 
 @router.post("/churn-prediction", response_model=APIResponse[dict])
-def churn_prediction(body: ChurnRequest):
+def churn_prediction(body: ChurnRequest, user: CurrentUser = Depends(get_current_user)):
     risk = 0
     factors = []
     if body.recent_activity_days > 90:
