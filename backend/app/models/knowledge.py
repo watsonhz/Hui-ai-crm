@@ -1,7 +1,12 @@
 from datetime import datetime
 from sqlalchemy import Column, BigInteger, String, Text, DateTime
-from pgvector.sqlalchemy import Vector
 from app.core.database import Base
+
+try:
+    from pgvector.sqlalchemy import Vector
+    EmbeddingColumn = Vector(1536)
+except ImportError:
+    EmbeddingColumn = Text  # fallback: store embedding as JSON string
 
 class Knowledge(Base):
     __tablename__ = "knowledge"
@@ -11,6 +16,6 @@ class Knowledge(Base):
     category = Column(String(50), nullable=False)
     tags = Column(String(500))
     source = Column(String(200))
-    embedding = Column(Vector(1536))
+    embedding = Column(EmbeddingColumn, nullable=True)
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)

@@ -6,6 +6,10 @@ from app.api.v1 import (
 )
 
 router = APIRouter()
+
+# Core modules (always load)
+from app.api.v1 import auth, bidding, projects, organizations
+router.include_router(auth.router, prefix="/auth", tags=["认证授权"])
 router.include_router(bidding.router, prefix="/bidding", tags=["招投标管理"])
 router.include_router(projects.router, prefix="/projects", tags=["项目管理"])
 router.include_router(organizations.router, prefix="/organizations", tags=["组织层级"])
