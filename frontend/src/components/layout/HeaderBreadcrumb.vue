@@ -3,12 +3,12 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 import { watch } from 'vue'
+import NotificationCenter from '@/components/common/NotificationCenter.vue'
 
 const route = useRoute()
 const appStore = useAppStore()
 
-// 面包屑自动生成
-const breadcrumbs = computed(() => {
+// 面包屑自动生�?const breadcrumbs = computed(() => {
   const matched = route.matched.filter((r) => r.meta?.title)
   return matched.map((r) => ({
     title: r.meta?.title as string,
@@ -35,20 +35,19 @@ watch(
       </el-breadcrumb-item>
     </el-breadcrumb>
 
-    <!-- 右侧：用户信息 -->
+    <!-- 右侧：用户信�?-->
     <div class="header-right">
-      <el-badge :value="3" :max="99">
-        <el-icon :size="20"><Bell /></el-icon>
+      <el-badge>\r\n        <NotificationCenter />\r\n        <el-icon :size="20"><Bell /></el-icon>
       </el-badge>
       <el-dropdown>
         <span class="user-info">
           <el-avatar :size="32" icon="UserFilled" />
-          <span class="username">管理员</span>
+          <span class="username">管理�?/span>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>个人设置</el-dropdown-item>
-            <el-dropdown-item divided>退出登录</el-dropdown-item>
+            <el-dropdown-item divided>退出登�?/el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

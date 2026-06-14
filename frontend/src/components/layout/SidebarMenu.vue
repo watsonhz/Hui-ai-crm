@@ -22,6 +22,7 @@ const menuItems: MenuItem[] = [
   { path: '/contracts', title: '合同管理', icon: 'Tickets' },
   { path: '/acceptance', title: '验收管理', icon: 'Checked' },
   { path: '/ltc', title: 'LTC全链路', icon: 'TrendCharts' },
+  { path: '/export', title: '数据导出', icon: 'Download' },
   { path: '/ai-reports', title: '工作总结', icon: 'EditPen' },
   { path: '/knowledge', title: '知识库管理', icon: 'Collection' },
   { path: '/settings', title: '系统设置', icon: 'Setting' },

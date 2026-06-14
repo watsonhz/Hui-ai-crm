@@ -67,6 +67,12 @@ const routes: RouteRecordRaw[] = [
     meta: { title: 'LTC全链路', icon: 'TrendCharts' },
   },
   {
+    path: '/export',
+    name: 'Export',
+    component: () => import('@/views/export/ExportPage.vue'),
+    meta: { title: '数据导出', icon: 'Download' },
+  },
+  {
     path: '/ai-reports',
     name: 'AIReports',
     component: () => import('@/views/ai-reports/AIReportsPage.vue'),
