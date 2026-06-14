@@ -33,11 +33,13 @@ def get_customers(
     """Return a paginated list of active (non-deleted) customers with optional filters."""
     query = db.query(Customer).filter(Customer.deleted_at.is_(None))
 
-    # Apply filters
+    # Apply filters (escape LIKE wildcards to prevent injection)
     if name:
-        query = query.filter(Customer.name.like(f"%{name}%"))
+        safe = name.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+        query = query.filter(Customer.name.like(f"%{safe}%"))
     if company:
-        query = query.filter(Customer.company.like(f"%{company}%"))
+        safe = company.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+        query = query.filter(Customer.company.like(f"%{safe}%"))
     if status:
         query = query.filter(Customer.status == status)
     if level:

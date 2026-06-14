@@ -1,32 +1,33 @@
-"""Application configuration via Pydantic Settings.
-
-Reads from .env file automatically. Override with environment variables.
-"""
-
+"""Application configuration via Pydantic Settings."""
+import os
 from typing import List
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        extra="ignore",
-    )
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
-    # Database (default: SQLite for dev; override DATABASE_URL for MySQL/PostgreSQL)
     DATABASE_URL: str = "sqlite:///./ai_crm.db"
-
-    # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
+    CORS_ORIGINS: List[str] = []
 
-    # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://192.168.0.169:3000", "http://192.168.0.168:3000"]
+    @property
+    def cors_origins_list(self) -> List[str]:
+        env_val = os.getenv("CORS_ORIGINS", "")
+        if env_val:
+            import json
+            try: return json.loads(env_val)
+            except json.JSONDecodeError: return [o.strip() for o in env_val.split(",")]
+        return self.CORS_ORIGINS or ["http://localhost:5173"]
 
-    # App
+    SECRET_KEY: str = ""
+    @property
+    def secret_key(self) -> str:
+        key = os.getenv("SECRET_KEY") or self.SECRET_KEY
+        if not key:
+            raise RuntimeError("SECRET_KEY 环境变量未设置！请在 .env 文件中配置。")
+        return key
+
     APP_ENV: str = "development"
-    SECRET_KEY: str = "change-me-to-a-random-string"
-
+    DEBUG: bool = False
 
 settings = Settings()
