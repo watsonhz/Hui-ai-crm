@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """Tests for RBAC role-based access control + audit logging."""
 
 import pytest
@@ -66,3 +67,13 @@ class TestRBACAPI:
         """Admin (current auth_header) can access bidding list."""
         r = client.get("/api/v1/bidding/", headers={"Authorization": auth_header})
         assert r.status_code == 200
+=======
+"""Tests for RBAC permissions."""
+from app.core.rbac import ROLE_PERMISSIONS
+
+class TestRBAC:
+    def test_admin_has_all(self): assert len(ROLE_PERMISSIONS["admin"]) > 20
+    def test_readonly_cannot_write(self): assert "customer:create" not in ROLE_PERMISSIONS["readonly"]
+    def test_deny_by_default(self): assert ROLE_PERMISSIONS.get("hacker", set()) == set()
+    def test_user_cannot_manage(self): assert "user:manage" not in ROLE_PERMISSIONS["user"]
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8

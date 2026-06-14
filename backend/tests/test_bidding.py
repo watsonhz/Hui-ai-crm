@@ -8,6 +8,7 @@ from app.models.bidding import Bidding, BID_STATUS_MAP, VALID_BID_TRANSITIONS
 
 # ── Model tests ──────────────────────────────────────────────────────────────
 
+
 class TestBiddingModel:
     def test_create_minimal(self, db):
         b = Bidding(title="测试投标", bid_status=1)
@@ -70,6 +71,7 @@ class TestBiddingModel:
         result = db.query(Bidding).filter(Bidding.deleted_at.is_(None)).first()
         assert result is None
 
+<<<<<<< HEAD
     def test_default_values(self, db):
         b = Bidding(title="defaults")
         db.add(b)
@@ -77,6 +79,14 @@ class TestBiddingModel:
         assert b.bid_status == 1
         assert b.created_at is not None
         assert b.updated_at is not None
+=======
+
+class TestBiddingAPI:
+    def test_create(self, client):
+        resp = client.post("/api/v1/bidding/", json={"title": "测试投标", "bid_status": 1, "client_company": "测试公司"})
+        assert resp.status_code == 200
+        assert resp.json()["data"]["title"] == "测试投标"
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
 
 
 # ── 401 Unauthorized ─────────────────────────────────────────────────────────

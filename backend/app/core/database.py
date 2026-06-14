@@ -1,13 +1,18 @@
+"""Database engine and session management."""
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 from app.core.config import settings
 
+<<<<<<< HEAD
 if not settings.DATABASE_URL:
     raise RuntimeError(
         "DATABASE_URL 未配置。请设置环境变量 DATABASE_URL 或在 .env 文件中配置。\n"
         "开发环境示例: DATABASE_URL=mysql+pymysql://user:pass@localhost:3306/ai_crm"
     )
+=======
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
 
 engine = create_engine(
     settings.DATABASE_URL,

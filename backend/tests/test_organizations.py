@@ -8,6 +8,7 @@ from app.models.organization import Organization, ORG_TYPES
 
 # ── Model tests ──────────────────────────────────────────────────────────────
 
+
 class TestOrganizationModel:
     def test_create(self, db):
         org = Organization(name="技术部", org_type="dept")
@@ -50,6 +51,14 @@ class TestOrganizationModel:
         result = db.query(Organization).filter(Organization.deleted_at.is_(None)).first()
         assert result is None
 
+<<<<<<< HEAD
+=======
+
+class TestOrganizationsAPI:
+    def test_create_company(self, client):
+        resp = client.post("/api/v1/organizations/", json={"name": "总公司", "org_type": "company"})
+        assert resp.json()["data"]["org_type"] == "company"
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
 
 # ── 401 Unauthorized ─────────────────────────────────────────────────────────
 

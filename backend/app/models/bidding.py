@@ -1,5 +1,9 @@
 from datetime import datetime
+<<<<<<< HEAD
 from sqlalchemy import Column, BigInteger, String, Numeric, SmallInteger, Text, DateTime, Integer
+=======
+from sqlalchemy import Column, BigInteger, Integer, String, Numeric, SmallInteger, Text, DateTime
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
 from sqlalchemy.orm import validates
 from app.core.database import Base
 

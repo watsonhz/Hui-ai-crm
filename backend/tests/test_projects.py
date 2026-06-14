@@ -8,6 +8,7 @@ from app.models.project import Project, STAGE_MAP, VALID_STAGE_TRANSITIONS
 
 # ── Model tests ──────────────────────────────────────────────────────────────
 
+
 class TestProjectModel:
     def test_create_minimal(self, db):
         p = Project(name="测试项目", stage=1)
@@ -52,11 +53,19 @@ class TestProjectModel:
         assert p.can_transition_to(12) is True
         assert p.can_transition_to(7) is False
 
+<<<<<<< HEAD
     def test_terminal_stage_no_transitions(self):
         """结项(12)不可再转换."""
         p = Project(name="test", stage=12)
         for stage in STAGE_MAP:
             assert p.can_transition_to(stage) is False
+=======
+
+class TestProjectsAPI:
+    def test_create(self, client):
+        resp = client.post("/api/v1/projects/", json={"name": "新项目", "stage": 1})
+        assert resp.json()["data"]["name"] == "新项目"
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
 
     def test_linear_pipeline(self):
         """订单流水线: 1→2→3→4→5→6→7→8→9→10→11→12 each step valid."""

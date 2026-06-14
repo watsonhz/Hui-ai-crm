@@ -25,10 +25,15 @@ def _escape_like(value: str) -> str:
 
 
 @router.post("/", response_model=APIResponse[ProjectResponse])
+<<<<<<< HEAD
 def create(body: ProjectCreate, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
     data = body.model_dump()
     data["manager_id"] = user.id
     project = Project(**data)
+=======
+def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
+    project = Project(**body.model_dump())
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     db.add(project)
     db.commit()
     db.refresh(project)
@@ -36,7 +41,7 @@ def create(body: ProjectCreate, db: Session = Depends(get_db), user: CurrentUser
 
 
 @router.get("/", response_model=APIResponse[PaginatedData[ProjectResponse]])
-def list(
+def list_projects(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
     sort_order: str = Query(default="desc", pattern="^(asc|desc)$"),
@@ -62,7 +67,11 @@ def list(
 
 
 @router.get("/{project_id}", response_model=APIResponse[ProjectResponse])
+<<<<<<< HEAD
 def get(project_id: int, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+=======
+def get_project(project_id: int, db: Session = Depends(get_db)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     project = db.query(Project).filter(
         Project.id == project_id, Project.deleted_at.is_(None)
     ).first()
@@ -72,7 +81,11 @@ def get(project_id: int, db: Session = Depends(get_db), user: CurrentUser = Depe
 
 
 @router.put("/{project_id}", response_model=APIResponse[ProjectResponse])
+<<<<<<< HEAD
 def update(project_id: int, body: ProjectUpdate, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+=======
+def update_project(project_id: int, body: ProjectUpdate, db: Session = Depends(get_db)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     project = db.query(Project).filter(
         Project.id == project_id, Project.deleted_at.is_(None)
     ).first()
@@ -115,8 +128,13 @@ def update_stage(project_id: int, body: ProjectStageUpdate, db: Session = Depend
     return APIResponse.success(data=ProjectResponse.model_validate(project))
 
 
+<<<<<<< HEAD
 @router.get("/board/kanban", response_model=APIResponse)
 def kanban(db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+=======
+@router.get("/board/kanban", response_model=APIResponse[list[KanbanView]])
+def kanban_board(db: Session = Depends(get_db)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     projects = db.query(Project).filter(Project.deleted_at.is_(None)).all()
     stage_groups: dict[int, list[ProjectResponse]] = {s: [] for s in STAGE_MAP}
     for p in projects:

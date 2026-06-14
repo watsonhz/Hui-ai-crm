@@ -2,6 +2,10 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 from typing import Optional
 from app.schemas.response import APIResponse
+<<<<<<< HEAD
+=======
+from app.core.security import get_current_user, CurrentUser
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
 
 router = APIRouter()
 
@@ -26,7 +30,11 @@ class RoiRequest(BaseModel):
 
 
 @router.post("/campaign-recommend", response_model=APIResponse[dict])
+<<<<<<< HEAD
 def campaign_recommend(body: CampaignRequest):
+=======
+def campaign_recommend(body: CampaignRequest, user: CurrentUser = Depends(get_current_user)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     campaigns = []
     if body.budget >= 100000:
         campaigns.append({"name": "行业峰会赞助", "estimated_reach": 5000, "estimated_leads": 200, "cost": 80000})
@@ -38,7 +46,11 @@ def campaign_recommend(body: CampaignRequest):
 
 
 @router.post("/content-generate", response_model=APIResponse[dict])
+<<<<<<< HEAD
 def content_generate(body: ContentRequest):
+=======
+def content_generate(body: ContentRequest, user: CurrentUser = Depends(get_current_user)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     templates = {
         "email": f"主题: 助力{body.target_audience}数字化转型\n\n尊敬的{body.target_audience}：\n\n我们诚邀您了解最新的{body.topic}解决方案...",
         "social": f"🚀 {body.topic}新突破！为{body.target_audience}量身打造...",

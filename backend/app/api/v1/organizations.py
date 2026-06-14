@@ -35,7 +35,11 @@ def _check_circular_ref(db: Session, org_id: int, target_parent_id: int) -> bool
 
 
 @router.post("/", response_model=APIResponse[OrganizationResponse])
+<<<<<<< HEAD
 def create(body: OrganizationCreate, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+=======
+def create_org(body: OrganizationCreate, db: Session = Depends(get_db)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     if body.parent_id is not None:
         parent = db.query(Organization).filter(
             Organization.id == body.parent_id, Organization.deleted_at.is_(None)
@@ -49,8 +53,13 @@ def create(body: OrganizationCreate, db: Session = Depends(get_db), user: Curren
     return APIResponse.success(data=OrganizationResponse.model_validate(org))
 
 
+<<<<<<< HEAD
 @router.get("/tree", response_model=APIResponse)
 def tree(db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+=======
+@router.get("/tree", response_model=APIResponse[list[OrganizationTreeNode]])
+def get_tree(db: Session = Depends(get_db)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     orgs = (
         db.query(Organization)
         .filter(Organization.deleted_at.is_(None))
@@ -75,7 +84,11 @@ def tree(db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_
 
 
 @router.put("/{org_id}", response_model=APIResponse[OrganizationResponse])
+<<<<<<< HEAD
 def update(org_id: int, body: OrganizationUpdate, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+=======
+def update_org(org_id: int, body: OrganizationUpdate, db: Session = Depends(get_db)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     org = db.query(Organization).filter(
         Organization.id == org_id, Organization.deleted_at.is_(None)
     ).first()
@@ -103,7 +116,11 @@ def update(org_id: int, body: OrganizationUpdate, db: Session = Depends(get_db),
 
 
 @router.delete("/{org_id}", response_model=APIResponse[None])
+<<<<<<< HEAD
 def delete(org_id: int, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+=======
+def delete_org(org_id: int, db: Session = Depends(get_db)):
+>>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
     org = db.query(Organization).filter(
         Organization.id == org_id, Organization.deleted_at.is_(None)
     ).first()
