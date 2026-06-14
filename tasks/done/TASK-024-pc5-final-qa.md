@@ -1,35 +1,25 @@
 ---
 task_id: TASK-024
-title: Sprint6 QA — 全量回归 + 性能终测 + 部署验证
+title: PC5 终测签署 — 全量回归+性能+安全
 assignee: pc5
 role: qa-engineer
-priority: P1
-deadline: 2026-06-17
+priority: P0
+deadline: 2026-06-22
 branch: feature/TASK-024-final-qa
-dependencies: [TASK-020, TASK-021, TASK-022]
-tags: [sprint6, qa, regression, release]
+dependencies: [TASK-021, TASK-022, TASK-023]
+tags: [final, qa, release]
 ---
 
-# TASK-024：Sprint6 终测QA
+# TASK-024：终测签署
 
-## Part A: 全量回归
-- 运行全部 120+ 测试用例
-- 输出回归报告
-- 失败用例清零
+## 范围
+1. 全量回归（所有 36 端点 + 前端所有页面）
+2. 性能基准（k6: 100并发 30s）
+3. 安全终验（OWASP Top 10 全项）
+4. 跨浏览器（Edge + Chrome）
 
-## Part B: 性能终测
-- 全API端点性能基线
-- P95 < 200ms (CRUD), P95 < 3s (AI)
-- locust 并发500用户压测
-
-## Part C: 部署验证
-- Docker Compose 一键启动验证
-- 健康检查端点验证
-
-## 验收标准
-- [ ] 全量回归通过率 > 98%
-- [ ] 性能基线达标
-- [ ] Docker部署验证通过
-- [ ] QA签认报告
-
-完成后: git commit, 移至 tasks/done/
+## 验收
+- [ ] 211 pytest + E2E 全绿
+- [ ] k6 P95 < 1s, 0 errors
+- [ ] 4 浏览器截图一致
+- [ ] 签署发布令 → PC1 审批上线

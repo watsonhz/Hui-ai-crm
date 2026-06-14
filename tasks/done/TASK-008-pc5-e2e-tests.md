@@ -1,34 +1,25 @@
 ---
 task_id: TASK-008
-title: E2E测试 + 性能基线 + 扩展API测试
+title: PC5 Sprint3 E2E+性能测试
 assignee: pc5
 role: qa-engineer
-priority: P1
-deadline: 2026-06-14
+priority: P0
+deadline: 2026-06-17
 branch: feature/TASK-008-e2e-tests
-dependencies: [TASK-004, TASK-005, TASK-006]
-tags: [sprint2, e2e, performance, qa]
+dependencies: [TASK-005, TASK-006, TASK-009, TASK-010]
+tags: [sprint3, qa, e2e, playwright]
 ---
 
-# TASK-008：E2E测试 + 性能基线
+# TASK-008：Sprint3 QA测试
 
-## Part A: E2E 测试 (Playwright)
-- tests/e2e/test_visit_flow.spec.ts — 5次拜访三屏流程
-- tests/e2e/test_bidding_flow.spec.ts — 招投标全流程
-- tests/e2e/test_decision_chain.spec.ts — 决策链操作
+## 范围
+- 决策链 API 功能正确性
+- 拜访流程 E2E (Playwright)
+- AI报告生成性能 (k6)
+- 知识库搜索准确率
 
-## Part B: 扩展 API 测试
-- tests/api/test_decision_chain.py — 决策链4端点
-- tests/api/test_diagnosis.py — AI诊断信号
-
-## Part C: 性能基线
-- 运行 locust 建立 Sprint2 性能基准
-- 输出 tests/reports/performance-baseline-sprint2.html
-
-## 验收标准
-- [ ] 3 个 E2E 测试通过
-- [ ] 新 API 测试覆盖 > 80%
-- [ ] 性能基线报告生成
-
-## 完成后
-git commit/push，移动本文件至 tasks/done/
+## 验收
+- [ ] Playwright E2E: 拜访三屏流程
+- [ ] k6: /ai/reports/generate P95<3s
+- [ ] API: 所有 Sprint3 端点 200 响应
+- [ ] 0 P0/P1 Bug

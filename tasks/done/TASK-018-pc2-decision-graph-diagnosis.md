@@ -1,40 +1,25 @@
 ---
 task_id: TASK-018
-title: 决策链图谱可视化 + AI诊断面板 + 系统管理页面
+title: PC2 关系图谱+诊断页面
 assignee: pc2
-role: frontend-developer
+role: pm-frontend
 priority: P0
-deadline: 2026-06-17
-branch: feature/TASK-018-decision-diagnosis
-dependencies: [TASK-014]
-tags: [sprint5, vue3, echarts, graph, diagnosis, admin]
+deadline: 2026-06-19
+branch: feature/TASK-018-graph-diagnosis
+dependencies: [TASK-002]
+tags: [sprint5, frontend, vue, graph]
 ---
 
-# TASK-018：决策链图谱 + AI诊断面板 + 系统管理
+# TASK-018：关系图谱+诊断页面
 
-## Part A: 决策链图谱可视化 (DecisionChainGraph.vue)
-- ECharts 力导向图/关系图
-- 节点按8种角色分类着色(8色)
-- 节点大小反映影响力权重(1-10)
-- 边的粗细反映关系亲密度
-- 支持拖拽+缩放+点击展开详情卡片
-- 三种视图切换：点·关键关系 / 面·普遍关系 / 势·组织关系
+## 需求
+客户关系知识图谱可视化 + AI诊断结果展示。
 
-## Part B: AI诊断面板 (DiagnosisPanel.vue)
-- 6个板块: 客户全景/问题诊断/行动建议/风险预警/建议话术/一键生成准备卡
-- 诊断信号颜色区分(红/黄/蓝)
-- 每条诊断标注数据依据+日期
-- 话术按目标角色分组
+## 页面
+- /graph — 关系图谱（节点+边，ECharts/D3）
+- /diagnosis — AI诊断结果（流失预测+评分）
 
-## Part C: 系统管理页面 (/settings 扩展)
-- 用户管理表格+编辑Dialog
-- 角色权限矩阵
-- 操作日志时间线
-
-## 验收标准
-- [ ] 决策链图谱正确渲染
-- [ ] AI诊断6板块完整
-- [ ] 系统管理3页面可用
-- [ ] 响应式适配
-
-完成后: git commit, 移至 tasks/done/
+## 安全要求
+- [ ] 图谱节点 label/tooltip 全转义（防 XSS via 数据注入）
+- [ ] AI诊断结果不渲染为 HTML
+- [ ] 图谱数据按用户权限过滤
