@@ -13,3 +13,4 @@ deploy/redis_data/
 .claude/
 .pytest_cache/
 .coverage
+backend/dev.db
