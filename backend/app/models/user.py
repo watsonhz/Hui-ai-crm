@@ -10,6 +10,8 @@ class User(Base):
     email = Column(String(100))
     full_name = Column(String(100))
     role = Column(String(20), nullable=False, default="sales")
+    department_id = Column(BigInteger)
+    org_id = Column(BigInteger)
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
