@@ -81,3 +81,4 @@ make deploy-down   # 停止
 - **前端**: React 18 / TypeScript / Ant Design 5 / Zustand / Vite 5
 - **AI**: DeepSeek V4 / 12信号检测 / Prompt模板引擎
 - **基础设施**: Docker Compose / Nginx / Colima (macOS)
+# Hui-ai-crm
