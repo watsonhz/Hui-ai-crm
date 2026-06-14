@@ -1,10 +1,10 @@
 from datetime import datetime, timedelta
-from sqlalchemy import Column, BigInteger, String, SmallInteger, Text, DateTime, ForeignKey, Boolean
+from sqlalchemy import Integer, Column, BigInteger, String, SmallInteger, Text, DateTime, ForeignKey, Boolean
 from app.core.database import Base
 
 class ServiceTicket(Base):
     __tablename__ = "service_tickets"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(200), nullable=False)
     description = Column(Text)
     customer_id = Column(BigInteger, ForeignKey("organizations.id"))

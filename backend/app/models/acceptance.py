@@ -1,10 +1,10 @@
 from datetime import datetime, date
-from sqlalchemy import Column, BigInteger, String, Date, SmallInteger, Text, DateTime, ForeignKey
+from sqlalchemy import Integer, Column, BigInteger, String, Date, SmallInteger, Text, DateTime, ForeignKey
 from app.core.database import Base
 
 class Acceptance(Base):
     __tablename__ = "acceptance"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     project_id = Column(BigInteger, ForeignKey("projects.id"), nullable=False)
     title = Column(String(200), nullable=False)
     acceptance_date = Column(Date)

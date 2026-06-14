@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, String, SmallInteger, Text, DateTime, ForeignKey
+from sqlalchemy import Integer, Column, BigInteger, String, SmallInteger, Text, DateTime, ForeignKey
 from app.core.database import Base
 
 VISIT_TYPES = {1: "电话", 2: "拜访", 3: "会议", 4: "邮件", 5: "微信"}
@@ -8,7 +8,7 @@ OUTCOME_LEVELS = {0: "无产出", 1: "P1产出", 2: "P0产出"}
 
 class CrmRelationship(Base):
     __tablename__ = "crm_relationship"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     customer_id = Column(BigInteger, ForeignKey("organizations.id"), nullable=False)
     contact_id = Column(BigInteger)
     project_id = Column(BigInteger, ForeignKey("projects.id"))

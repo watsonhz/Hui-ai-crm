@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, String, SmallInteger, Boolean, Text, DateTime, ForeignKey
+from sqlalchemy import Integer, Column, BigInteger, String, SmallInteger, Boolean, Text, DateTime, ForeignKey
 from app.core.database import Base
 
 PRIORITY_MAP = {0: "P0紧急", 1: "P1重要", 2: "P2普通"}
@@ -7,7 +7,7 @@ PRIORITY_MAP = {0: "P0紧急", 1: "P1重要", 2: "P2普通"}
 
 class ActionItem(Base):
     __tablename__ = "action_items"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(200), nullable=False)
     description = Column(Text)
     priority = Column(SmallInteger, nullable=False, default=2)

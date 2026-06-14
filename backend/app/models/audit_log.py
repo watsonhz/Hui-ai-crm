@@ -1,10 +1,10 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, String, Text, DateTime
+from sqlalchemy import Integer, Column, BigInteger, String, Text, DateTime
 from app.core.database import Base
 
 class AuditLog(Base):
     __tablename__ = "audit_logs"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(BigInteger)
     username = Column(String(50))
     action = Column(String(50), nullable=False)

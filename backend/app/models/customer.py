@@ -1,10 +1,10 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, String, Text, DateTime, Boolean
+from sqlalchemy import Integer, Column, BigInteger, String, Text, DateTime, Boolean
 from app.core.database import Base
 
 class Customer(Base):
     __tablename__ = "customers"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(200), nullable=False)
     code = Column(String(50), unique=True)
     industry = Column(String(50))

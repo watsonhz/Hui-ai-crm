@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, String, Numeric, SmallInteger, Date, Text, DateTime
+from sqlalchemy import Integer, Column, BigInteger, String, Numeric, SmallInteger, Date, Text, DateTime
 from sqlalchemy.orm import validates
 from app.core.database import Base
 
@@ -15,7 +15,7 @@ VALID_STAGE_TRANSITIONS = {
 
 class Project(Base):
     __tablename__ = "projects"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(200), nullable=False)
     description = Column(Text)
     stage = Column(SmallInteger, nullable=False, default=1)

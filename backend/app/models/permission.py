@@ -1,10 +1,10 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, String, SmallInteger, DateTime
+from sqlalchemy import Integer, Column, BigInteger, String, SmallInteger, DateTime
 from app.core.database import Base
 
 class Role(Base):
     __tablename__ = "sys_role"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     role_name = Column(String(50), nullable=False, unique=True)
     role_code = Column(String(50), nullable=False, unique=True)
     description = Column(String(200))
@@ -14,7 +14,7 @@ class Role(Base):
 
 class Permission(Base):
     __tablename__ = "sys_permission"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     code = Column(String(100), nullable=False, unique=True)
     parent_id = Column(BigInteger, default=0)
@@ -26,6 +26,6 @@ class Permission(Base):
 
 class RolePermission(Base):
     __tablename__ = "sys_role_permission"
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     role_id = Column(BigInteger, nullable=False)
     permission_id = Column(BigInteger, nullable=False)
