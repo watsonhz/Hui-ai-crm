@@ -54,7 +54,7 @@ function navigateTo(path: string) {
       text-color="#a6a7b3"
       active-text-color="#fff"
       class="sidebar-menu"
-      router
+
     >
       <el-menu-item
         v-for="item in menuItems"

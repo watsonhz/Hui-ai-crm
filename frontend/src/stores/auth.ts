@@ -1,27 +1,33 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
-const TOKEN_KEY = 'crm_token'
-const USER_KEY = 'crm_user'
+export interface AuthUser {
+  id: number
+  username: string
+  role: string
+}
+
+const USER_KEY = 'auth_user'
 
 export const useAuthStore = defineStore('auth', () => {
-  const token = ref<string | null>(localStorage.getItem(TOKEN_KEY))
-  const user = ref<any>(JSON.parse(localStorage.getItem(USER_KEY) || 'null'))
-  const isLoggedIn = computed(() => !!token.value)
+  const user = ref<AuthUser | null>(JSON.parse(localStorage.getItem(USER_KEY) || 'null'))
+  const token = ref<string>(localStorage.getItem('auth_token') || '')
 
-  function setAuth(t: string, u: any) {
-    token.value = t
+  function setAuth(u: AuthUser, t: string) {
     user.value = u
-    localStorage.setItem(TOKEN_KEY, t)
+    token.value = t
     localStorage.setItem(USER_KEY, JSON.stringify(u))
+    localStorage.setItem('auth_token', t)
   }
 
   function logout() {
-    token.value = null
     user.value = null
-    localStorage.removeItem(TOKEN_KEY)
+    token.value = ''
     localStorage.removeItem(USER_KEY)
+    localStorage.removeItem('auth_token')
   }
 
-  return { token, user, isLoggedIn, setAuth, logout }
+  const isLoggedIn = () => !!token.value
+
+  return { user, token, setAuth, logout, isLoggedIn }
 })
