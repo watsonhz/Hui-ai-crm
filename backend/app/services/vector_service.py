@@ -1,9 +1,14 @@
 import os
-from openai import OpenAI
-from pgvector.sqlalchemy import Vector
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from app.models.knowledge import Knowledge
+
+try:
+    from openai import OpenAI
+    from pgvector.sqlalchemy import Vector
+    HAS_VECTOR = True
+except ImportError:
+    HAS_VECTOR = False
 
 EMBEDDING_DIM = 1536
 EMBEDDING_MODEL = "text-embedding-3-small"
