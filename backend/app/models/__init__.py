@@ -12,6 +12,7 @@ from app.models.relationship import Relationship
 from app.models.dict_data import DictType, DictData
 from app.models.knowledge import Knowledge
 from app.models.service_ticket import ServiceTicket
+from app.models.customer import Customer
 from app.models.audit_log import AuditLog
 from app.models.permission import Role, Permission, RolePermission
 
@@ -20,5 +21,5 @@ __all__ = [
     "SysConfig", "CrmRelationship", "ActionItem", "AiWorkSummary",
     "DecisionChain", "Acceptance", "Relationship",
     "DictType", "DictData", "Knowledge", "ServiceTicket",
-    "AuditLog", "Role", "Permission", "RolePermission",
+    "AuditLog", "Role", "Permission", "RolePermission", "Customer",
 ]
