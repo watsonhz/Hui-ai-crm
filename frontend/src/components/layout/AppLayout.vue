@@ -24,7 +24,7 @@ const appStore = useAppStore()
       <!-- 内容区 -->
       <el-main id="main-content" class="app-main" tabindex="-1">
         <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
+          <transition name="fade-slide" mode="out-in">
             <component :is="Component" />
           </transition>
         </router-view>
@@ -36,40 +36,20 @@ const appStore = useAppStore()
 </template>
 
 <style scoped lang="scss">
-.app-layout {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.app-aside {
-  background-color: #1d1e2c;
-  transition: width 0.3s ease;
-  overflow-x: hidden;
-  flex-shrink: 0;
-}
+.app-layout { height: 100vh; overflow: hidden; }
+.app-aside { background: var(--sidebar-bg); transition: width 0.3s var(--ease-spring); overflow-x: hidden; flex-shrink: 0; }
 
 .app-header {
-  height: 56px !important;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  flex-shrink: 0;
+  height: 64px !important;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--color-border);
+  display: flex; align-items: center; padding: 0 24px; flex-shrink: 0;
 }
 
 .app-main {
-  background: #f5f6fa;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+  background: var(--color-bg);
+  overflow-y: auto; padding: 24px;
 }
 </style>

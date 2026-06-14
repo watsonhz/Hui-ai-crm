@@ -10,10 +10,10 @@ use([CanvasRenderer, BarChart, LineChart, PieChart, FunnelChart, GaugeChart, Tit
 
 // ---- 概览卡片 ----
 const stats = ref([
-  { label: '今日拜访', value: 28, color: '#409EFF', icon: 'User' },
-  { label: '进行中项目', value: 15, color: '#67C23A', icon: 'List' },
-  { label: '招标中', value: 8, color: '#E6A23C', icon: 'Document' },
-  { label: '本月签约', value: 12, color: '#F56C6C', icon: 'Checked' },
+  { label: '今日拜访', value: 28, color: '#3b82f6', icon: 'User' },
+  { label: '进行中项目', value: 15, color: '#06b6d4', icon: 'List' },
+  { label: '招标中', value: 8, color: '#8b5cf6', icon: 'Document' },
+  { label: '本月签约', value: 12, color: '#059669', icon: 'Checked' },
 ])
 
 // ---- 1. 销售漏斗图 ----

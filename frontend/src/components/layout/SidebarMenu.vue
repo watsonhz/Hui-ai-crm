@@ -41,96 +41,62 @@ function navigateTo(path: string) {
 
 <template>
   <div class="sidebar-container">
-    <!-- Logo 区域 -->
     <div class="sidebar-logo">
-      <el-icon :size="24" color="#409EFF"><Cpu /></el-icon>
+      <div class="logo-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="url(#logo-grad)"/>
+          <path d="M7 14l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+        </svg>
+      </div>
       <span v-show="!appStore.sidebarCollapsed" class="logo-text">AI CRM</span>
     </div>
 
-    <!-- 菜单 -->
     <el-menu
       :default-active="activeMenu"
       :collapse="appStore.sidebarCollapsed"
-      background-color="#1d1e2c"
-      text-color="#a6a7b3"
+      background-color="var(--sidebar-bg)"
+      text-color="#94a3b8"
       active-text-color="#fff"
       class="sidebar-menu"
       router
     >
-      <el-menu-item
-        v-for="item in menuItems"
-        :key="item.path"
-        :index="item.path"
-        @click="navigateTo(item.path)"
-      >
+      <el-menu-item v-for="item in menuItems" :key="item.path" :index="item.path" @click="navigateTo(item.path)">
         <el-icon><component :is="item.icon" /></el-icon>
         <template #title>{{ item.title }}</template>
       </el-menu-item>
     </el-menu>
 
-    <!-- 底部折叠按钮 -->
     <div class="sidebar-collapse" @click="appStore.toggleSidebar()">
-      <el-icon :size="18">
-        <DArrowLeft v-if="!appStore.sidebarCollapsed" />
-        <DArrowRight v-else />
-      </el-icon>
+      <el-icon :size="18"><DArrowLeft v-if="!appStore.sidebarCollapsed" /><DArrowRight v-else /></el-icon>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.sidebar-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+.sidebar-container { display: flex; flex-direction: column; height: 100%; background: var(--sidebar-bg); }
 
 .sidebar-logo {
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  flex-shrink: 0;
-
-  .logo-text {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
+  height: 64px; display: flex; align-items: center; justify-content: center; gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
+  .logo-text { color: #fff; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
 }
 
 .sidebar-menu {
-  flex: 1;
-  border-right: none;
-  overflow-y: auto;
-  overflow-x: hidden;
-
+  flex: 1; border-right: none; overflow-y: auto; overflow-x: hidden; padding: 8px 0;
   .el-menu-item {
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.05) !important;
-    }
-    &.is-active {
-      background-color: #409EFF !important;
-    }
+    margin: 2px 8px; border-radius: 8px; height: 44px; line-height: 44px;
+    font-size: 13px; letter-spacing: -0.01em;
+    transition: all 0.2s var(--ease-spring);
+    &:hover { background: var(--sidebar-hover) !important; }
+    &.is-active { background: var(--sidebar-active) !important; color: #fff !important; border-right: none; }
   }
 }
 
 .sidebar-collapse {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #a6a7b3;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  height: 40px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #64748b; border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
   transition: color 0.2s;
-  flex-shrink: 0;
-
-  &:hover {
-    color: #fff;
-  }
+  &:hover { color: #94a3b8; }
 }
 </style>

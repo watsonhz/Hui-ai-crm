@@ -1,66 +1,204 @@
 // ========================================
-// AI CRM — 全局样式
+// AI CRM — 高科技专业设计系统
+// Apple-style交互 + 专业科技配色
 // ========================================
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+// -------- Design Tokens --------
+:root {
+  // 主色调 — 深邃科技蓝
+  --color-primary: #1d4ed8;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1e3a8a;
+  --color-primary-bg: rgba(29, 78, 216, 0.06);
+
+  // 强调色 — 电光青
+  --color-accent: #06b6d4;
+  --color-accent-light: #22d3ee;
+
+  // 功能色
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-info: #6366f1;
+
+  // 中性色
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #94a3b8;
+
+  // 侧边栏
+  --sidebar-bg: #0b1120;
+  --sidebar-hover: rgba(255,255,255,0.04);
+  --sidebar-active: rgba(59,130,246,0.2);
+
+  // 阴影系统
+  --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.04), 0 2px 4px -2px rgba(0,0,0,0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -4px rgba(0,0,0,0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.06), 0 8px 10px -6px rgba(0,0,0,0.03);
+
+  // 动画
+  --ease-spring: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  // Element Plus 覆盖
+  --el-color-primary: var(--color-primary);
+  --el-color-primary-light-3: var(--color-primary-light);
+  --el-border-radius-base: 10px;
+  --el-border-radius-small: 6px;
+  --el-font-size-base: 14px;
+}
+
+// -------- Base --------
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html, body, #app {
   height: 100%;
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
-// Element Plus 主题覆盖
-:root {
-  --el-color-primary: #409EFF;
+// -------- Scrollbar (Apple-style thin) --------
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; &:hover { background: #94a3b8; } }
+::-webkit-scrollbar-track { background: transparent; }
+
+// -------- Keyboard a11y --------
+.skip-link {
+  position: absolute; top: -100px; left: 16px; z-index: 1000;
+  padding: 8px 16px; background: var(--color-primary); color: #fff; border-radius: 6px; font-size: 14px;
+  &:focus { top: 8px; }
+}
+*:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
-// 滚动条
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-thumb {
-  background: #c0c4cc;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
+// -------- Card Refinement --------
+.el-card {
+  border-radius: 12px !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: box-shadow var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+
+  &:hover {
+    box-shadow: var(--shadow-md) !important;
+  }
+
+  .el-card__header {
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .el-card__body { padding: 20px; }
 }
 
-// 响应式适配
+// -------- Button Refinement --------
+.el-button {
+  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all var(--duration-fast) var(--ease-spring);
+
+  &--primary {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    &:hover { background: var(--color-primary-light); border-color: var(--color-primary-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(29,78,216,0.25); }
+    &:active { transform: translateY(0); }
+  }
+}
+
+// -------- Input Refinement --------
+.el-input__wrapper {
+  border-radius: 8px !important;
+  transition: all var(--duration-fast) var(--ease-out);
+  box-shadow: var(--shadow-sm) !important;
+  &:hover { box-shadow: var(--shadow-md) !important; }
+  &.is-focus { box-shadow: 0 0 0 2px rgba(29,78,216,0.15) !important; }
+}
+
+// -------- Table Refinement --------
+.el-table {
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 13px;
+
+  th.el-table__cell {
+    background: #f1f5f9;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .el-table__row {
+    transition: background var(--duration-fast) var(--ease-out);
+    &:hover { background: var(--color-primary-bg) !important; }
+  }
+}
+
+// -------- Page Transition --------
+.fade-slide-enter-active {
+  transition: all var(--duration-slow) var(--ease-spring);
+}
+.fade-slide-leave-active {
+  transition: all var(--duration-fast) var(--ease-in);
+}
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+// -------- Apple-style Glass Effect --------
+.glass {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+// -------- Responsive --------
 @media (max-width: 1366px) {
-  .app-main { padding: 12px !important; }
-  .el-col[class*="span-"] { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
-  .el-table { font-size: 13px; }
-  .el-descriptions { font-size: 12px; }
+  .app-main { padding: 16px !important; }
 }
 
 @media (max-width: 768px) {
-  .app-aside { width: 64px !important; .logo-text, .el-menu-item span { display: none !important; } }
-  .app-main { padding: 8px !important; }
-  .stat-card .stat-value { font-size: 22px !important; }
-  .pipeline { flex-wrap: wrap; gap: 10px; .stage-arrow { display: none; } }
+  .app-aside { width: 0 !important; overflow: hidden; }
+  .app-main { padding: 12px !important; padding-bottom: 72px !important; }
 }
 
-// 表格横向滚动
-.el-table { overflow-x: auto; }
-
-// 骨架屏全局
-.skeleton-wrap { width: 100%; }
-
-// 键盘可访问性
-.skip-link {
-  position: absolute; top: -100px; left: 16px; z-index: 1000;
-  padding: 8px 16px; background: #409EFF; color: #fff; border-radius: 4px;
-  &:focus { top: 8px; }
+// -------- Animation: reduced motion --------
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-// Focus 可见指示器 (WCAG)
-*:focus-visible { outline: 2px solid #409EFF; outline-offset: 2px; }

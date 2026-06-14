@@ -129,7 +129,7 @@ function handleWechatLogin() {
 <style scoped lang="scss">
 .login-container {
   min-height: 100vh; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: radial-gradient(ellipse at 50% 0%, #1e3a5f 0%, #0b1120 60%);
 }
 .login-card {
   width: 420px; background: #fff; border-radius: 16px; padding: 40px;
