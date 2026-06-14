@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { UploadFile, UploadProgress } from 'element-plus'
+import type { UploadFile } from 'element-plus'
 
 const files = ref<UploadFile[]>([])
 const uploading = ref(false)
