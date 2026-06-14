@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col, Statistic, Table } from 'antd';
 import {
-  TeamOutlined, ProjectOutlined, FileSearchOutlined, CheckCircleOutlined,
+  TeamOutlined, ProjectOutlined, FileSearchOutlined,
   PhoneOutlined, ExclamationCircleOutlined, BookOutlined, SettingOutlined,
 } from '@ant-design/icons';
 import client from '../../api/client';
@@ -60,7 +60,7 @@ export default function DashboardPage() {
         <Col span={12}>
           <Card title="项目漏斗" extra={<a onClick={() => navigate('/projects')}>查看全部 →</a>}>
             <Table rowKey="stage" columns={pipelineColumns} dataSource={stats.pipeline || []} pagination={false} size="small"
-              onRow={(r) => ({ onClick: () => navigate('/projects'), style: { cursor: 'pointer' } })} />
+              onRow={(_r) => ({ onClick: () => navigate('/projects'), style: { cursor: 'pointer' } })} />
           </Card>
         </Col>
         <Col span={12}>
