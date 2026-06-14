@@ -22,7 +22,7 @@ const appStore = useAppStore()
       </el-header>
 
       <!-- 内容区 -->
-      <el-main class="app-main">
+      <el-main id="main-content" class="app-main" tabindex="-1">
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
             <component :is="Component" />
