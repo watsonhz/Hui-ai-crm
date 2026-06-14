@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-06-14T16:42:00+08:00",
+  "endpoints": [
+    {"path": "/api/v1/customers/?page=1&page_size=20", "avg_ms": 215.1, "p95_ms": 226.6},
+    {"path": "/api/v1/customers/1", "avg_ms": 217.0, "p95_ms": 221.1},
+    {"path": "/api/v1/bidding/?page=1&page_size=20", "avg_ms": 211.8, "p95_ms": 217.0},
+    {"path": "/api/v1/bidding/calendar", "avg_ms": 217.2, "p95_ms": 220.0},
+    {"path": "/api/v1/projects/?page=1&page_size=20", "avg_ms": 215.0, "p95_ms": 223.7},
+    {"path": "/api/v1/projects/kanban", "avg_ms": 217.4, "p95_ms": 220.9},
+    {"path": "/api/v1/organizations/tree", "avg_ms": 224.7, "p95_ms": 229.8},
+    {"path": "/api/v1/health", "avg_ms": 218.3, "p95_ms": 231.7}
+  ],
+  "summary": {
+    "total_requests": 40,
+    "min_ms": 204.4,
+    "avg_ms": 217.1,
+    "med_ms": 217.5,
+    "p90_ms": 228.5,
+    "p95_ms": 229.8,
+    "p99_ms": 231.7,
+    "max_ms": 231.7
+  },
+  "thresholds": {
+    "p95_lt_500ms": true,
+    "p99_lt_1000ms": true
+  },
+  "verdict": "PASS"
+}
