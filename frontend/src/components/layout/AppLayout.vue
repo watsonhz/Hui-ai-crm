@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SidebarMenu from './SidebarMenu.vue'
 import HeaderBreadcrumb from './HeaderBreadcrumb.vue'
+import MobileBottomNav from './MobileBottomNav.vue'
 import { useAppStore } from '@/stores/app'
 
 const appStore = useAppStore()
@@ -29,6 +30,8 @@ const appStore = useAppStore()
         </router-view>
       </el-main>
     </el-container>
+
+    <MobileBottomNav />
   </el-container>
 </template>
 
