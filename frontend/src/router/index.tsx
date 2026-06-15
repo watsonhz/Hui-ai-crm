@@ -12,6 +12,8 @@ import SystemPage from '../pages/system';
 import OpportunityKanban from '../pages/opportunities';
 import ActivityList from '../pages/activities';
 import TodoPage from '../pages/todos';
+import AiDiagnosisPage from '../pages/ai-diagnosis';
+import TicketPage from '../pages/tickets';
 
 const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
@@ -29,6 +31,8 @@ const router = createBrowserRouter([
           { path: '/opportunities', element: <OpportunityKanban /> },
           { path: '/activities', element: <ActivityList /> },
           { path: '/todos', element: <TodoPage /> },
+          { path: '/ai-diagnosis', element: <AiDiagnosisPage /> },
+          { path: '/tickets', element: <TicketPage /> },
           { path: '/organizations', element: <OrgTreePage /> },
           { path: '/knowledge', element: <KnowledgePage /> },
           { path: '/system', element: <SystemPage /> },

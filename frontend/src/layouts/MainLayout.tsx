@@ -6,6 +6,7 @@ import {
   LogoutOutlined, UserOutlined, MenuFoldOutlined, MenuUnfoldOutlined,
   ApartmentOutlined, BookOutlined, SettingOutlined,
   FundOutlined, PhoneOutlined, CheckSquareOutlined,
+  AlertOutlined, BugOutlined,
 } from '@ant-design/icons';
 import { useAuthStore } from '../stores/authStore';
 
@@ -31,6 +32,8 @@ export default function MainLayout() {
     { key: '/opportunities', icon: <FundOutlined />, label: '商机看板' },
     { key: '/activities', icon: <PhoneOutlined />, label: '跟进记录' },
     { key: '/todos', icon: <CheckSquareOutlined />, label: '我的待办' },
+    { key: '/ai-diagnosis', icon: <AlertOutlined />, label: 'AI诊断' },
+    { key: '/tickets', icon: <BugOutlined />, label: '工单管理' },
     { key: '/organizations', icon: <ApartmentOutlined />, label: '组织架构' },
     { key: '/knowledge', icon: <BookOutlined />, label: '知识库' },
     { key: '/system', icon: <SettingOutlined />, label: '系统管理' },
