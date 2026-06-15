@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Card, Form, Input, InputNumber, Button, Tag, Descriptions, message, Row, Col, Space, Select } from 'antd';
-import { AlertOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { Card, Form, Input, InputNumber, Button, Tag, Descriptions, message, Row, Col, Space } from 'antd';
+import { ThunderboltOutlined } from '@ant-design/icons';
 import client from '../../api/client';
 
 const DIMENSION_COLORS: Record<string, string> = { '时间': 'blue', '决策链': 'purple', '项目': 'orange' };
