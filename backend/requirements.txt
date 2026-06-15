@@ -27,7 +27,7 @@ pytest==8.3.0
 pytest-asyncio==0.24.0
 pytest-cov==5.0.0
 openai==1.55.0
-celery==5.4.0
+celery==5.6.3
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 >>>>>>> 662f12488696422c660a7b9ff57a0f880cf8e5a8
